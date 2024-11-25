@@ -12,7 +12,7 @@ class CustomIcon extends StatelessWidget {
     super.key,
     required this.icon,
     this.size = 24.0,
-    this.color = AppColors.fullBlack,
+    this.color = AppColors.white,
     this.onPressed,
     this.padding,
   });

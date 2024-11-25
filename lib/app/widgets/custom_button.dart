@@ -49,7 +49,7 @@ class CustomButton extends StatelessWidget {
             : Text(
                 label,
                 style: TextStyle(
-                  color: textColor ?? AppColors.fullWhite,
+                  color: textColor ?? AppColors.white,
                 ),
               ),
       ),

@@ -16,7 +16,7 @@ class SplashView extends StatelessWidget {
         child: CustomIcon(
           icon: Icons.favorite,
           size: 150,
-          color: AppColors.fullWhite,
+          color: AppColors.white,
         ),
       ),
     );
