@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:dating_app/app/modules/chat_home/chat_home_view.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_controller.dart';
 import 'package:dating_app/app/modules/home/home_view.dart';
+import 'package:dating_app/app/modules/profile/profile_view.dart';
 import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/theme/fonts.dart';
 import 'package:dating_app/app/widgets/custom_icon.dart';
@@ -22,7 +24,8 @@ class DashboardView extends StatelessWidget {
     final List<Widget> pages = [
       const HomeView(),
       const HomeView(),
-      const HomeView(),
+      const ChatHomeView(),
+      const ProfileView()
     ];
 
     return Scaffold(
@@ -85,13 +88,23 @@ class DashboardView extends StatelessWidget {
             ),
             BottomNavigationBarItem(
               icon: CustomIcon(
-                icon: Icons.home,
+                icon: Icons.chat,
                 size: 30,
                 color: dashboardController.selectedIndex.value == 2
                     ? AppColors.primary
                     : AppColors.grey.shade400,
               ),
-              label: 'Home',
+              label: 'Chat',
+            ),
+            BottomNavigationBarItem(
+              icon: CustomIcon(
+                icon: Icons.person,
+                size: 30,
+                color: dashboardController.selectedIndex.value == 3
+                    ? AppColors.primary
+                    : AppColors.grey.shade400,
+              ),
+              label: 'Profile',
             ),
           ],
           currentIndex: dashboardController.selectedIndex.value,
