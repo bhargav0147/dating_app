@@ -25,7 +25,7 @@ class LoginView extends StatelessWidget {
               const SizedBox(height: 30,),
               const CustomText(
                 text: 'Let,s you in',
-                color: AppColors.white,
+                color: AppColors.black,
                 style: AppFonts.large,
               ),
               const SizedBox(
@@ -36,7 +36,7 @@ class LoginView extends StatelessWidget {
                 children: [
                   const CustomText(
                     text: 'By Clicking Log in, you agree with our ',
-                    color: AppColors.white,
+                    color: AppColors.black,
                     style: AppFonts.small,
                   ),
                   CustomText(
@@ -48,7 +48,7 @@ class LoginView extends StatelessWidget {
                   ),
                   const CustomText(
                     text: '.',
-                    color: AppColors.white,
+                    color: AppColors.black,
                     style: AppFonts.small,
                   ),
                 ],
@@ -58,7 +58,7 @@ class LoginView extends StatelessWidget {
                 children: [
                   const CustomText(
                     text: 'Learn how we process your date in our ',
-                    color: AppColors.white,
+                    color: AppColors.black,
                     style: AppFonts.small,
                   ),
                   CustomText(
@@ -82,7 +82,7 @@ class LoginView extends StatelessWidget {
                   ),
                   const CustomText(
                     text: ' and  ',
-                    color: AppColors.white,
+                    color: AppColors.black,
                     style: AppFonts.small,
                   ),
                   CustomText(
@@ -94,7 +94,7 @@ class LoginView extends StatelessWidget {
                   ),
                   const CustomText(
                     text: '.',
-                    color: AppColors.white,
+                    color: AppColors.black,
                     style: AppFonts.small,
                   ),
                 ],
@@ -124,7 +124,7 @@ class LoginView extends StatelessWidget {
                       const CustomText(
                         text: 'Login With Google',
                         style: AppFonts.medium,
-                        color: AppColors.white,
+                        color: AppColors.black,
                       ),
                     ],
                   ),
@@ -155,7 +155,7 @@ class LoginView extends StatelessWidget {
                       const CustomText(
                         text: 'Login With Facebook',
                         style: AppFonts.medium,
-                        color: AppColors.white,
+                        color: AppColors.black,
                       ),
                     ],
                   ),
@@ -186,7 +186,7 @@ class LoginView extends StatelessWidget {
                       const CustomText(
                         text: 'Login With Phone',
                         style: AppFonts.medium,
-                        color: AppColors.white,
+                        color: AppColors.black,
                       ),
                     ],
                   ),
@@ -197,7 +197,7 @@ class LoginView extends StatelessWidget {
               ),
               const CustomText(
                 text: 'or',
-                color: AppColors.white,
+                color: AppColors.black,
                 style: AppFonts.medium,
               ),
               const SizedBox(
