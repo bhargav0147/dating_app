@@ -4,6 +4,7 @@ import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/theme/fonts.dart';
 import 'package:dating_app/app/utils/mediaQueryHelper.dart';
 import 'package:dating_app/app/utils/navigation.dart';
+import 'package:dating_app/app/utils/sized_box_helper.dart';
 import 'package:dating_app/app/widgets/custom_button.dart';
 import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -38,13 +39,13 @@ class OnboardingView extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    const SizedBox(height: 44),
+                    SizedBoxHelper.h45,
                     CustomText(
                       text: detail['title'].toString(),
                       color: AppColors.primary,
                       style: AppFonts.extraLarge,
                     ),
-                    const SizedBox(height: 10),
+                   SizedBoxHelper.h10,
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: CustomText(
@@ -54,7 +55,7 @@ class OnboardingView extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBoxHelper.h10,
                   ],
                 );
               }).toList(),
@@ -96,20 +97,18 @@ class OnboardingView extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+           SizedBoxHelper.h30,
             Padding(
               padding: const EdgeInsets.symmetric(
                   horizontal: AppVariables.APPSIDESPACING),
               child: CustomButton(
                   label: 'Create an Account',
-                  onPressed: () {},
+                  onPressed: () {
+                    NavigationUtils.navigateTo(AppRoutes.welcome);
+                  },
                   isLoading: false),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            SizedBoxHelper.h20,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -120,7 +119,7 @@ class OnboardingView extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    NavigationUtils.replaceWith(AppRoutes.login);
+                    NavigationUtils.navigateTo(AppRoutes.login);
                   },
                   child: const CustomText(
                     text: 'Sign In',

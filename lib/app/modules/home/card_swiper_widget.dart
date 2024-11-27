@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+import '../../utils/sized_box_helper.dart';
+
 class CardSwiperCard extends StatelessWidget {
   final String imageUrl;
   final String name;
@@ -86,7 +88,7 @@ class CardSwiperCard extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    SizedBoxHelper.h5,
                     Text(
                       "Live in $city",
                       style: const TextStyle(
@@ -117,7 +119,7 @@ class CardSwiperCard extends StatelessWidget {
                       color: Colors.white,
                       size: 16,
                     ),
-                    const SizedBox(width: 5),
+                    SizedBoxHelper.h5,
                     Text(
                       '$km KM',
                       style: const TextStyle(color: Colors.white),

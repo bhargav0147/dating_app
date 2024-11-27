@@ -11,6 +11,7 @@ import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../utils/sized_box_helper.dart';
 import '../../utils/snackbars.dart';
 
 class DashboardView extends StatelessWidget {
@@ -55,9 +56,7 @@ class DashboardView extends StatelessWidget {
                 color: AppColors.primary,
                 size: 30,
               )),
-          SizedBox(
-            width: 15,
-          )
+          SizedBoxHelper.h15,
         ],
       ),
       body: Obx(() => pages[dashboardController.selectedIndex.value]),

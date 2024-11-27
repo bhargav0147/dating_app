@@ -1,14 +1,16 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../theme/colors.dart';
 
 class SnackbarUtils {
   static void showSuccess(String message) {
     Get.snackbar(
       'Success',
       message,
-      backgroundColor: Colors.green,
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: AppColors.primary,
       duration: const Duration(seconds: 1),
-      colorText: Colors.white,
+      colorText: AppColors.white,
     );
   }
 
@@ -16,9 +18,10 @@ class SnackbarUtils {
     Get.snackbar(
       'Error',
       message,
-      backgroundColor: Colors.red,
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: AppColors.red,
       duration: const Duration(seconds: 1),
-      colorText: Colors.white,
+      colorText: AppColors.white,
     );
   }
 }

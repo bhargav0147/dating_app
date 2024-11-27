@@ -4,6 +4,8 @@ import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:dating_app/app/widgets/custom_textfiled.dart';
 import 'package:flutter/material.dart';
 
+import '../../utils/sized_box_helper.dart';
+
 class ChatHomeView extends StatelessWidget {
   const ChatHomeView({super.key});
 
@@ -22,17 +24,13 @@ class ChatHomeView extends StatelessWidget {
               leadingIcon: Icons.search,
               leadingIconColor: AppColors.black,
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            SizedBoxHelper.h10,
             const CustomText(
               text: 'New Matches',
               color: AppColors.black,
               style: AppFonts.large,
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            SizedBoxHelper.h10,
             SizedBox(
               height: 105,
               child: ListView.separated(
@@ -54,9 +52,7 @@ class ChatHomeView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 5,
-                      ),
+                      SizedBoxHelper.h5,
                       const CustomText(
                         text: 'User Name',
                         style: AppFonts.small,
@@ -67,23 +63,17 @@ class ChatHomeView extends StatelessWidget {
                 },
                 itemCount: 15,
                 separatorBuilder: (context, index) {
-                  return const SizedBox(
-                    width: 10,
-                  );
+                  return SizedBoxHelper.h10;
                 },
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            SizedBoxHelper.h10,
             const CustomText(
               text: 'Messages',
               color: AppColors.black,
               style: AppFonts.large,
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            SizedBoxHelper.h10,
             ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -106,9 +96,7 @@ class ChatHomeView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                            width: 10,
-                          ),
+                      SizedBoxHelper.h10,
                           const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,7 +113,7 @@ class ChatHomeView extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(width: 10,),
+                          SizedBoxHelper.h10,
                           const Expanded(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -148,9 +136,7 @@ class ChatHomeView extends StatelessWidget {
                   );
                 },
                 separatorBuilder: (context, index) {
-                  return const SizedBox(
-                    height: 10,
-                  );
+                  return SizedBoxHelper.h10;
                 },
                 itemCount: 15)
           ],

@@ -31,4 +31,25 @@ class Validators {
     }
     return null;
   }
+
+  static String? userNameValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'User Name cannot be empty';
+    }
+    return null;
+  }
+
+  static String? fullNameValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Name cannot be empty';
+    }
+    return null;
+  }
+
+  static String? genderValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please select a gender';
+    }
+    return null;
+  }
 }

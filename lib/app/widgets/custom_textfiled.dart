@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../theme/colors.dart'; // Make sure AppColors is imported correctly.
+import '../theme/colors.dart';
+import '../theme/fonts.dart'; // Make sure AppColors is imported correctly.
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
@@ -8,6 +9,7 @@ class CustomTextField extends StatelessWidget {
   final Color focusedBorderColor;
   final Color errorBorderColor;
   final bool ifLeading;
+  final double borderRadius;
   final IconData? leadingIcon;
   final Color leadingIconColor;
   final ValueChanged<String>? onChange;
@@ -23,6 +25,7 @@ class CustomTextField extends StatelessWidget {
     this.errorBorderColor = AppColors.red,
     this.cursorColor = AppColors.black,
     this.ifLeading = false,
+    this.borderRadius = 15,
     this.leadingIcon,
     this.leadingIconColor = AppColors.black,
     this.onChange,
@@ -39,6 +42,7 @@ class CustomTextField extends StatelessWidget {
       cursorColor: cursorColor,
       onChanged: onChange,
       validator: validator,
+      style: AppFonts.medium.copyWith(color: AppColors.black),
       decoration: InputDecoration(
         labelText: hintText,
         labelStyle: const TextStyle(color: AppColors.grey),
@@ -49,20 +53,20 @@ class CustomTextField extends StatelessWidget {
               )
             : null,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(borderRadius),
           borderSide: BorderSide(color: borderColor, width: 1),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: focusedBorderColor, width: 2),
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(color: focusedBorderColor, width: 1),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: errorBorderColor, width: 2),
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(color: errorBorderColor, width: 1),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: errorBorderColor, width: 2),
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(color: errorBorderColor, width: 1),
         ),
       ),
     );

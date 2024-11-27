@@ -3,6 +3,7 @@ import 'package:dating_app/app/config/app_variables.dart';
 import 'package:dating_app/app/routes/app_routes.dart';
 import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/theme/fonts.dart';
+import 'package:dating_app/app/widgets/back_button.dart';
 import 'package:dating_app/app/widgets/custom_button.dart';
 import 'package:dating_app/app/widgets/custom_icon.dart';
 import 'package:dating_app/app/widgets/custom_text.dart';
@@ -10,6 +11,7 @@ import 'package:dating_app/app/widgets/custom_textfiled.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/navigation.dart';
+import '../../utils/sized_box_helper.dart';
 import '../../validator/textfild_validator.dart';
 
 class LoginView extends StatelessWidget {
@@ -30,29 +32,26 @@ class LoginView extends StatelessWidget {
           child: Form(
             key: formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(
-                  height: 30,
-                ),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: CustomBackButton()),
+                SizedBoxHelper.h30,
                 const CustomIcon(
                   icon: Icons.favorite,
                   color: AppColors.primary,
                   size: 100,
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
+                SizedBoxHelper.h30,
                 const CustomText(
                   text: 'Sign In to continue',
                   textAlign: TextAlign.center,
                   color: AppColors.black,
                   style: AppFonts.extraLarge,
                 ),
-                const SizedBox(
-                  height: 32,
-                ),
+                SizedBoxHelper.h30,
                 CustomTextField(
                   hintText: 'Email',
                   onChange: (value) {},
@@ -60,9 +59,7 @@ class LoginView extends StatelessWidget {
                     return Validators.emailValidator(value);
                   },
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
+                SizedBoxHelper.h15,
                 CustomTextField(
                   hintText: 'Password',
                   onChange: (value) {},
@@ -70,9 +67,7 @@ class LoginView extends StatelessWidget {
                     return Validators.passwordValidator(value);
                   },
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
+                SizedBoxHelper.h15,
                 const Align(
                     alignment: Alignment.centerRight,
                     child: CustomText(
@@ -80,10 +75,7 @@ class LoginView extends StatelessWidget {
                       color: AppColors.purple,
                       style: AppFonts.medium,
                     )),
-                const SizedBox(
-                  height: 15,
-                ),
-              
+                SizedBoxHelper.h15,
                 CustomButton(
                   label: 'Sign In',
                   onPressed: () {
