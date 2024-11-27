@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../theme/colors.dart';
+import '../theme/colors.dart'; // Make sure AppColors is imported correctly.
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
@@ -41,8 +40,8 @@ class CustomTextField extends StatelessWidget {
       onChanged: onChange,
       validator: validator,
       decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: const TextStyle(color: Colors.grey),
+        labelText: hintText,
+        labelStyle: const TextStyle(color: AppColors.grey),
         prefixIcon: ifLeading && leadingIcon != null
             ? Icon(
                 leadingIcon,
@@ -51,7 +50,7 @@ class CustomTextField extends StatelessWidget {
             : null,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: borderColor, width: 1.5),
+          borderSide: BorderSide(color: borderColor, width: 1),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),

@@ -9,7 +9,6 @@ import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
 import 'onboarding_controller.dart';
 
 class OnboardingView extends StatelessWidget {
