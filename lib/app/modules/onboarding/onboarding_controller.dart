@@ -7,21 +7,23 @@ class OnboardingController extends GetxController {
     {
       'image':
           'https://images.pexels.com/photos/1391498/pexels-photo-1391498.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'description': 'Find people who match with you.',
+      'description':
+          'Users going through a vetting process to ensure you never match with bots.',
+      'title': 'Algorithm'
     },
     {
       'image':
           'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'description': 'Easily message & call the people you like',
+      'description':
+          'We match you with people that have alarge array of similar interests.',
+      'title': 'Matches'
     },
     {
       'image':
           'https://images.pexels.com/photos/921646/pexels-photo-921646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      'description': 'Dont wait anymore, find out your soul mate now',
+      'description':
+          'Sign up today and enjoy the first month of premium benefits on us.',
+      'title': 'Premium '
     },
   ];
-
-  void changePage(int index) {
-    pageIndex.value = index;
-  }
 }

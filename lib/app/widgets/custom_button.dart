@@ -1,3 +1,4 @@
+import 'package:dating_app/app/theme/fonts.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/colors.dart';
@@ -20,7 +21,7 @@ class CustomButton extends StatelessWidget {
     this.height,
     this.width,
     this.isLoading = false, // Default: not loading
-    this.borderRadius = 8.0, // Default border radius
+    this.borderRadius = 15, // Default border radius
     super.key,
   });
 
@@ -48,10 +49,8 @@ class CustomButton extends StatelessWidget {
               )
             : Text(
                 label,
-                style: TextStyle(
-                  color: textColor ?? AppColors.white,
-
-                ).copyWith(fontSize: 16),
+                style: AppFonts.mediumBold
+                    .copyWith(color: textColor ?? AppColors.white),
               ),
       ),
     );

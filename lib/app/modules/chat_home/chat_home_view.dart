@@ -106,10 +106,10 @@ class ChatHomeView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                             width: 10,
                           ),
-                          Column(
+                          const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -125,8 +125,8 @@ class ChatHomeView extends StatelessWidget {
                               ),
                             ],
                           ),
-                          SizedBox(width: 10,),
-                          Expanded(
+                          const SizedBox(width: 10,),
+                          const Expanded(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.end,

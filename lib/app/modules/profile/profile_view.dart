@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/colors.dart';
-
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
