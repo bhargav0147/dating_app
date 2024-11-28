@@ -90,7 +90,7 @@ class OtpView extends StatelessWidget {
                 label: 'Continue',
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    // NavigationUtils.navigateTo(AppRoutes.otp);
+                    NavigationUtils.navigateTo(AppRoutes.editProfile);
                   }
                 },
               )

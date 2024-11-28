@@ -1,5 +1,7 @@
 import 'package:dating_app/app/modules/dashbaord/dashboard_binding.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_view.dart';
+import 'package:dating_app/app/modules/editProfile/editProfile_binding.dart';
+import 'package:dating_app/app/modules/editProfile/editProfile_view.dart';
 import 'package:dating_app/app/modules/myMobile/myMobile_binding.dart';
 import 'package:dating_app/app/modules/myMobile/myMobile_controller.dart';
 import 'package:dating_app/app/modules/myMobile/myMobile_view.dart';
@@ -26,6 +28,7 @@ class AppRoutes {
   static const String signup = '/signup';
   static const String myMobile = '/myMobile';
   static const String otp = '/otp';
+  static const String editProfile = '/editProfile';
 
   static final routes = [
     GetPage(
@@ -57,5 +60,9 @@ class AppRoutes {
         page: () => const MymobileView(),
         binding: MymobileBinding()),
     GetPage(name: otp, page: () => const OtpView(), binding: OtpBinding()),
+    GetPage(
+        name: editProfile,
+        page: () => const EditprofileView(),
+        binding: EditprofileBinding()),
   ];
 }
