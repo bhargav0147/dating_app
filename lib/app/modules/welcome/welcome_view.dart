@@ -52,7 +52,7 @@ class WelcomeView extends StatelessWidget {
                 CustomButton(
                   label: 'Continue with email',
                   onPressed: () {
-                    NavigationUtils.navigateTo(AppRoutes.signup);
+                    // NavigationUtils.navigateTo(AppRoutes.signup);
                   },
                   backgroundColor: AppColors.primary,
                   textColor: AppColors.white,

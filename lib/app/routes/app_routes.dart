@@ -2,15 +2,14 @@ import 'package:dating_app/app/modules/dashbaord/dashboard_binding.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_view.dart';
 import 'package:dating_app/app/modules/editProfile/editProfile_binding.dart';
 import 'package:dating_app/app/modules/editProfile/editProfile_view.dart';
+import 'package:dating_app/app/modules/gender/gender_binding.dart';
+import 'package:dating_app/app/modules/gender/gender_view.dart';
 import 'package:dating_app/app/modules/myMobile/myMobile_binding.dart';
-import 'package:dating_app/app/modules/myMobile/myMobile_controller.dart';
 import 'package:dating_app/app/modules/myMobile/myMobile_view.dart';
 import 'package:dating_app/app/modules/onboarding/onboarding_binding.dart';
 import 'package:dating_app/app/modules/onboarding/onboarding_view.dart';
 import 'package:dating_app/app/modules/otp/otp_binding.dart';
 import 'package:dating_app/app/modules/otp/otp_view.dart';
-import 'package:dating_app/app/modules/signup/signup_binding.dart';
-import 'package:dating_app/app/modules/signup/signup_view.dart';
 import 'package:dating_app/app/modules/welcome/welcome_binding.dart';
 import 'package:dating_app/app/modules/welcome/welcome_view.dart';
 import 'package:get/get.dart';
@@ -25,10 +24,10 @@ class AppRoutes {
   static const String dashbaord = '/dashbaord';
   static const String onboarding = '/onboarding';
   static const String welcome = '/welcome';
-  static const String signup = '/signup';
   static const String myMobile = '/myMobile';
   static const String otp = '/otp';
   static const String editProfile = '/editProfile';
+  static const String gender = '/gender';
 
   static final routes = [
     GetPage(
@@ -54,8 +53,6 @@ class AppRoutes {
         page: () => const WelcomeView(),
         binding: WelcomeBinding()),
     GetPage(
-        name: signup, page: () => const SignupView(), binding: SignupBinding()),
-    GetPage(
         name: myMobile,
         page: () => const MymobileView(),
         binding: MymobileBinding()),
@@ -64,5 +61,7 @@ class AppRoutes {
         name: editProfile,
         page: () => const EditprofileView(),
         binding: EditprofileBinding()),
+    GetPage(
+        name: gender, page: () => const GenderView(), binding: GenderBinding()),
   ];
 }

@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 
 import '../../config/app_variables.dart';
 
+import '../../routes/app_routes.dart';
 import '../../theme/colors.dart';
 import '../../theme/fonts.dart';
 
+import '../../utils/navigation.dart';
 import '../../utils/sized_box_helper.dart';
 import '../../validator/textfild_validator.dart';
 import '../../widgets/back_button.dart';
@@ -157,7 +159,7 @@ class EditprofileView extends StatelessWidget {
                 label: 'Confirm',
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    // NavigationUtils.navigateTo(AppRoutes.otp);
+                    NavigationUtils.navigateTo(AppRoutes.gender);
                   }
                 },
               )
