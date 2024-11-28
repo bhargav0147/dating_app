@@ -8,16 +8,7 @@ class SignupController extends GetxController {
   final List<String> genderOptions = [
     'Male',
     'Female',
-    'Non-Binary',
-    'Transgender Male',
-    'Transgender Female',
-    'Genderqueer',
-    'Genderfluid',
-    'Agender',
-    'Two-Spirit',
-    'Intersex',
-    'Other',
-    'Prefer not to say',
+    'Transgender'
   ];
 
   RxString selectedGender = ''.obs;

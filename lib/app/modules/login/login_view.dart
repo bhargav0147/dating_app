@@ -1,4 +1,3 @@
-import 'package:dating_app/app/assets/image_config.dart';
 import 'package:dating_app/app/config/app_variables.dart';
 import 'package:dating_app/app/routes/app_routes.dart';
 import 'package:dating_app/app/theme/colors.dart';
@@ -55,6 +54,7 @@ class LoginView extends StatelessWidget {
                 CustomTextField(
                   hintText: 'Email',
                   onChange: (value) {},
+                  keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     return Validators.emailValidator(value);
                   },
@@ -62,6 +62,7 @@ class LoginView extends StatelessWidget {
                 SizedBoxHelper.h15,
                 CustomTextField(
                   hintText: 'Password',
+                  keyboardType: TextInputType.text,
                   onChange: (value) {},
                   validator: (value) {
                     return Validators.passwordValidator(value);

@@ -44,7 +44,7 @@ class CustomDropdown extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         labelText: hintText,
-        labelStyle: hintStyle ?? const TextStyle(color: AppColors.grey),
+        labelStyle: hintStyle ?? TextStyle(color: AppColors.grey.shade900),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
           borderSide: BorderSide(color: borderColor, width: 1),
@@ -69,7 +69,7 @@ class CustomDropdown extends StatelessWidget {
         color: iconColor,
         size: iconSize,
       ),
-      style: textStyle ?? AppFonts.medium,
+      style: textStyle ?? AppFonts.medium.copyWith(color: AppColors.black),
       validator: validator,
       menuMaxHeight: 300,
       onChanged: onChanged,

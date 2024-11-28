@@ -20,6 +20,7 @@ class ChatHomeView extends StatelessWidget {
           children: [
             const CustomTextField(
               hintText: 'Search',
+              keyboardType: TextInputType.text,
               ifLeading: true,
               leadingIcon: Icons.search,
               leadingIconColor: AppColors.black,

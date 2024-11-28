@@ -10,4 +10,5 @@ class AppFonts {
   static const TextStyle extramediumBold = TextStyle(fontSize: 18, fontWeight: FontWeight.w700);
   static const TextStyle large = TextStyle(fontSize: 20, fontWeight: FontWeight.w500);
   static const TextStyle extraLarge = TextStyle(fontSize: 24, fontWeight: FontWeight.bold);
+  static const TextStyle veryExtraLarge = TextStyle(fontSize: 34, fontWeight: FontWeight.bold);
 }

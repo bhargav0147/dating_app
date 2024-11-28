@@ -6,6 +6,7 @@ import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/theme/fonts.dart';
 import 'package:dating_app/app/utils/sized_box_helper.dart';
 import 'package:dating_app/app/utils/snackbars.dart';
+import 'package:dating_app/app/widgets/back_button.dart';
 import 'package:dating_app/app/widgets/custom_button.dart';
 import 'package:dating_app/app/widgets/custom_dropdown.dart';
 import 'package:dating_app/app/widgets/custom_icon.dart';
@@ -25,6 +26,7 @@ class SignupView extends StatelessWidget {
     final SignupController controller = Get.put(SignupController());
     final formKey = GlobalKey<FormState>();
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Form(
         key: formKey,
         child: Padding(
@@ -39,22 +41,25 @@ class SignupView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const CustomBackButton(),
+                SizedBoxHelper.h10,
                 const CustomText(
                   text: 'Sign Up',
                   style: AppFonts.extraLarge,
                   color: AppColors.black,
                 ),
                 SizedBoxHelper.h20,
-                const CustomText(
+                 CustomText(
                   text:
                       'Please enter your personal details to create a new account.',
                   style: AppFonts.extraSmall,
-                  color: AppColors.grey,
+                  color: AppColors.grey.shade700,
                   textAlign: TextAlign.start,
                 ),
                 SizedBoxHelper.h30,
                 CustomTextField(
                   hintText: 'Full Name',
+                  keyboardType: TextInputType.text,
                   onChange: (value) {},
                   validator: (value) {
                     return Validators.userNameValidator(value);
@@ -63,6 +68,7 @@ class SignupView extends StatelessWidget {
                 SizedBoxHelper.h15,
                 CustomTextField(
                   hintText: 'User Name',
+                  keyboardType: TextInputType.text,
                   onChange: (value) {},
                   validator: (value) {
                     return Validators.userNameValidator(value);
@@ -72,6 +78,7 @@ class SignupView extends StatelessWidget {
                 CustomTextField(
                   hintText: 'Email',
                   onChange: (value) {},
+                  keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     return Validators.emailValidator(value);
                   },
@@ -79,6 +86,7 @@ class SignupView extends StatelessWidget {
                 SizedBoxHelper.h15,
                 CustomTextField(
                   hintText: 'Phone Number',
+                  keyboardType: TextInputType.number,
                   onChange: (value) {},
                   validator: (value) {
                     return Validators.phoneValidator(value);
@@ -87,6 +95,7 @@ class SignupView extends StatelessWidget {
                 SizedBoxHelper.h15,
                 CustomTextField(
                   hintText: 'Password',
+                  keyboardType: TextInputType.text,
                   onChange: (value) {},
                   validator: (value) {
                     return Validators.passwordValidator(value);
@@ -138,7 +147,7 @@ class SignupView extends StatelessWidget {
                             style: AppFonts.medium.copyWith(
                                 color:
                                     controller.selectedBirthDate.value.isEmpty
-                                        ? AppColors.grey
+                                        ? AppColors.grey.shade900
                                         : AppColors.black),
                           ),
                         ),

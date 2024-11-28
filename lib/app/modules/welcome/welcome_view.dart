@@ -59,6 +59,12 @@ class WelcomeView extends StatelessWidget {
                   isLoading: false,
                 ),
                 SizedBoxHelper.h30,
+                GestureDetector(
+                  onTap: () {
+                    NavigationUtils.navigateTo(AppRoutes.myMobile);
+                  },
+                  child: const CustomText(text: 'Use phone number',style: AppFonts.mediumBold,color: AppColors.primary,)),
+                SizedBoxHelper.h30,
                 const CustomText(
                   text: 'or sign up with',
                   textAlign: TextAlign.center,

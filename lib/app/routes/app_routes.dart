@@ -1,7 +1,12 @@
 import 'package:dating_app/app/modules/dashbaord/dashboard_binding.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_view.dart';
+import 'package:dating_app/app/modules/myMobile/myMobile_binding.dart';
+import 'package:dating_app/app/modules/myMobile/myMobile_controller.dart';
+import 'package:dating_app/app/modules/myMobile/myMobile_view.dart';
 import 'package:dating_app/app/modules/onboarding/onboarding_binding.dart';
 import 'package:dating_app/app/modules/onboarding/onboarding_view.dart';
+import 'package:dating_app/app/modules/otp/otp_binding.dart';
+import 'package:dating_app/app/modules/otp/otp_view.dart';
 import 'package:dating_app/app/modules/signup/signup_binding.dart';
 import 'package:dating_app/app/modules/signup/signup_view.dart';
 import 'package:dating_app/app/modules/welcome/welcome_binding.dart';
@@ -19,6 +24,8 @@ class AppRoutes {
   static const String onboarding = '/onboarding';
   static const String welcome = '/welcome';
   static const String signup = '/signup';
+  static const String myMobile = '/myMobile';
+  static const String otp = '/otp';
 
   static final routes = [
     GetPage(
@@ -45,5 +52,10 @@ class AppRoutes {
         binding: WelcomeBinding()),
     GetPage(
         name: signup, page: () => const SignupView(), binding: SignupBinding()),
+    GetPage(
+        name: myMobile,
+        page: () => const MymobileView(),
+        binding: MymobileBinding()),
+    GetPage(name: otp, page: () => const OtpView(), binding: OtpBinding()),
   ];
 }

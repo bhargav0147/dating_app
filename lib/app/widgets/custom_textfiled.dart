@@ -16,10 +16,12 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final bool obscureText;
+  final TextInputType keyboardType;
 
   const CustomTextField({
     super.key,
     required this.hintText,
+    required this.keyboardType,
     this.borderColor = AppColors.grey,
     this.focusedBorderColor = AppColors.primary,
     this.errorBorderColor = AppColors.red,
@@ -42,10 +44,11 @@ class CustomTextField extends StatelessWidget {
       cursorColor: cursorColor,
       onChanged: onChange,
       validator: validator,
+      keyboardType: keyboardType,
       style: AppFonts.medium.copyWith(color: AppColors.black),
       decoration: InputDecoration(
         labelText: hintText,
-        labelStyle: const TextStyle(color: AppColors.grey),
+        labelStyle: TextStyle(color: AppColors.grey.shade900),
         prefixIcon: ifLeading && leadingIcon != null
             ? Icon(
                 leadingIcon,
