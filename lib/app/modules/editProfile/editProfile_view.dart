@@ -1,6 +1,9 @@
 // ignore_for_file: file_names
 
+import 'dart:io';
+
 import 'package:dating_app/app/modules/editProfile/editProfile_controller.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,6 +15,7 @@ import '../../theme/fonts.dart';
 
 import '../../utils/navigation.dart';
 import '../../utils/sized_box_helper.dart';
+import '../../utils/snackbars.dart';
 import '../../validator/textfild_validator.dart';
 import '../../widgets/back_button.dart';
 import '../../widgets/customDatePicker.dart';
@@ -57,35 +61,54 @@ class EditprofileView extends StatelessWidget {
                   width: 100,
                   child: Stack(
                     children: [
-                      Container(
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          color: AppColors.white,
-                          border: Border.all(color: AppColors.grey.shade100),
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: const CustomIcon(
-                          icon: Icons.person,
-                          color: AppColors.primary,
-                          size: 80,
-                        ),
-                      ),
+                      Obx(() {
+                        final image = controller.selectedImage.value;
+                        return Container(
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            border: Border.all(color: AppColors.grey.shade100),
+                            borderRadius: BorderRadius.circular(25),
+                            image: image != null
+                                ? DecorationImage(
+                                    image: kIsWeb
+                                        ? MemoryImage(image)
+                                        : FileImage(image as File)
+                                            as ImageProvider,
+                                    fit: BoxFit.cover,
+                                  )
+                                : null,
+                          ),
+                          child: image == null
+                              ? const CustomIcon(
+                                  icon: Icons.person,
+                                  color: AppColors.primary,
+                                  size: 80,
+                                )
+                              : null,
+                        );
+                      }),
                       Align(
                         alignment: const Alignment(1.3, 1.3),
-                        child: Container(
-                          height: 35,
-                          width: 35,
-                          decoration: BoxDecoration(
-                            color: AppColors.primary,
-                            border:
-                                Border.all(color: AppColors.white, width: 3),
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                          child: const CustomIcon(
-                            icon: Icons.camera_alt_rounded,
-                            color: AppColors.white,
-                            size: 16,
+                        child: GestureDetector(
+                          onTap: () async {
+                            await controller.pickImage();
+                          },
+                          child: Container(
+                            height: 35,
+                            width: 35,
+                            decoration: BoxDecoration(
+                              color: AppColors.primary,
+                              border:
+                                  Border.all(color: AppColors.white, width: 3),
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            child: const CustomIcon(
+                              icon: Icons.camera_alt_rounded,
+                              color: AppColors.white,
+                              size: 16,
+                            ),
                           ),
                         ),
                       ),
@@ -160,6 +183,14 @@ class EditprofileView extends StatelessWidget {
               CustomButton(
                 label: 'Confirm',
                 onPressed: () {
+                  if (controller.selectedImage.value == null) {
+                    SnackbarUtils.showInfo('Select Profile Image');
+                    return;
+                  }
+                  if (controller.selectedBirthDate.value.isEmpty) {
+                    SnackbarUtils.showInfo('Select Your Birth Date');
+                    return;
+                  }
                   if (formKey.currentState!.validate()) {
                     NavigationUtils.navigateTo(AppRoutes.gender);
                   }

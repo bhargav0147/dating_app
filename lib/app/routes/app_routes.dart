@@ -1,3 +1,5 @@
+import 'package:dating_app/app/modules/contacts/contact_view.dart';
+import 'package:dating_app/app/modules/contacts/contacts_binding.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_binding.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_view.dart';
 import 'package:dating_app/app/modules/editProfile/editProfile_binding.dart';
@@ -31,6 +33,7 @@ class AppRoutes {
   static const String editProfile = '/editProfile';
   static const String gender = '/gender';
   static const String yourInterests = '/yourInterests';
+  static const String contacts = '/contacts';
 
   static final routes = [
     GetPage(
@@ -70,5 +73,9 @@ class AppRoutes {
         name: yourInterests,
         page: () => const YourInterestsView(),
         binding: YourInterestsBinding()),
+    GetPage(
+        name: contacts,
+        page: () => const ContactView(),
+        binding: ContactsBinding()),
   ];
 }

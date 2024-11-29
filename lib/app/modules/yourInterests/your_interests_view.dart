@@ -1,5 +1,7 @@
 import 'package:dating_app/app/modules/yourInterests/interest_card.dart';
 import 'package:dating_app/app/modules/yourInterests/your_interests_controller.dart';
+import 'package:dating_app/app/routes/app_routes.dart';
+import 'package:dating_app/app/utils/navigation.dart';
 import 'package:dating_app/app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -39,7 +41,7 @@ class YourInterestsView extends StatelessWidget {
             ),
             CustomText(
               text:
-                  'Select a few of your interests and let everyone know what you’re passionate about.',
+                  'Select a minimum 5 interests and let everyone know what you’re passionate about.',
               style: AppFonts.extraSmall,
               color: AppColors.grey.shade900,
             ),
@@ -71,7 +73,9 @@ class YourInterestsView extends StatelessWidget {
                 visible: controller.selectedIndices.length >= 5,
                 child: CustomButton(
                   label: 'Submit',
-                  onPressed: () {},
+                  onPressed: () {
+                    NavigationUtils.navigateTo(AppRoutes.contacts);
+                  },
                 ),
               ),
             ),
