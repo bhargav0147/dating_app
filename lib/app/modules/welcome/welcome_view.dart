@@ -21,15 +21,15 @@ class WelcomeView extends StatelessWidget {
     final formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(
-              top: AppVariables.APPTOPSPACING,
-              bottom: AppVariables.APPBOTTOMSPACING,
-              left: AppVariables.APPSIDESPACING,
-              right: AppVariables.APPSIDESPACING),
-          child: Form(
-            key: formKey,
+      body: Padding(
+        padding: const EdgeInsets.only(
+            top: AppVariables.APPTOPSPACING,
+            bottom: AppVariables.APPBOTTOMSPACING,
+            left: AppVariables.APPSIDESPACING,
+            right: AppVariables.APPSIDESPACING),
+        child: Form(
+          key: formKey,
+          child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,7 +68,7 @@ class WelcomeView extends StatelessWidget {
                       width: MediaQueryHelper.getWidthPercentage(20),
                       color: AppColors.grey,
                     ),
-
+            
                     const CustomText(
                       text: 'or sign up with',
                       textAlign: TextAlign.center,

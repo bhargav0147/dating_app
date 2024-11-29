@@ -46,7 +46,7 @@ class OnboardingView extends StatelessWidget {
                       color: AppColors.primary,
                       style: AppFonts.extraLarge,
                     ),
-                   SizedBoxHelper.h10,
+                    SizedBoxHelper.h10,
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: CustomText(
@@ -98,7 +98,7 @@ class OnboardingView extends StatelessWidget {
                 ),
               ),
             ),
-           SizedBoxHelper.h30,
+            SizedBoxHelper.h30,
             Padding(
               padding: const EdgeInsets.symmetric(
                   horizontal: AppVariables.APPSIDESPACING),

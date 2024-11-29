@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../config/app_variables.dart';
+import '../../routes/app_routes.dart';
 import '../../theme/colors.dart';
 import '../../theme/fonts.dart';
+import '../../utils/navigation.dart';
 import '../../utils/sized_box_helper.dart';
 import '../../widgets/back_button.dart';
 import '../../widgets/custom_button.dart';
@@ -56,9 +58,16 @@ class GenderView extends StatelessWidget {
               controller: controller,
             ),
             SizedBoxHelper.h15,
-            CustomButton(
-              label: 'Continue',
-              onPressed: () {},
+            Obx(
+              () => Visibility(
+                visible: controller.selectedGemder.value.isEmpty ? false : true,
+                child: CustomButton(
+                  label: 'Continue',
+                  onPressed: () {
+                    NavigationUtils.replaceWith(AppRoutes.yourInterests);
+                  },
+                ),
+              ),
             )
           ],
         )),
