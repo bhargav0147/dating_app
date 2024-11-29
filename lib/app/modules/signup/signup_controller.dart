@@ -2,6 +2,6 @@
 
 import 'package:get/get.dart';
 
-class MymobileController extends GetxController {
+class SignupController extends GetxController {
   var mobileNumber = ''.obs;
 }

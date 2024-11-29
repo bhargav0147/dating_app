@@ -1,4 +1,5 @@
 import 'package:dating_app/app/assets/image_config.dart';
+import 'package:dating_app/app/utils/mediaQueryHelper.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/app_variables.dart';
@@ -52,24 +53,34 @@ class WelcomeView extends StatelessWidget {
                 CustomButton(
                   label: 'Continue with email',
                   onPressed: () {
-                    // NavigationUtils.navigateTo(AppRoutes.signup);
+                    NavigationUtils.navigateTo(AppRoutes.signup);
                   },
                   backgroundColor: AppColors.primary,
                   textColor: AppColors.white,
                   isLoading: false,
                 ),
                 SizedBoxHelper.h30,
-                GestureDetector(
-                  onTap: () {
-                    NavigationUtils.navigateTo(AppRoutes.myMobile);
-                  },
-                  child: const CustomText(text: 'Use phone number',style: AppFonts.mediumBold,color: AppColors.primary,)),
-                SizedBoxHelper.h30,
-                const CustomText(
-                  text: 'or sign up with',
-                  textAlign: TextAlign.center,
-                  color: AppColors.black,
-                  style: AppFonts.small,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      height: 0.5,
+                      width: MediaQueryHelper.getWidthPercentage(20),
+                      color: AppColors.grey,
+                    ),
+
+                    const CustomText(
+                      text: 'or sign up with',
+                      textAlign: TextAlign.center,
+                      color: AppColors.black,
+                      style: AppFonts.small,
+                    ),
+                     Container(
+                      height: 0.5,
+                      width: MediaQueryHelper.getWidthPercentage(20),
+                      color: AppColors.grey,
+                    ),
+                  ],
                 ),
                 SizedBoxHelper.h30,
                 Row(
