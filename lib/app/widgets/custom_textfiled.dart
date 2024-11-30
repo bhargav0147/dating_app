@@ -17,6 +17,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final bool obscureText;
   final TextInputType keyboardType;
+  final int maxLine;
 
   const CustomTextField({
     super.key,
@@ -27,6 +28,7 @@ class CustomTextField extends StatelessWidget {
     this.errorBorderColor = AppColors.red,
     this.cursorColor = AppColors.black,
     this.ifLeading = false,
+    this.maxLine = 1,
     this.borderRadius = 15,
     this.leadingIcon,
     this.leadingIconColor = AppColors.black,
@@ -45,6 +47,7 @@ class CustomTextField extends StatelessWidget {
       onChanged: onChange,
       validator: validator,
       keyboardType: keyboardType,
+      maxLines: maxLine,
       style: AppFonts.medium.copyWith(color: AppColors.black),
       decoration: InputDecoration(
         labelText: hintText,

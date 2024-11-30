@@ -10,6 +10,10 @@ class YourpreferenceController extends GetxController {
   RxDouble minAge = 10.0.obs;
   RxDouble maxAge = 100.0.obs;
 
+  RxString city = ''.obs;
+  RxString state = ''.obs;
+  RxString country = ''.obs;
+
   void selectOption(int index) {
     selectedIndex.value = index;
   }
