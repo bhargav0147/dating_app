@@ -1,19 +1,22 @@
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ContactsController extends GetxController {
   RxList contactsList = [].obs;
 
   Future<int> getContactFromUser() async {
-    try {
-      if (await FlutterContacts.requestPermission()) {
+    PermissionStatus permissionStatus = await Permission.contacts.request();
+
+    if (permissionStatus.isGranted) {
+      try {
         List<Contact> contacts = await FlutterContacts.getContacts();
+        contactsList.value = contacts;
         return contacts.length;
-      } else {
+      } catch (e) {
         return 0;
       }
-    } catch (e) {
-      print('Error occurred while accessing contacts: $e');
+    } else {
       return 0;
     }
   }

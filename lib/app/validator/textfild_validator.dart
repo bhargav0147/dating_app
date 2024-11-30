@@ -52,4 +52,11 @@ class Validators {
     }
     return null;
   }
+
+  static String? bioValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please write bio';
+    }
+    return null;
+  }
 }

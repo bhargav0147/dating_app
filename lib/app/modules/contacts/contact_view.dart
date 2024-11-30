@@ -3,6 +3,7 @@ import 'package:dating_app/app/theme/fonts.dart';
 import 'package:dating_app/app/widgets/custom_icon.dart';
 import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:get/get.dart';
 
 import '../../config/app_variables.dart';
@@ -58,9 +59,10 @@ class ContactView extends StatelessWidget {
                           color: AppColors.black,
                           style: AppFonts.extraLarge,
                         ),
+                        SizedBoxHelper.h10,
                         CustomText(
                           text:
-                              'You can find friends from your contact liststo connected',
+                              'You can find friends from\nyour contact lists to connected',
                           color: AppColors.grey.shade600,
                           style: AppFonts.medium,
                           textAlign: TextAlign.center,
@@ -70,8 +72,35 @@ class ContactView extends StatelessWidget {
                     : ListView.builder(
                         itemCount: controller.contactsList.length,
                         itemBuilder: (context, index) {
+                          Contact contact = controller.contactsList[index];
+                          String firstChar = contact.displayName.isNotEmpty
+                              ? contact.displayName[0]
+                                  .toUpperCase() // Get the first character
+                              : ''; // Handle empty names (in case displayName is empty)
+                          String displayName = contact.displayName.isEmpty
+                              ? "Name Not Available"
+                              : contact.displayName;
+                          String phoneNumber = contact.phones.isNotEmpty
+                              ? contact.phones.first.number
+                              : 'Phone Number Not  Available';
+
                           return ListTile(
-                            title: Text('$index'),
+                            leading: Container(
+                              height: 50,
+                              width: 50,
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColors.primary),
+                              child: Center(
+                                child: CustomText(
+                                  text: firstChar,
+                                  style: AppFonts.extraLarge,
+                                  color: AppColors.white,
+                                ),
+                              ),
+                            ),
+                            title: Text(displayName),
+                            subtitle: Text(phoneNumber),
                           );
                         },
                       ),
