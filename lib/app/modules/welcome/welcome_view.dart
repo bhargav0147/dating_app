@@ -1,5 +1,4 @@
 import 'package:dating_app/app/assets/image_config.dart';
-import 'package:dating_app/app/utils/mediaQueryHelper.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/app_variables.dart';
@@ -19,6 +18,8 @@ class WelcomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Padding(
@@ -65,7 +66,7 @@ class WelcomeView extends StatelessWidget {
                   children: [
                     Container(
                       height: 0.5,
-                      width: MediaQueryHelper.getWidthPercentage(20),
+                      width: screenWidth  *0.2,
                       color: AppColors.grey,
                     ),
             
@@ -77,7 +78,7 @@ class WelcomeView extends StatelessWidget {
                     ),
                      Container(
                       height: 0.5,
-                      width: MediaQueryHelper.getWidthPercentage(20),
+                      width:screenWidth  *0.2,
                       color: AppColors.grey,
                     ),
                   ],

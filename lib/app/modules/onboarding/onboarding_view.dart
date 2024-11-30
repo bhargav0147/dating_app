@@ -2,7 +2,6 @@ import 'package:dating_app/app/config/app_variables.dart';
 import 'package:dating_app/app/routes/app_routes.dart';
 import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/theme/fonts.dart';
-import 'package:dating_app/app/utils/mediaQueryHelper.dart';
 import 'package:dating_app/app/utils/navigation.dart';
 import 'package:dating_app/app/utils/sized_box_helper.dart';
 import 'package:dating_app/app/widgets/custom_button.dart';
@@ -19,6 +18,7 @@ class OnboardingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Padding(
@@ -35,7 +35,7 @@ class OnboardingView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15),
                       child: Image.network(
                         detail['image']!,
-                        height: MediaQueryHelper.getHeightPercentage(45),
+                        height: screenHeight * 0.45,
                         width: double.infinity,
                         fit: BoxFit.cover,
                       ),
@@ -61,7 +61,7 @@ class OnboardingView extends StatelessWidget {
                 );
               }).toList(),
               options: CarouselOptions(
-                height: MediaQueryHelper.getHeightPercentage(70),
+                height: screenHeight * 0.7,
                 aspectRatio: 16 / 9,
                 viewportFraction: 0.8,
                 initialPage: 0,

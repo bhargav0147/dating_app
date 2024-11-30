@@ -16,6 +16,8 @@ import 'package:dating_app/app/modules/welcome/welcome_binding.dart';
 import 'package:dating_app/app/modules/welcome/welcome_view.dart';
 import 'package:dating_app/app/modules/yourInterests/your_interests_binding.dart';
 import 'package:dating_app/app/modules/yourInterests/your_interests_view.dart';
+import 'package:dating_app/app/modules/yourPreference/yourPreference_binding.dart';
+import 'package:dating_app/app/modules/yourPreference/yourPreference_view.dart';
 import 'package:get/get.dart';
 import '../modules/login/login_binding.dart';
 import '../modules/login/login_view.dart';
@@ -34,6 +36,7 @@ class AppRoutes {
   static const String gender = '/gender';
   static const String yourInterests = '/yourInterests';
   static const String contacts = '/contacts';
+  static const String yourPreference = '/yourPreference';
 
   static final routes = [
     GetPage(
@@ -77,5 +80,9 @@ class AppRoutes {
         name: contacts,
         page: () => const ContactView(),
         binding: ContactsBinding()),
+    GetPage(
+        name: yourPreference,
+        page: () => const YourpreferenceView(),
+        binding: YourpreferenceBinsing()),
   ];
 }

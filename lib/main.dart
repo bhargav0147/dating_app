@@ -1,4 +1,4 @@
-import 'package:dating_app/app/utils/mediaQueryHelper.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'app/routes/app_routes.dart';
@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryHelper.init(context);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

@@ -55,14 +55,6 @@ class SignupView extends StatelessWidget {
               ),
               SizedBoxHelper.h10,
               CustomTextField(
-                hintText: 'Phone Number',
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  return Validators.phoneValidator(value);
-                },
-              ),
-              SizedBoxHelper.h10,
-              CustomTextField(
                 hintText: 'Password',
                 keyboardType: TextInputType.text,
                 validator: (value) {

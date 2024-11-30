@@ -74,7 +74,7 @@ class YourInterestsView extends StatelessWidget {
                 child: CustomButton(
                   label: 'Submit',
                   onPressed: () {
-                    NavigationUtils.navigateTo(AppRoutes.contacts);
+                    NavigationUtils.navigateTo(AppRoutes.yourPreference);
                   },
                 ),
               ),
