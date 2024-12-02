@@ -24,7 +24,6 @@ Future<Map<String, String>> getLocationDetails() async {
 
     if (placeList.isNotEmpty) {
       Placemark place = placeList.first;
-      print(place);
       return {
         "latitude": position.latitude.toString(),
         "longitude": position.longitude.toString(),

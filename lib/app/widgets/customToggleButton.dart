@@ -28,16 +28,15 @@ class CustomToggleButtons extends StatelessWidget {
       selectedColor: AppColors.white,
       fillColor: AppColors.primary,
       borderRadius: BorderRadius.circular(8.0),
-      constraints: BoxConstraints(
-        minHeight: 50,
-        minWidth: 87,
-        maxHeight: 55,
-        maxWidth: 130
-      ),
+      constraints: const BoxConstraints(
+          minHeight: 50, minWidth: 87, maxHeight: 55, maxWidth: 130),
       children: items
           .map((item) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: CustomText(text: item,style: AppFonts.extraSmall,),
+                child: CustomText(
+                  text: item,
+                  style: AppFonts.extraSmall,
+                ),
               ))
           .toList(),
     );

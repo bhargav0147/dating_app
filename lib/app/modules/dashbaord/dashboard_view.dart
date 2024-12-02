@@ -4,11 +4,11 @@ import 'package:dating_app/app/modules/chat_home/chat_home_view.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_controller.dart';
 import 'package:dating_app/app/modules/home/home_view.dart';
 import 'package:dating_app/app/modules/profile/profile_view.dart';
+import 'package:dating_app/app/modules/show_post/show_post_view.dart';
 import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/widgets/custom_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
@@ -20,7 +20,7 @@ class DashboardView extends StatelessWidget {
 
     final List<Widget> pages = [
       const HomeView(),
-      const HomeView(),
+      const ShowPostView(),
       const ChatHomeView(),
       const ProfileView()
     ];
@@ -44,13 +44,13 @@ class DashboardView extends StatelessWidget {
             ),
             BottomNavigationBarItem(
               icon: CustomIcon(
-                icon: Icons.home,
+                icon: Icons.photo_library,
                 size: 30,
                 color: dashboardController.selectedIndex.value == 1
                     ? AppColors.primary
                     : AppColors.grey.shade400,
               ),
-              label: 'Home',
+              label: 'Post',
             ),
             BottomNavigationBarItem(
               icon: CustomIcon(

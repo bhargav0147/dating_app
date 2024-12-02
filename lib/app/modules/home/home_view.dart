@@ -1,7 +1,5 @@
 import 'package:dating_app/app/modules/home/card_swiper_widget.dart';
 import 'package:dating_app/app/modules/home/home_controller.dart';
-import 'package:dating_app/app/utils/sized_box_helper.dart';
-import 'package:dating_app/app/widgets/custom_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:get/get.dart';
