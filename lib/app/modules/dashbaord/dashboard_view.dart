@@ -5,14 +5,10 @@ import 'package:dating_app/app/modules/dashbaord/dashboard_controller.dart';
 import 'package:dating_app/app/modules/home/home_view.dart';
 import 'package:dating_app/app/modules/profile/profile_view.dart';
 import 'package:dating_app/app/theme/colors.dart';
-import 'package:dating_app/app/theme/fonts.dart';
 import 'package:dating_app/app/widgets/custom_icon.dart';
-import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../utils/sized_box_helper.dart';
-import '../../utils/snackbars.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});

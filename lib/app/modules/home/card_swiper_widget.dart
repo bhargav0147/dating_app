@@ -21,116 +21,106 @@ class CardSwiperCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 550,
-      width: double.maxFinite,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(50)),
-      ),
-      child: Stack(
-        children: [
-          // Main image
-          Center(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: CachedNetworkImage(
-                imageUrl: imageUrl,
-                height: 550,
-                width: double.maxFinite,
-                fit: BoxFit.cover,
-                placeholder: (context, url) => const Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.pink, // Replace with your AppColors.primary
-                  ),
-                ),
-                errorWidget: (context, url, error) =>
-                    const Icon(Icons.error, color: Colors.red),
-              ),
-            ),
-          ),
-          // Gradient and text overlay
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 120,
+    return Stack(
+      children: [
+        Center(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(50),
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
+             
               width: double.maxFinite,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.vertical(
-                    bottom: Radius.circular(50)),
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.pink, // Replace with your AppColors.primary
-                    Colors.pink.withOpacity(0.6),
-                    Colors.pink.withOpacity(0.5),
-                    Colors.pink.withOpacity(0.4),
-                    Colors.pink.withOpacity(0.25),
-                    Colors.pink.withOpacity(0.1),
-                    Colors.pink.withOpacity(0.05),
-                    Colors.pink.withOpacity(0.01),
-                  ],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(
+                  color: Colors.pink, // Replace with your AppColors.primary
                 ),
               ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "$name, $age",
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBoxHelper.h5,
-                    Text(
-                      "Live in $city",
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              errorWidget: (context, url, error) =>
+                  const Icon(Icons.error, color: Colors.red),
             ),
           ),
-          // Distance badge
-          Padding(
-            padding: const EdgeInsets.all(30),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.grey.withOpacity(0.7),
+        ),
+        // Gradient and text overlay
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: 120,
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(50)),
+              gradient: LinearGradient(
+                colors: [
+                  Colors.pink, // Replace with your AppColors.primary
+                  Colors.pink.withOpacity(0.6),
+                  Colors.pink.withOpacity(0.5),
+                  Colors.pink.withOpacity(0.4),
+                  Colors.pink.withOpacity(0.25),
+                  Colors.pink.withOpacity(0.1),
+                  Colors.pink.withOpacity(0.05),
+                  Colors.pink.withOpacity(0.01),
+                ],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(
-                      Icons.location_on_rounded,
+            ),
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "$name, $age",
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      size: 16,
                     ),
-                    SizedBoxHelper.h5,
-                    Text(
-                      '$km KM',
-                      style: const TextStyle(color: Colors.white),
+                  ),
+                  SizedBoxHelper.h5,
+                  Text(
+                    "Live in $city",
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
-        ],
-      ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(30),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.grey.withOpacity(0.7),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(
+                    Icons.location_on_rounded,
+                    color: Colors.white,
+                    size: 16,
+                  ),
+                  SizedBoxHelper.h5,
+                  Text(
+                    '$km KM',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

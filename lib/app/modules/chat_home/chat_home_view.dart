@@ -48,7 +48,7 @@ class ChatHomeView extends StatelessWidget {
                       color: AppColors.black,
                       style: AppFonts.extramediumBold,
                     ),
-                    SizedBoxHelper.h10,
+                  SizedBoxHelper.h10,
                     SizedBox(
                       height: 105,
                       child: ListView.separated(

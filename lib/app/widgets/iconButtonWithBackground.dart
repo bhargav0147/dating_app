@@ -37,9 +37,9 @@ class IconButtonWithBackground extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: AppColors.black.shade100,
-              blurRadius: 10,
+              blurRadius: 500,
               spreadRadius: 1,
-              offset: const Offset(0, 5)
+              offset: const Offset(0, 20)
             ),
 
           ]
