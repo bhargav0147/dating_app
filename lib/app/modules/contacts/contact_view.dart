@@ -75,8 +75,8 @@ class ContactView extends StatelessWidget {
                           Contact contact = controller.contactsList[index];
                           String firstChar = contact.displayName.isNotEmpty
                               ? contact.displayName[0]
-                                  .toUpperCase() // Get the first character
-                              : ''; // Handle empty names (in case displayName is empty)
+                                  .toUpperCase() 
+                              : ''; 
                           String displayName = contact.displayName.isEmpty
                               ? "Name Not Available"
                               : contact.displayName;

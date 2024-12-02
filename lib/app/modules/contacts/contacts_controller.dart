@@ -10,7 +10,9 @@ class ContactsController extends GetxController {
 
     if (permissionStatus.isGranted) {
       try {
-        List<Contact> contacts = await FlutterContacts.getContacts();
+        List<Contact> contacts = await FlutterContacts.getContacts(
+          withProperties: true,
+        );
         contactsList.value = contacts;
         return contacts.length;
       } catch (e) {

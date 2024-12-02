@@ -11,137 +11,157 @@ class ChatHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustomTextField(
-              hintText: 'Search',
-              keyboardType: TextInputType.text,
-              ifLeading: true,
-              leadingIcon: Icons.search,
-              leadingIconColor: AppColors.black,
-            ),
-            SizedBoxHelper.h10,
-            const CustomText(
-              text: 'New Matches',
-              color: AppColors.black,
-              style: AppFonts.large,
-            ),
-            SizedBoxHelper.h10,
-            SizedBox(
-              height: 105,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 80,
-                        width: 80,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle, color: AppColors.primary),
-                        child: const Padding(
-                          padding: EdgeInsets.all(2),
-                          child: CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                          ),
-                        ),
-                      ),
-                      SizedBoxHelper.h5,
-                      const CustomText(
-                        text: 'User Name',
-                        style: AppFonts.small,
-                        color: AppColors.black,
-                      )
-                    ],
-                  );
-                },
-                itemCount: 15,
-                separatorBuilder: (context, index) {
-                  return SizedBoxHelper.h10;
-                },
-              ),
-            ),
-            SizedBoxHelper.h10,
-            const CustomText(
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          const SliverAppBar(
+            title: CustomText(
               text: 'Messages',
+              style: AppFonts.veryExtraLarge,
               color: AppColors.black,
-              style: AppFonts.large,
             ),
-            SizedBoxHelper.h10,
-            ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 70,
-                        width: 70,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: AppColors.primary),
-                        child: const Padding(
-                          padding: EdgeInsets.all(2),
-                          child: CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                          ),
-                        ),
-                      ),
-                      SizedBoxHelper.h10,
-                          const Column(
+            floating: true, 
+            snap: true,
+            backgroundColor: AppColors.white,
+            elevation: 2.0,
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const CustomTextField(
+                      hintText: 'Search',
+                      keyboardType: TextInputType.text,
+                      ifLeading: true,
+                      leadingIcon: Icons.search,
+                      leadingIconColor: AppColors.black,
+                    ),
+                    SizedBoxHelper.h10,
+                    const CustomText(
+                      text: 'New Matches',
+                      color: AppColors.black,
+                      style: AppFonts.large,
+                    ),
+                    SizedBoxHelper.h10,
+                    SizedBox(
+                      height: 105,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              CustomText(
-                                text: 'User Name',
-                                style: AppFonts.medium,
-                                color: AppColors.black,
+                              Container(
+                                height: 80,
+                                width: 80,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColors.primary),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(2),
+                                  child: CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                        'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                                  ),
+                                ),
                               ),
-                              CustomText(
-                                text: 'User Chat Message',
+                              SizedBoxHelper.h5,
+                              const CustomText(
+                                text: 'User Name',
                                 style: AppFonts.small,
                                 color: AppColors.black,
-                              ),
+                              )
                             ],
-                          ),
-                          SizedBoxHelper.h10,
-                          const Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                CustomText(
-                                  text: '23 Min',
-                                  style: AppFonts.medium,
-                                  color: AppColors.black,
+                          );
+                        },
+                        itemCount: 15,
+                        separatorBuilder: (context, index) {
+                          return SizedBoxHelper.h10;
+                        },
+                      ),
+                    ),
+                    SizedBoxHelper.h10,
+                    const CustomText(
+                      text: 'Messages',
+                      color: AppColors.black,
+                      style: AppFonts.large,
+                    ),
+                    SizedBoxHelper.h10,
+                    ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 70,
+                                width: 70,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColors.primary),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(2),
+                                  child: CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                        'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                                  ),
                                 ),
-                                CustomText(
-                                  text: '10+',
-                                  style: AppFonts.small,
-                                  color: AppColors.black,
+                              ),
+                              SizedBoxHelper.h10,
+                              const Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomText(
+                                    text: 'User Name',
+                                    style: AppFonts.medium,
+                                    color: AppColors.black,
+                                  ),
+                                  CustomText(
+                                    text: 'User Chat Message',
+                                    style: AppFonts.small,
+                                    color: AppColors.black,
+                                  ),
+                                ],
+                              ),
+                              SizedBoxHelper.h10,
+                              const Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    CustomText(
+                                      text: '23 Min',
+                                      style: AppFonts.medium,
+                                      color: AppColors.black,
+                                    ),
+                                    CustomText(
+                                      text: '10+',
+                                      style: AppFonts.small,
+                                      color: AppColors.black,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                          )
-                    ],
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return SizedBoxHelper.h10;
-                },
-                itemCount: 15)
-          ],
-        ),
+                              )
+                            ],
+                          );
+                        },
+                        separatorBuilder: (context, index) {
+                          return SizedBoxHelper.h10;
+                        },
+                        itemCount: 15)
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

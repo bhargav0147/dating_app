@@ -30,35 +30,6 @@ class DashboardView extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: CustomText(
-          text: 'Dating App',
-          style: AppFonts.large,
-          color: AppColors.black,
-        ),
-        centerTitle: true,
-        leading: InkWell(
-            onTap: () {
-              SnackbarUtils.showSuccess('You Press Logo');
-            },
-            child: CustomIcon(
-              icon: Icons.favorite,
-              color: AppColors.primary,
-              size: 30,
-            )),
-        actions: [
-          InkWell(
-              onTap: () {
-                SnackbarUtils.showSuccess('You Press Notification Button');
-              },
-              child: CustomIcon(
-                icon: Icons.notification_add,
-                color: AppColors.primary,
-                size: 30,
-              )),
-          SizedBoxHelper.h15,
-        ],
-      ),
       body: Obx(() => pages[dashboardController.selectedIndex.value]),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
