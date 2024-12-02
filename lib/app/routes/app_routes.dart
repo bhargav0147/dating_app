@@ -6,6 +6,8 @@ import 'package:dating_app/app/modules/editProfile/editProfile_binding.dart';
 import 'package:dating_app/app/modules/editProfile/editProfile_view.dart';
 import 'package:dating_app/app/modules/gender/gender_binding.dart';
 import 'package:dating_app/app/modules/gender/gender_view.dart';
+import 'package:dating_app/app/modules/settings/settings_binding.dart';
+import 'package:dating_app/app/modules/settings/settings_view.dart';
 import 'package:dating_app/app/modules/signup/signup_binding.dart';
 import 'package:dating_app/app/modules/signup/signup_view.dart';
 import 'package:dating_app/app/modules/onboarding/onboarding_binding.dart';
@@ -27,7 +29,7 @@ import '../modules/splash/splash_view.dart';
 class AppRoutes {
   static const String splash = '/';
   static const String login = '/login';
-  static const String dashbaord = '/dashbaord';
+  static const String dashbaord = '/dashboard';
   static const String onboarding = '/onboarding';
   static const String welcome = '/welcome';
   static const String signup = '/signup';
@@ -37,6 +39,7 @@ class AppRoutes {
   static const String yourInterests = '/yourInterests';
   static const String contacts = '/contacts';
   static const String yourPreference = '/yourPreference';
+  static const String settings = '/settings';
 
   static final routes = [
     GetPage(
@@ -84,5 +87,9 @@ class AppRoutes {
         name: yourPreference,
         page: () => const YourpreferenceView(),
         binding: YourpreferenceBinsing()),
+    GetPage(
+        name: settings,
+        page: () => const SettingsView(),
+        binding: SettingsBinding()),
   ];
 }

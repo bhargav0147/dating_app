@@ -78,7 +78,7 @@ class HomeView extends StatelessWidget {
                         width: 50,
                         bgColor: AppColors.white,
                         icon: Icons.close,
-                        iconColor: AppColors.red,
+                        iconColor: AppColors.yellow,
                         iconSize: 30,
                         onClick: () {
                           SnackbarUtils.showSuccess('You Press Close Button');

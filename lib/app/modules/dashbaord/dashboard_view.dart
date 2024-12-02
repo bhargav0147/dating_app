@@ -4,6 +4,7 @@ import 'package:dating_app/app/modules/chat_home/chat_home_view.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_controller.dart';
 import 'package:dating_app/app/modules/home/home_view.dart';
 import 'package:dating_app/app/modules/profile/profile_view.dart';
+import 'package:dating_app/app/modules/settings/settings_view.dart';
 import 'package:dating_app/app/modules/show_post/show_post_view.dart';
 import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/widgets/custom_icon.dart';
