@@ -5,6 +5,8 @@ import 'package:dating_app/app/widgets/custom_textfiled.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/sized_box_helper.dart';
+import 'chat_home_listview_card.dart';
+import 'chat_home_stroy_card.dart';
 
 class ChatHomeView extends StatelessWidget {
   const ChatHomeView({super.key});
@@ -20,7 +22,7 @@ class ChatHomeView extends StatelessWidget {
               style: AppFonts.veryExtraLarge,
               color: AppColors.black,
             ),
-            floating: true, 
+            floating: true,
             snap: true,
             backgroundColor: AppColors.white,
             elevation: 2.0,
@@ -42,9 +44,9 @@ class ChatHomeView extends StatelessWidget {
                     ),
                     SizedBoxHelper.h10,
                     const CustomText(
-                      text: 'New Matches',
+                      text: 'Activities',
                       color: AppColors.black,
-                      style: AppFonts.large,
+                      style: AppFonts.extramediumBold,
                     ),
                     SizedBoxHelper.h10,
                     SizedBox(
@@ -52,35 +54,11 @@ class ChatHomeView extends StatelessWidget {
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                height: 80,
-                                width: 80,
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: AppColors.primary),
-                                child: const Padding(
-                                  padding: EdgeInsets.all(2),
-                                  child: CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                                  ),
-                                ),
-                              ),
-                              SizedBoxHelper.h5,
-                              const CustomText(
-                                text: 'User Name',
-                                style: AppFonts.small,
-                                color: AppColors.black,
-                              )
-                            ],
-                          );
+                          return const ChatHomeStoryCard();
                         },
                         itemCount: 15,
                         separatorBuilder: (context, index) {
-                          return SizedBoxHelper.h10;
+                          return SizedBoxHelper.w15;
                         },
                       ),
                     ),
@@ -88,69 +66,14 @@ class ChatHomeView extends StatelessWidget {
                     const CustomText(
                       text: 'Messages',
                       color: AppColors.black,
-                      style: AppFonts.large,
+                      style: AppFonts.extramediumBold,
                     ),
                     SizedBoxHelper.h10,
                     ListView.separated(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                height: 70,
-                                width: 70,
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: AppColors.primary),
-                                child: const Padding(
-                                  padding: EdgeInsets.all(2),
-                                  child: CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
-                                  ),
-                                ),
-                              ),
-                              SizedBoxHelper.h10,
-                              const Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CustomText(
-                                    text: 'User Name',
-                                    style: AppFonts.medium,
-                                    color: AppColors.black,
-                                  ),
-                                  CustomText(
-                                    text: 'User Chat Message',
-                                    style: AppFonts.small,
-                                    color: AppColors.black,
-                                  ),
-                                ],
-                              ),
-                              SizedBoxHelper.h10,
-                              const Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    CustomText(
-                                      text: '23 Min',
-                                      style: AppFonts.medium,
-                                      color: AppColors.black,
-                                    ),
-                                    CustomText(
-                                      text: '10+',
-                                      style: AppFonts.small,
-                                      color: AppColors.black,
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          );
+                          return const ChatHomeListViewCard();
                         },
                         separatorBuilder: (context, index) {
                           return SizedBoxHelper.h10;
