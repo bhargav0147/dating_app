@@ -18,7 +18,9 @@ class HomeView extends StatelessWidget {
     final HomeController controller = Get.put(HomeController());
 
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const CustomText(
           text: 'Discover',
           style: AppFonts.veryExtraLarge,

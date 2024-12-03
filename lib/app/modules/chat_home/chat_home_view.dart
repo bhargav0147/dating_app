@@ -14,6 +14,7 @@ class ChatHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: CustomScrollView(
         slivers: [
           const SliverAppBar(

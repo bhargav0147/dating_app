@@ -1,6 +1,7 @@
 import 'package:dating_app/app/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import '../../config/app_variables.dart';
+import '../../theme/colors.dart';
 import 'image_post_card.dart';
 
 class ShowPostView extends StatelessWidget {
@@ -9,6 +10,7 @@ class ShowPostView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Padding(
         padding: const EdgeInsets.only(
           top: AppVariables.APPTOPSPACING,

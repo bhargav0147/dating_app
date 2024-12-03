@@ -15,6 +15,7 @@ class SettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(
@@ -26,30 +27,34 @@ class SettingsView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Align(
+              const Align(
                 alignment: Alignment.centerLeft,
-                child: const CustomText(
+                child: CustomText(
                   text: 'Settings',
                   style: AppFonts.veryExtraLarge,
                   color: AppColors.black,
                 ),
               ),
               SizedBoxHelper.h10,
-              ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: CachedNetworkImage(
-                  imageUrl:
-                      'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                  width: 70,
-                  height: 70,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.primary,
+              SizedBox(
+                height: 70,
+                width: 70,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                    width: 70,
+                    height: 70,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.primary,
+                      ),
                     ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error, color: AppColors.red),
                   ),
-                  errorWidget: (context, url, error) =>
-                      const Icon(Icons.error, color: AppColors.red),
                 ),
               ),
               SizedBoxHelper.h10,
