@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dating_app/app/utils/sized_box_helper.dart';
+import 'package:dating_app/app/widgets/back_button.dart';
 import 'package:dating_app/app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +28,10 @@ class SettingsView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Align(
+                  alignment: Alignment.centerLeft,
+                  child: CustomBackButton()),
+              SizedBoxHelper.h10,
+              const Align(
                 alignment: Alignment.centerLeft,
                 child: CustomText(
                   text: 'Settings',
@@ -35,41 +39,7 @@ class SettingsView extends StatelessWidget {
                   color: AppColors.black,
                 ),
               ),
-              SizedBoxHelper.h10,
-              SizedBox(
-                height: 70,
-                width: 70,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: CachedNetworkImage(
-                    imageUrl:
-                        'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                    width: 70,
-                    height: 70,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.primary,
-                      ),
-                    ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error, color: AppColors.red),
-                  ),
-                ),
-              ),
-              SizedBoxHelper.h10,
-              const CustomText(
-                text: 'Bhargav Kalariya',
-                style: AppFonts.mediumBold,
-                color: AppColors.black,
-              ),
-              SizedBoxHelper.h5,
-              const CustomText(
-                text: 'bhargavpatel6832@gmail.com',
-                style: AppFonts.mediumBold,
-                color: AppColors.grey,
-              ),
-              SizedBoxHelper.h15,
+              SizedBoxHelper.h25,
               const SettingsMenuCard(
                 icon: Icons.person,
                 text: 'Personal Details',

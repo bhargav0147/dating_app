@@ -1,10 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/app_variables.dart';
 import '../../theme/colors.dart';
 import '../../theme/fonts.dart';
 import '../../utils/sized_box_helper.dart';
+import '../../widgets/custom_cached_network_image.dart';
 import '../../widgets/custom_icon.dart';
 import '../../widgets/custom_text.dart';
 
@@ -71,19 +71,12 @@ class ImagePostCard extends StatelessWidget {
             ),
           ),
           SizedBoxHelper.h10,
-          CachedNetworkImage(
+          const CustomCachedNetworkImage(
+            borderRadius: 0,
+            height: 450,
+            width: double.maxFinite,
             imageUrl:
                 'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            width: double.maxFinite,
-            height: 450,
-            fit: BoxFit.cover,
-            placeholder: (context, url) => const Center(
-              child: CircularProgressIndicator(
-                color: AppColors.primary,
-              ),
-            ),
-            errorWidget: (context, url, error) =>
-                const Icon(Icons.error, color: AppColors.red),
           ),
           SizedBoxHelper.h10,
           const Padding(

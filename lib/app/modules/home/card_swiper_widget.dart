@@ -1,5 +1,5 @@
+import 'package:dating_app/app/widgets/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../utils/sized_box_helper.dart';
 
@@ -24,22 +24,11 @@ class CardSwiperCard extends StatelessWidget {
     return Stack(
       children: [
         Center(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: CachedNetworkImage(
-              imageUrl: imageUrl,
-             
+          child: CustomCachedNetworkImage(
+              height: double.maxFinite,
               width: double.maxFinite,
-              fit: BoxFit.cover,
-              placeholder: (context, url) => const Center(
-                child: CircularProgressIndicator(
-                  color: Colors.pink, // Replace with your AppColors.primary
-                ),
-              ),
-              errorWidget: (context, url, error) =>
-                  const Icon(Icons.error, color: Colors.red),
-            ),
-          ),
+              imageUrl: imageUrl,
+              borderRadius: 50),
         ),
         // Gradient and text overlay
         Align(
@@ -48,8 +37,8 @@ class CardSwiperCard extends StatelessWidget {
             height: 120,
             width: double.maxFinite,
             decoration: BoxDecoration(
-              borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(50)),
+              borderRadius:
+                  const BorderRadius.vertical(bottom: Radius.circular(50)),
               gradient: LinearGradient(
                 colors: [
                   Colors.pink, // Replace with your AppColors.primary
@@ -66,8 +55,7 @@ class CardSwiperCard extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,

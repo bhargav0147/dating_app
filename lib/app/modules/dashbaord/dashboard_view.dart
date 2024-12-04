@@ -29,6 +29,7 @@ class DashboardView extends StatelessWidget {
       body: Obx(() => pages[dashboardController.selectedIndex.value]),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
+          backgroundColor: AppColors.white,
           showSelectedLabels: false,
           showUnselectedLabels: false,
           items: [

@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:dating_app/app/modules/profile/profile_controller.dart';
 import 'package:dating_app/app/routes/app_routes.dart';
 import 'package:dating_app/app/theme/colors.dart';
@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../config/app_variables.dart';
 import '../../utils/fixedWidthIndicator.dart';
+import '../../widgets/custom_cached_network_image.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -57,32 +58,18 @@ class ProfileView extends StatelessWidget {
                 ],
               ),
               SizedBoxHelper.h15,
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
+                  CustomCachedNetworkImage(
+                    borderRadius: 100,
                     height: 70,
                     width: 70,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: CachedNetworkImage(
-                        imageUrl:
-                            'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                        width: 70,
-                        height: 70,
-                        fit: BoxFit.cover,
-                        placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.primary,
-                          ),
-                        ),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error, color: AppColors.red),
-                      ),
-                    ),
+                    imageUrl:
+                        'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                   ),
-                  const Spacer(),
-                  const Column(
+                  Spacer(),
+                  Column(
                     children: [
                       CustomText(
                         text: '15',
@@ -97,8 +84,8 @@ class ProfileView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Spacer(),
-                  const Column(
+                  Spacer(),
+                  Column(
                     children: [
                       CustomText(
                         text: '652',
@@ -113,7 +100,7 @@ class ProfileView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Spacer(),
+                  Spacer(),
                 ],
               ),
               SizedBoxHelper.h15,
@@ -220,20 +207,12 @@ class ProfileView extends StatelessWidget {
                               ),
                               itemCount: 40,
                               itemBuilder: (context, index) {
-                                return CachedNetworkImage(
+                                return const CustomCachedNetworkImage(
+                                  borderRadius: 0,
+                                  height: 70,
+                                  width: 70,
                                   imageUrl:
                                       'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                                  width: 70,
-                                  height: 70,
-                                  fit: BoxFit.cover,
-                                  placeholder: (context, url) => const Center(
-                                    child: CircularProgressIndicator(
-                                      color: AppColors.primary,
-                                    ),
-                                  ),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error,
-                                          color: AppColors.red),
                                 );
                               },
                             )
@@ -242,24 +221,15 @@ class ProfileView extends StatelessWidget {
                               shrinkWrap: true,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                              ),
+                                      crossAxisCount: 3, childAspectRatio: 0.5),
                               itemCount: 40,
                               itemBuilder: (context, index) {
-                                return CachedNetworkImage(
+                                return const CustomCachedNetworkImage(
+                                  borderRadius: 0,
+                                  height: 150,
+                                  width: 70,
                                   imageUrl:
                                       'https://images.pexels.com/photos/616376/pexels-photo-616376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                                  width: 70,
-                                  height: 70,
-                                  fit: BoxFit.cover,
-                                  placeholder: (context, url) => const Center(
-                                    child: CircularProgressIndicator(
-                                      color: AppColors.primary,
-                                    ),
-                                  ),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error,
-                                          color: AppColors.red),
                                 );
                               },
                             ),
