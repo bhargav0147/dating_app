@@ -1,4 +1,3 @@
-
 import 'package:dating_app/app/modules/profile/profile_controller.dart';
 import 'package:dating_app/app/routes/app_routes.dart';
 import 'package:dating_app/app/theme/colors.dart';
@@ -11,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../config/app_variables.dart';
 import '../../utils/fixedWidthIndicator.dart';
-import '../../widgets/custom_cached_network_image.dart';
+import '../../widgets/customCachedNetworkImage.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});

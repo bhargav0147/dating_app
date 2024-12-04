@@ -4,7 +4,7 @@ import '../../config/app_variables.dart';
 import '../../theme/colors.dart';
 import '../../theme/fonts.dart';
 import '../../utils/sized_box_helper.dart';
-import '../../widgets/custom_cached_network_image.dart';
+import '../../widgets/customCachedNetworkImage.dart';
 import '../../widgets/custom_icon.dart';
 import '../../widgets/custom_text.dart';
 

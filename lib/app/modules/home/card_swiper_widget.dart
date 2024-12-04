@@ -1,4 +1,4 @@
-import 'package:dating_app/app/widgets/custom_cached_network_image.dart';
+import 'package:dating_app/app/widgets/customCachedNetworkImage.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/sized_box_helper.dart';
