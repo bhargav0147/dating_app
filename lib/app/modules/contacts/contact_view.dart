@@ -112,7 +112,6 @@ class ContactView extends StatelessWidget {
                 int contactCount = await controller.getContactFromUser();
 
                 if (contactCount > 0) {
-                  SnackbarUtils.showInfo('You have $contactCount contacts.');
                   return;
                 }
               },

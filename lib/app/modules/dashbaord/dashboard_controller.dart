@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 
 class DashboardController extends GetxController
 {
-  var selectedIndex = 3.obs;
+  var selectedIndex = 0.obs;
 
-  chnageIndex(int index){
+  changeIndex(int index){
     selectedIndex.value = index;
   }
 }

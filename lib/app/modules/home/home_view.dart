@@ -71,10 +71,10 @@ class HomeView extends StatelessWidget {
                       padding: const EdgeInsets.all(0),
                       onSwipe: (previousIndex, currentIndex, direction) {
                         if (direction == CardSwiperDirection.top) {
-                          SnackbarUtils.showSuccess('Friend Request Send');
+                          SnackbarUtils.showSuccess(context,'Friend Request Send');
                           return true;
                         } else {
-                          SnackbarUtils.showError('Blocked');
+                          SnackbarUtils.showError(context,'Blocked');
                           return true;
                         }
                       },
@@ -108,7 +108,7 @@ class HomeView extends StatelessWidget {
                           iconColor: AppColors.yellow,
                           iconSize: 30,
                           onClick: () {
-                            SnackbarUtils.showSuccess('You Press Close Button');
+                            SnackbarUtils.showSuccess(context,'You Press Close Button');
                           },
                         ),
                         IconButtonWithBackground(
@@ -119,7 +119,7 @@ class HomeView extends StatelessWidget {
                           iconColor: AppColors.primary,
                           iconSize: 40,
                           onClick: () {
-                            SnackbarUtils.showSuccess('You Press Like Button');
+                            SnackbarUtils.showSuccess(context,'You Press Like Button');
                           },
                         ),
                         IconButtonWithBackground(
@@ -130,7 +130,7 @@ class HomeView extends StatelessWidget {
                           iconColor: AppColors.purple,
                           iconSize: 30,
                           onClick: () {
-                            SnackbarUtils.showSuccess('You Press Star Button');
+                            SnackbarUtils.showSuccess(context,'You Press Star Button');
                           },
                         ),
                       ],

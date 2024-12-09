@@ -4,6 +4,7 @@ import 'package:dating_app/app/modules/chat_home/chat_home_view.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_controller.dart';
 import 'package:dating_app/app/modules/home/home_view.dart';
 import 'package:dating_app/app/modules/profile/profile_view.dart';
+import 'package:dating_app/app/modules/reels/reels_view.dart';
 import 'package:dating_app/app/modules/show_post/show_post_view.dart';
 import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/widgets/custom_icon.dart';
@@ -21,7 +22,7 @@ class DashboardView extends StatelessWidget {
     final List<Widget> pages = [
       const HomeView(),
       const ShowPostView(),
-      const ChatHomeView(),
+      const ReelsView(),
       const ProfileView()
     ];
 
@@ -29,11 +30,11 @@ class DashboardView extends StatelessWidget {
       body: Obx(() => pages[dashboardController.selectedIndex.value]),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
-          backgroundColor: AppColors.white,
           showSelectedLabels: false,
           showUnselectedLabels: false,
           items: [
             BottomNavigationBarItem(
+              backgroundColor: AppColors.white,
               icon: CustomIcon(
                 icon: Icons.home,
                 size: 30,
@@ -44,6 +45,7 @@ class DashboardView extends StatelessWidget {
               label: 'Home',
             ),
             BottomNavigationBarItem(
+              backgroundColor: AppColors.white,
               icon: CustomIcon(
                 icon: Icons.photo_library,
                 size: 30,
@@ -54,16 +56,18 @@ class DashboardView extends StatelessWidget {
               label: 'Post',
             ),
             BottomNavigationBarItem(
+              backgroundColor: AppColors.white,
               icon: CustomIcon(
-                icon: Icons.chat,
+                icon: Icons.video_collection_outlined,
                 size: 30,
                 color: dashboardController.selectedIndex.value == 2
                     ? AppColors.primary
                     : AppColors.grey.shade400,
               ),
-              label: 'Chat',
+              label: 'Reels',
             ),
             BottomNavigationBarItem(
+              backgroundColor: AppColors.white,
               icon: CustomIcon(
                 icon: Icons.person,
                 size: 30,
@@ -75,7 +79,7 @@ class DashboardView extends StatelessWidget {
             ),
           ],
           currentIndex: dashboardController.selectedIndex.value,
-          onTap: dashboardController.chnageIndex,
+          onTap: dashboardController.changeIndex,
         ),
       ),
     );

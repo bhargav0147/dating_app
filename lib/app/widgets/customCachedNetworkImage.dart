@@ -32,12 +32,12 @@ class CustomCachedNetworkImage extends StatelessWidget {
           height: height,
           fit: BoxFit.cover,
           placeholder: (context, url) => Skeletonizer(
-            enabled: true, 
+            enabled: true,
             child: Container(
               height: height,
               width: width,
               decoration: BoxDecoration(
-                color: AppColors.grey.shade300,
+                color: AppColors.grey.shade200,
                 borderRadius: BorderRadius.circular(borderRadius),
               ),
             ),

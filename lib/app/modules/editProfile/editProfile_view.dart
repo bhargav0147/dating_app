@@ -184,11 +184,11 @@ class EditprofileView extends StatelessWidget {
                 label: 'Confirm',
                 onPressed: () {
                   if (controller.selectedImage.value == null) {
-                    SnackbarUtils.showInfo('Select Profile Image');
+                    SnackbarUtils.showInfo(context,'Select Profile Image');
                     return;
                   }
                   if (controller.selectedBirthDate.value.isEmpty) {
-                    SnackbarUtils.showInfo('Select Your Birth Date');
+                    SnackbarUtils.showInfo(context,'Select Your Birth Date');
                     return;
                   }
                   if (formKey.currentState!.validate()) {

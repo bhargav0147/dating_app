@@ -1,45 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../theme/colors.dart';
 
 class SnackbarUtils {
-  static void showSuccess(String message) {
-    Get.snackbar(
-      'Success',
+  static void showSuccess(BuildContext context, String message) {
+    _showSnackbar(
+      context,
       message,
-      snackStyle: SnackStyle.FLOATING,
-      margin: const EdgeInsets.all(20),
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: AppColors.green,
-      duration: const Duration(seconds: 2),
-      colorText: AppColors.white,
+      AppColors.green,
     );
   }
 
-  static void showError(String message) {
-    Get.snackbar(
-      'Error',
+  static void showError(BuildContext context, String message) {
+    _showSnackbar(
+      context,
       message,
-      margin: const EdgeInsets.all(20),
-      snackStyle: SnackStyle.FLOATING,
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: AppColors.red,
-      duration: const Duration(seconds: 1),
-      colorText: AppColors.white,
+      AppColors.red,
     );
   }
 
-  static void showInfo(String message) {
-    Get.snackbar(
-      'Information',
+  static void showInfo(BuildContext context, String message) {
+    _showSnackbar(
+      context,
       message,
-      margin: const EdgeInsets.all(20),
-      snackStyle: SnackStyle.FLOATING,
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: AppColors.grey,
-      duration: const Duration(seconds: 1),
-      colorText: AppColors.white,
+      AppColors.grey,
+    );
+  }
+
+  static void _showSnackbar(BuildContext context, String message, Color backgroundColor) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          style: TextStyle(color: AppColors.white),
+        ),
+        backgroundColor: backgroundColor,
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(20),
+        duration: const Duration(seconds: 2),
+      ),
     );
   }
 }
