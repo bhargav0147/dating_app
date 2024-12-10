@@ -69,7 +69,7 @@ class ChatHomeListViewCard extends StatelessWidget {
             children: [
               const CustomText(
                 text: '23 Min',
-                style: AppFonts.mediumBold,
+                style: AppFonts.smallBold,
                 color: AppColors.grey,
               ),
               SizedBoxHelper.h5,

@@ -8,16 +8,19 @@ class CustomTextField extends StatelessWidget {
   final Color borderColor;
   final Color focusedBorderColor;
   final Color errorBorderColor;
+  final bool useHintText;
   final bool ifLeading;
   final double borderRadius;
   final IconData? leadingIcon;
   final Color leadingIconColor;
+  final double leadingIconSize;
   final ValueChanged<String>? onChange;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final bool obscureText;
   final TextInputType keyboardType;
   final int maxLine;
+  final TextStyle? textStyle;
 
   const CustomTextField({
     super.key,
@@ -36,6 +39,9 @@ class CustomTextField extends StatelessWidget {
     this.validator,
     this.controller,
     this.obscureText = false,
+    this.textStyle,
+    this.leadingIconSize = 24,
+    this.useHintText = false,
   });
 
   @override
@@ -48,14 +54,17 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       keyboardType: keyboardType,
       maxLines: maxLine,
-      style: AppFonts.medium.copyWith(color: AppColors.black),
+      style: textStyle ?? AppFonts.medium.copyWith(color: AppColors.black),
       decoration: InputDecoration(
-        labelText: hintText,
+        hintText: useHintText ? hintText : null,
+        labelText: useHintText ? null : hintText,
         labelStyle: TextStyle(color: AppColors.grey.shade900),
+        hintStyle: TextStyle(color: AppColors.grey.shade600),
         prefixIcon: ifLeading && leadingIcon != null
             ? Icon(
                 leadingIcon,
                 color: leadingIconColor,
+          size: leadingIconSize,
               )
             : null,
         enabledBorder: OutlineInputBorder(

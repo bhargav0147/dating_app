@@ -6,6 +6,7 @@ import 'package:dating_app/app/widgets/custom_textfiled.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/sized_box_helper.dart';
+import '../../widgets/custom_icon.dart';
 import 'chat_home_listview_card.dart';
 import 'chat_home_stroy_card.dart';
 
@@ -28,20 +29,33 @@ class ChatHomeView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomText(
-                  text: 'Messages',
-                  style: AppFonts.veryExtraLarge,
-                  color: AppColors.black,
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomText(
+                      text: 'Messages',
+                      style: AppFonts.largeBold,
+                      color: AppColors.black,
+                    ),
+                    CustomIcon(
+                      icon: Icons.note_alt,
+                      size: 25,
+                      color: AppColors.black,
+                    ),
+                  ],
                 ),
-                    SizedBoxHelper.h10,
+                    SizedBoxHelper.h20,
                 const CustomTextField(
                   hintText: 'Search',
                   keyboardType: TextInputType.text,
                   ifLeading: true,
+                  useHintText: true,
+                  textStyle: AppFonts.smallBold,
                   leadingIcon: Icons.search,
+                  leadingIconSize: 20,
                   leadingIconColor: AppColors.black,
                 ),
-                SizedBoxHelper.h10,
+                SizedBoxHelper.h25,
                 const CustomText(
                   text: 'Activities',
                   color: AppColors.black,
@@ -61,13 +75,13 @@ class ChatHomeView extends StatelessWidget {
                     },
                   ),
                 ),
-                SizedBoxHelper.h10,
+                SizedBoxHelper.h25,
                 const CustomText(
                   text: 'Messages',
                   color: AppColors.black,
                   style: AppFonts.extramediumBold,
                 ),
-                SizedBoxHelper.h10,
+                // SizedBoxHelper.h10,
                 ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),

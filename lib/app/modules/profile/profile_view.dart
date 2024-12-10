@@ -6,6 +6,7 @@ import 'package:dating_app/app/utils/navigation.dart';
 import 'package:dating_app/app/utils/sized_box_helper.dart';
 import 'package:dating_app/app/widgets/custom_icon.dart';
 import 'package:dating_app/app/widgets/custom_text.dart';
+import 'package:dating_app/app/widgets/cutom_bottombar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../config/app_variables.dart';
@@ -22,148 +23,211 @@ class ProfileView extends StatelessWidget {
       backgroundColor: AppColors.white,
       body: Padding(
         padding: const EdgeInsets.only(
-            top: AppVariables.APPTOPSPACING,
-            bottom: AppVariables.APPBOTTOMSPACING,
-            left: AppVariables.APPSIDESPACING,
-            right: AppVariables.APPSIDESPACING),
+          top: AppVariables.APPTOPSPACING,
+          bottom: AppVariables.APPBOTTOMSPACING,
+        ),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Row(
-                children: [
-                  const CustomText(
-                    text: 'bkhush_312',
-                    style: AppFonts.extraLarge,
-                    color: AppColors.black,
-                  ),
-                  const Spacer(),
-                  const CustomIcon(
-                    icon: Icons.add_circle,
-                    size: 25,
-                    color: AppColors.primary,
-                  ),
-                  SizedBoxHelper.w15,
-                  GestureDetector(
-                    onTap: () {
-                      NavigationUtils.navigateTo(AppRoutes.settings);
-                    },
-                    child: const CustomIcon(
-                      icon: Icons.menu,
-                      size: 25,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppVariables.APPSIDESPACING),
+                child: Row(
+                  children: [
+                    const CustomText(
+                      text: 'bkhush_312',
+                      style: AppFonts.extraLarge,
                       color: AppColors.black,
                     ),
-                  ),
-                  SizedBoxHelper.w15,
-                ],
+                    const Spacer(),
+                    const CustomIcon(
+                      icon: Icons.add_circle,
+                      size: 25,
+                      color: AppColors.primary,
+                    ),
+                    SizedBoxHelper.w15,
+                    GestureDetector(
+                      onTap: () {
+                        NavigationUtils.navigateTo(AppRoutes.settings);
+                      },
+                      child: const CustomIcon(
+                        icon: Icons.menu,
+                        size: 25,
+                        color: AppColors.black,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               SizedBoxHelper.h15,
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomCachedNetworkImage(
-                    borderRadius: 100,
-                    height: 70,
-                    width: 70,
-                    imageUrl:
-                        'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                  ),
-                  Spacer(),
-                  Column(
-                    children: [
-                      CustomText(
-                        text: '15',
-                        style: AppFonts.mediumBold,
-                        color: AppColors.black,
-                      ),
-                      SizedBoxHelper.h5,
-                      CustomText(
-                        text: 'posts',
-                        style: AppFonts.mediumBold,
-                        color: AppColors.black,
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  Column(
-                    children: [
-                      CustomText(
-                        text: '652',
-                        style: AppFonts.mediumBold,
-                        color: AppColors.black,
-                      ),
-                      SizedBoxHelper.h5,
-                      CustomText(
-                        text: 'friends',
-                        style: AppFonts.mediumBold,
-                        color: AppColors.black,
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                ],
+              const Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: AppVariables.APPSIDESPACING),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomCachedNetworkImage(
+                      borderRadius: 100,
+                      height: 70,
+                      width: 70,
+                      imageUrl:
+                          'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                    ),
+                    Spacer(),
+                    Column(
+                      children: [
+                        CustomText(
+                          text: '15',
+                          style: AppFonts.mediumBold,
+                          color: AppColors.black,
+                        ),
+                        SizedBoxHelper.h5,
+                        CustomText(
+                          text: 'posts',
+                          style: AppFonts.mediumBold,
+                          color: AppColors.black,
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    Column(
+                      children: [
+                        CustomText(
+                          text: '652',
+                          style: AppFonts.mediumBold,
+                          color: AppColors.black,
+                        ),
+                        SizedBoxHelper.h5,
+                        CustomText(
+                          text: 'friends',
+                          style: AppFonts.mediumBold,
+                          color: AppColors.black,
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    Column(
+                      children: [
+                        CustomText(
+                          text: '152',
+                          style: AppFonts.mediumBold,
+                          color: AppColors.black,
+                        ),
+                        SizedBoxHelper.h5,
+                        CustomText(
+                          text: 'flare',
+                          style: AppFonts.mediumBold,
+                          color: AppColors.black,
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                  ],
+                ),
               ),
               SizedBoxHelper.h15,
-              const Align(
+              const Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: AppVariables.APPSIDESPACING),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: CustomText(
+                      text: 'Bhargav Kalariya',
+                      style: AppFonts.mediumBold,
+                      color: AppColors.black,
+                    )),
+              ),
+              SizedBoxHelper.h5,
+              const Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: AppVariables.APPSIDESPACING),
+                child: Align(
                   alignment: Alignment.centerLeft,
                   child: CustomText(
-                    text: 'Bhargav Kalariya',
-                    style: AppFonts.mediumBold,
+                    text: 'Surat, Gujarat, India',
+                    style: AppFonts.medium,
                     color: AppColors.black,
-                  )),
-              SizedBoxHelper.h5,
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: CustomText(
-                  text: 'Surat, Gujarat, India',
-                  style: AppFonts.medium,
-                  color: AppColors.black,
+                  ),
                 ),
               ),
               SizedBoxHelper.h5,
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: CustomText(
-                  text:
-                      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
-                  style: AppFonts.small,
-                  color: AppColors.black,
+              const Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: AppVariables.APPSIDESPACING),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: CustomText(
+                    text:
+                        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
+                    style: AppFonts.small,
+                    color: AppColors.black,
+                  ),
                 ),
               ),
               SizedBoxHelper.h15,
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 35,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: AppColors.primary.withOpacity(0.1)),
-                      child: const Center(
-                        child: CustomText(
-                          text: 'Edit Profile',
-                          style: AppFonts.smallBold,
-                          color: AppColors.primary,
+              SalomonBottomBar(
+                  backgroundColor: AppColors.primary,
+                  duration: Duration(milliseconds: 200),
+                  currentIndex: 1,
+                  items: [
+                SalomonBottomBarItem(
+                    icon: CustomIcon(icon: Icons.favorite),
+                    title: CustomText(
+                      text: 'Profile',
+                      color: Colors.black,
+                    )),
+                SalomonBottomBarItem(
+                    icon: CustomIcon(icon: Icons.favorite),
+                    title: CustomText(
+                      text: 'Profile',
+                      color: Colors.black,
+                    )),
+                SalomonBottomBarItem(
+                    icon: CustomIcon(icon: Icons.favorite),
+                    title: CustomText(
+                      text: 'Profile',
+                      color: Colors.black,
+                    )),
+              ]),
+              SizedBoxHelper.h15,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppVariables.APPSIDESPACING),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 35,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: AppColors.primary.withOpacity(0.1)),
+                        child: const Center(
+                          child: CustomText(
+                            text: 'Edit Profile',
+                            style: AppFonts.smallBold,
+                            color: AppColors.primary,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBoxHelper.w10,
-                  Expanded(
-                    child: Container(
-                      height: 35,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: AppColors.primary.withOpacity(0.1)),
-                      child: const Center(
-                        child: CustomText(
-                          text: 'Share Profile',
-                          style: AppFonts.smallBold,
-                          color: AppColors.primary,
+                    SizedBoxHelper.w10,
+                    Expanded(
+                      child: Container(
+                        height: 35,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: AppColors.primary.withOpacity(0.1)),
+                        child: const Center(
+                          child: CustomText(
+                            text: 'Share Profile',
+                            style: AppFonts.smallBold,
+                            color: AppColors.primary,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               SizedBoxHelper.h15,
               DefaultTabController(
@@ -172,7 +236,7 @@ class ProfileView extends StatelessWidget {
                 child: Column(
                   children: [
                     TabBar(
-                      dividerColor: AppColors.grey.shade300,
+                      dividerColor: AppColors.white,
                       onTap: controller.chnageTabbarIndex,
                       indicator: const FixedWidthIndicator(
                         height: 2,
@@ -194,10 +258,10 @@ class ProfileView extends StatelessWidget {
                         )),
                       ],
                     ),
-                    SizedBoxHelper.h15,
                     Obx(
                       () => controller.tabBarIndex.value == 0
                           ? GridView.builder(
+                              padding: const EdgeInsets.all(0),
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               gridDelegate:
@@ -206,16 +270,22 @@ class ProfileView extends StatelessWidget {
                               ),
                               itemCount: 40,
                               itemBuilder: (context, index) {
-                                return const CustomCachedNetworkImage(
-                                  borderRadius: 0,
-                                  height: 70,
-                                  width: 70,
-                                  imageUrl:
-                                      'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                                return Container(
+                                  decoration: BoxDecoration(
+                                      border:
+                                          Border.all(color: AppColors.white)),
+                                  child: const CustomCachedNetworkImage(
+                                    borderRadius: 0,
+                                    height: 70,
+                                    width: 70,
+                                    imageUrl:
+                                        'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                                  ),
                                 );
                               },
                             )
                           : GridView.builder(
+                              padding: const EdgeInsets.all(0),
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               gridDelegate:
@@ -223,12 +293,17 @@ class ProfileView extends StatelessWidget {
                                       crossAxisCount: 3, childAspectRatio: 0.5),
                               itemCount: 40,
                               itemBuilder: (context, index) {
-                                return const CustomCachedNetworkImage(
-                                  borderRadius: 0,
-                                  height: 150,
-                                  width: 70,
-                                  imageUrl:
-                                      'https://images.pexels.com/photos/616376/pexels-photo-616376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                                return Container(
+                                  decoration: BoxDecoration(
+                                      border:
+                                          Border.all(color: AppColors.white)),
+                                  child: const CustomCachedNetworkImage(
+                                    borderRadius: 0,
+                                    height: 150,
+                                    width: 70,
+                                    imageUrl:
+                                        'https://images.pexels.com/photos/616376/pexels-photo-616376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                                  ),
                                 );
                               },
                             ),
