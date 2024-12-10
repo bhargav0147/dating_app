@@ -1,7 +1,6 @@
 import 'package:dating_app/app/modules/home/card_swiper_widget.dart';
 import 'package:dating_app/app/modules/home/home_controller.dart';
 import 'package:dating_app/app/utils/sized_box_helper.dart';
-import 'package:dating_app/app/widgets/custom_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:get/get.dart';
@@ -33,33 +32,7 @@ class HomeView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              //  Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     const CustomText(
-              //       text: 'Discover',
-              //       style: AppFonts.veryExtraLarge,
-              //       color: AppColors.black,
-              //     ),
-              //     Container(
-              //       height: 45,
-              //       width: 45,
-              //       decoration: BoxDecoration(
-              //           color: AppColors.white,
-              //           border: Border.all(
-              //             color: AppColors.black.shade100.withOpacity(0.5),
-              //           ),
-              //           borderRadius: BorderRadius.circular(15)),
-              //       child: const Center(
-              //         child: CustomIcon(
-              //           icon: Icons.search,
-              //           color: AppColors.primary,
-              //           size: 22,
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
+
               SizedBoxHelper.h10,
               Flexible(
                 child: Obx(() => CardSwiper(

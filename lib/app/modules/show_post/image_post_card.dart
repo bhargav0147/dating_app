@@ -5,7 +5,6 @@ import '../../theme/colors.dart';
 import '../../theme/fonts.dart';
 import '../../utils/sized_box_helper.dart';
 import '../../widgets/customCachedNetworkImage.dart';
-import '../../widgets/custom_icon.dart';
 import '../../widgets/custom_text.dart';
 
 class ImagePostCard extends StatelessWidget {
@@ -58,8 +57,7 @@ class ImagePostCard extends StatelessWidget {
                 color: AppColors.black,
               ),
               const Spacer(),
-              const CustomIcon(
-                icon: Icons.more_vert,
+              const Icon(Icons.more_vert,
                 size: 20,
                 color: AppColors.black,
               )
@@ -82,26 +80,22 @@ class ImagePostCard extends StatelessWidget {
           ),
           child: Row(
             children: [
-              CustomIcon(
-                icon: Icons.favorite,
+              Icon( Icons.favorite,
                 size: 24,
                 color: AppColors.primary,
               ),
               SizedBoxHelper.w15,
-              CustomIcon(
-                icon: Icons.message,
+              Icon(Icons.message,
                 size: 24,
                 color: AppColors.black,
               ),
               SizedBoxHelper.w15,
-              CustomIcon(
-                icon: Icons.send,
+              Icon( Icons.send,
                 size: 24,
                 color: AppColors.black,
               ),
               Spacer(),
-              CustomIcon(
-                icon: Icons.bookmark,
+              Icon( Icons.bookmark,
                 size: 24,
                 color: AppColors.black,
               ),

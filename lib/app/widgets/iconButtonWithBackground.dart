@@ -1,7 +1,6 @@
 // ignore_for_file: file_names
 
 import 'package:dating_app/app/theme/colors.dart';
-import 'package:dating_app/app/widgets/custom_icon.dart';
 import 'package:flutter/material.dart';
 
 class IconButtonWithBackground extends StatelessWidget {
@@ -45,8 +44,7 @@ class IconButtonWithBackground extends StatelessWidget {
           ]
         ),
         child: Center(
-          child: CustomIcon(
-            icon: icon,
+          child:Icon( icon,
             color: iconColor,
             size: iconSize,
           ),

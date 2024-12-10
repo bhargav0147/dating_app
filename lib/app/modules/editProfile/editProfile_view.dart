@@ -20,7 +20,6 @@ import '../../validator/textfild_validator.dart';
 import '../../widgets/back_button.dart';
 import '../../widgets/customDatePicker.dart';
 import '../../widgets/custom_button.dart';
-import '../../widgets/custom_icon.dart';
 import '../../widgets/custom_text.dart';
 import '../../widgets/custom_textfiled.dart';
 
@@ -81,8 +80,7 @@ class EditprofileView extends StatelessWidget {
                                 : null,
                           ),
                           child: image == null
-                              ? const CustomIcon(
-                                  icon: Icons.person,
+                              ? const Icon(Icons.person,
                                   color: AppColors.primary,
                                   size: 80,
                                 )
@@ -104,8 +102,7 @@ class EditprofileView extends StatelessWidget {
                                   Border.all(color: AppColors.white, width: 3),
                               borderRadius: BorderRadius.circular(25),
                             ),
-                            child: const CustomIcon(
-                              icon: Icons.camera_alt_rounded,
+                            child: const Icon(Icons.camera_alt_rounded,
                               color: AppColors.white,
                               size: 16,
                             ),
@@ -158,8 +155,7 @@ class EditprofileView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
                       children: [
-                        const CustomIcon(
-                          icon: Icons.calendar_today_outlined,
+                        const Icon(Icons.calendar_today_outlined,
                           size: 20,
                           color: AppColors.primary,
                         ),

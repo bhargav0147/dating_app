@@ -17,7 +17,6 @@ import '../../utils/navigation.dart';
 import '../../utils/sized_box_helper.dart';
 import '../../widgets/back_button.dart';
 import '../../widgets/customToggleButton.dart';
-import '../../widgets/custom_icon.dart';
 import '../../widgets/custom_text.dart';
 
 class YourpreferenceView extends StatelessWidget {
@@ -101,8 +100,7 @@ class YourpreferenceView extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Row(
                         children: [
-                          const CustomIcon(
-                            icon: Icons.location_on_rounded,
+                          const Icon(Icons.location_on_rounded,
                             size: 20,
                             color: AppColors.primary,
                           ),

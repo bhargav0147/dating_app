@@ -9,7 +9,6 @@ import '../../utils/navigation.dart';
 import '../../utils/sized_box_helper.dart';
 import '../../widgets/back_button.dart';
 import '../../widgets/custom_button.dart';
-import '../../widgets/custom_icon.dart';
 import '../../widgets/custom_text.dart';
 
 class WelcomeView extends StatelessWidget {
@@ -38,8 +37,7 @@ class WelcomeView extends StatelessWidget {
                 const Align(
                     alignment: Alignment.centerLeft, child: CustomBackButton()),
                 SizedBoxHelper.h30,
-                const CustomIcon(
-                  icon: Icons.favorite,
+                const Icon(Icons.favorite,
                   color: AppColors.primary,
                   size: 100,
                 ),

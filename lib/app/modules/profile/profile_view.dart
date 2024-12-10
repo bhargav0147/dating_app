@@ -4,9 +4,7 @@ import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/theme/fonts.dart';
 import 'package:dating_app/app/utils/navigation.dart';
 import 'package:dating_app/app/utils/sized_box_helper.dart';
-import 'package:dating_app/app/widgets/custom_icon.dart';
 import 'package:dating_app/app/widgets/custom_text.dart';
-import 'package:dating_app/app/widgets/cutom_bottombar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../config/app_variables.dart';
@@ -24,7 +22,6 @@ class ProfileView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(
           top: AppVariables.APPTOPSPACING,
-          bottom: AppVariables.APPBOTTOMSPACING,
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -40,8 +37,7 @@ class ProfileView extends StatelessWidget {
                       color: AppColors.black,
                     ),
                     const Spacer(),
-                    const CustomIcon(
-                      icon: Icons.add_circle,
+                    const Icon( Icons.add_circle,
                       size: 25,
                       color: AppColors.primary,
                     ),
@@ -50,8 +46,7 @@ class ProfileView extends StatelessWidget {
                       onTap: () {
                         NavigationUtils.navigateTo(AppRoutes.settings);
                       },
-                      child: const CustomIcon(
-                        icon: Icons.menu,
+                      child: const Icon(Icons.menu,
                         size: 25,
                         color: AppColors.black,
                       ),
@@ -165,31 +160,6 @@ class ProfileView extends StatelessWidget {
                 ),
               ),
               SizedBoxHelper.h15,
-              SalomonBottomBar(
-                  backgroundColor: AppColors.primary,
-                  duration: Duration(milliseconds: 200),
-                  currentIndex: 1,
-                  items: [
-                SalomonBottomBarItem(
-                    icon: CustomIcon(icon: Icons.favorite),
-                    title: CustomText(
-                      text: 'Profile',
-                      color: Colors.black,
-                    )),
-                SalomonBottomBarItem(
-                    icon: CustomIcon(icon: Icons.favorite),
-                    title: CustomText(
-                      text: 'Profile',
-                      color: Colors.black,
-                    )),
-                SalomonBottomBarItem(
-                    icon: CustomIcon(icon: Icons.favorite),
-                    title: CustomText(
-                      text: 'Profile',
-                      color: Colors.black,
-                    )),
-              ]),
-              SizedBoxHelper.h15,
               Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: AppVariables.APPSIDESPACING),
@@ -245,14 +215,12 @@ class ProfileView extends StatelessWidget {
                       ),
                       tabs: const [
                         Tab(
-                            icon: CustomIcon(
-                          icon: Icons.image,
+                            icon: Icon(Icons.image,
                           size: 24,
                           color: AppColors.primary,
                         )),
                         Tab(
-                            icon: CustomIcon(
-                          icon: Icons.video_collection_outlined,
+                            icon: Icon(Icons.video_collection_outlined,
                           size: 24,
                           color: AppColors.primary,
                         )),

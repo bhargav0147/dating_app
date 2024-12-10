@@ -6,7 +6,6 @@ import 'package:dating_app/app/widgets/custom_textfiled.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/sized_box_helper.dart';
-import '../../widgets/custom_icon.dart';
 import 'chat_home_listview_card.dart';
 import 'chat_home_stroy_card.dart';
 
@@ -19,7 +18,6 @@ class ChatHomeView extends StatelessWidget {
         backgroundColor: AppColors.white,
         body: Padding(
           padding: const EdgeInsets.only(
-            bottom: AppVariables.APPBOTTOMSPACING,
             top: AppVariables.APPTOPSPACING,
             left: AppVariables.APPSIDESPACING,
             right: AppVariables.APPSIDESPACING,
@@ -37,8 +35,8 @@ class ChatHomeView extends StatelessWidget {
                       style: AppFonts.largeBold,
                       color: AppColors.black,
                     ),
-                    CustomIcon(
-                      icon: Icons.note_alt,
+                    Icon(
+                      Icons.note_alt,
                       size: 25,
                       color: AppColors.black,
                     ),

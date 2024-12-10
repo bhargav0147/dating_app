@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../theme/colors.dart';
 import '../../theme/fonts.dart';
 import '../../utils/sized_box_helper.dart';
-import '../../widgets/custom_icon.dart';
 import '../../widgets/custom_text.dart';
 
 class SettingsMenuCard extends StatelessWidget {
@@ -20,8 +19,7 @@ class SettingsMenuCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomIcon(
-          icon: icon,
+        Icon( icon,
           size: 25,
           color: AppColors.black,
         ),
@@ -32,8 +30,7 @@ class SettingsMenuCard extends StatelessWidget {
           color: AppColors.black,
         ),
         const Spacer(),
-        const CustomIcon(
-          icon: Icons.double_arrow,
+        const Icon( Icons.double_arrow,
           size: 20,
           color: AppColors.black,
         ),

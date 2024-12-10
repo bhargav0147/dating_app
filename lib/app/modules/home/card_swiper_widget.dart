@@ -98,7 +98,7 @@ class CardSwiperCard extends StatelessWidget {
                     color: Colors.white,
                     size: 16,
                   ),
-                  SizedBoxHelper.h5,
+                  SizedBoxHelper.w5,
                   Text(
                     '$km KM',
                     style: const TextStyle(color: Colors.white),

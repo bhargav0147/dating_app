@@ -4,7 +4,6 @@ import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/theme/fonts.dart';
 import 'package:dating_app/app/widgets/back_button.dart';
 import 'package:dating_app/app/widgets/custom_button.dart';
-import 'package:dating_app/app/widgets/custom_icon.dart';
 import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:dating_app/app/widgets/custom_textfiled.dart';
 import 'package:flutter/material.dart';
@@ -37,8 +36,7 @@ class LoginView extends StatelessWidget {
                 const Align(
                     alignment: Alignment.centerLeft, child: CustomBackButton()),
                 SizedBoxHelper.h30,
-                const CustomIcon(
-                  icon: Icons.favorite,
+                const Icon(Icons.favorite,
                   color: AppColors.primary,
                   size: 100,
                 ),

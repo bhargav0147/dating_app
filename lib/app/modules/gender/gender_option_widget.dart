@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../theme/colors.dart';
 import '../../theme/fonts.dart';
-import '../../widgets/custom_icon.dart';
 import '../../widgets/custom_text.dart';
 import 'gender_controller.dart';
 
@@ -52,8 +51,7 @@ class GenderOption extends StatelessWidget {
                       ? AppColors.white
                       : AppColors.black,
                 ),
-                CustomIcon(
-                  icon: Icons.check,
+                Icon( Icons.check,
                   size: 22,
                   color: selectedGender.value == gender
                       ? AppColors.white

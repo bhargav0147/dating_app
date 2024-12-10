@@ -1,6 +1,5 @@
 import 'package:dating_app/app/theme/fonts.dart';
 import 'package:dating_app/app/utils/sized_box_helper.dart';
-import 'package:dating_app/app/widgets/custom_icon.dart';
 import 'package:flutter/material.dart';
 
 import '../../theme/colors.dart';
@@ -45,8 +44,7 @@ class InterestCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CustomIcon(
-                icon: icon,
+              Icon(icon,
                 size: 20,
                 color: isSelected ? AppColors.white : AppColors.primary,
               ),

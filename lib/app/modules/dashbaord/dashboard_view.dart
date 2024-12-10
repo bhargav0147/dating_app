@@ -1,15 +1,12 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:dating_app/app/modules/chat_home/chat_home_view.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_controller.dart';
 import 'package:dating_app/app/modules/home/home_view.dart';
 import 'package:dating_app/app/modules/profile/profile_view.dart';
 import 'package:dating_app/app/modules/show_post/show_post_view.dart';
 import 'package:dating_app/app/theme/colors.dart';
-import 'package:dating_app/app/theme/fonts.dart';
-import 'package:dating_app/app/widgets/custom_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
@@ -27,73 +24,42 @@ class DashboardView extends StatelessWidget {
       const ProfileView()
     ];
 
+
     return Scaffold(
       body: Obx(() => pages[dashboardController.selectedIndex.value]),
       bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
+        () => NavigationBar(
+          height: 60,
 
-          items: [
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.white,
-              icon: CustomIcon(
-                icon: Icons.home,
-                size: 30,
-                color: dashboardController.selectedIndex.value == 0
-                    ? AppColors.primary
-                    : AppColors.grey.shade400,
-              ),
+          onDestinationSelected: dashboardController.changeIndex,
+          selectedIndex: dashboardController.selectedIndex.value,
+          backgroundColor: AppColors.white,
+          indicatorColor: AppColors.primary,
 
+          destinations: const [
+            NavigationDestination(
+              selectedIcon: Icon(Icons.home_filled,color: AppColors.white,),
+              icon: Icon(Icons.home_filled,color: AppColors.grey,),
               label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.white,
-              icon: CustomIcon(
-                icon: Icons.photo_library,
-                size: 30,
-                color: dashboardController.selectedIndex.value == 1
-                    ? AppColors.primary
-                    : AppColors.grey.shade400,
-              ),
+            ),NavigationDestination(
+              selectedIcon: Icon(Icons.image,color: AppColors.white,),
+              icon: Icon(Icons.image,color: AppColors.grey,),
               label: 'Post',
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.white,
-              icon: CustomIcon(
-                icon: Icons.video_collection_outlined,
-                size: 30,
-                color: dashboardController.selectedIndex.value == 2
-                    ? AppColors.primary
-                    : AppColors.grey.shade400,
-              ),
+            ),NavigationDestination(
+              selectedIcon: Icon(Icons.add_circle_outline_sharp,color: AppColors.white,),
+              icon: Icon(Icons.add_circle_outline_sharp,color: AppColors.grey,),
               label: 'Add Post',
-            ),BottomNavigationBarItem(
-              backgroundColor: AppColors.white,
-              icon: CustomIcon(
-                icon: Icons.message_outlined,
-                size: 30,
-                color: dashboardController.selectedIndex.value == 3
-                    ? AppColors.primary
-                    : AppColors.grey.shade400,
-              ),
-              label: 'Messages',
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.white,
-              icon: CustomIcon(
-                icon: Icons.person,
-                size: 30,
-                color: dashboardController.selectedIndex.value == 4
-                    ? AppColors.primary
-                    : AppColors.grey.shade400,
-              ),
+            ),NavigationDestination(
+              selectedIcon: Icon(Icons.video_camera_back_outlined,color: AppColors.white,),
+              icon: Icon(Icons.video_camera_back_outlined,color: AppColors.grey,),
+              label: 'Flare',
+            ),NavigationDestination(
+              selectedIcon: Icon(Icons.person,color: AppColors.white,),
+              icon: Icon(Icons.person,color: AppColors.grey,),
               label: 'Profile',
             ),
           ],
-          currentIndex: dashboardController.selectedIndex.value,
-          onTap: dashboardController.changeIndex,
-        ),
+        )
       ),
     );
   }

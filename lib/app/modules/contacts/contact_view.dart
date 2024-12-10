@@ -1,6 +1,5 @@
 import 'package:dating_app/app/modules/contacts/contacts_controller.dart';
 import 'package:dating_app/app/theme/fonts.dart';
-import 'package:dating_app/app/widgets/custom_icon.dart';
 import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
@@ -9,7 +8,6 @@ import 'package:get/get.dart';
 import '../../config/app_variables.dart';
 import '../../theme/colors.dart';
 import '../../utils/sized_box_helper.dart';
-import '../../utils/snackbars.dart';
 import '../../widgets/back_button.dart';
 import '../../widgets/custom_button.dart';
 
@@ -48,8 +46,7 @@ class ContactView extends StatelessWidget {
               child: Obx(
                 () => controller.contactsList.isEmpty
                     ? Column(children: [
-                        const CustomIcon(
-                          icon: Icons.favorite,
+                        const Icon(Icons.favorite,
                           size: 150,
                           color: AppColors.primary,
                         ),
