@@ -1,5 +1,6 @@
 import 'package:dating_app/app/modules/chat_home/chat_home_view.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_controller.dart';
+import 'package:dating_app/app/modules/edit_image/edit_image_view.dart';
 import 'package:dating_app/app/modules/home/home_view.dart';
 import 'package:dating_app/app/modules/profile/profile_view.dart';
 import 'package:dating_app/app/modules/show_post/show_post_view.dart';
@@ -20,7 +21,7 @@ class DashboardView extends StatelessWidget {
       const HomeView(),
       const ShowPostView(),
       const ChatHomeView(),
-      const ChatHomeView(),
+      const EditImageView(),
       const ProfileView()
     ];
 
@@ -46,9 +47,9 @@ class DashboardView extends StatelessWidget {
               icon: Icon(Icons.image,color: AppColors.grey,),
               label: 'Post',
             ),NavigationDestination(
-              selectedIcon: Icon(Icons.add_circle_outline_sharp,color: AppColors.white,),
-              icon: Icon(Icons.add_circle_outline_sharp,color: AppColors.grey,),
-              label: 'Add Post',
+              selectedIcon: Icon(Icons.message,color: AppColors.white,),
+              icon: Icon(Icons.message,color: AppColors.grey,),
+              label: 'Messages',
             ),NavigationDestination(
               selectedIcon: Icon(Icons.video_camera_back_outlined,color: AppColors.white,),
               icon: Icon(Icons.video_camera_back_outlined,color: AppColors.grey,),
