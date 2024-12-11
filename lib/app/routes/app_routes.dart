@@ -1,3 +1,4 @@
+
 import 'package:dating_app/app/modules/chat_home/chat_home_binding.dart';
 import 'package:dating_app/app/modules/chat_home/chat_home_view.dart';
 import 'package:dating_app/app/modules/contacts/contact_view.dart';
@@ -43,6 +44,7 @@ class AppRoutes {
   static const String yourPreference = '/yourPreference';
   static const String settings = '/settings';
   static const String chat = '/chat';
+  static const String chatMainView = '/chatMainView';
 
   static final routes = [
     GetPage(
@@ -96,7 +98,11 @@ class AppRoutes {
         binding: SettingsBinding()),
     GetPage(
         name: chat,
-        page: () => const ChatHomeView (),
+        page: () => const ChatHomeView(),
         binding: ChatHomeBinding()),
+    // GetPage(
+    //     name: chatMainView,
+    //     page: () => const ChatMainView(),
+    //     binding: ChatMainViewBinding()),
   ];
 }

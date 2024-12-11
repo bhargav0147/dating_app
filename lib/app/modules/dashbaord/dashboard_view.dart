@@ -3,6 +3,7 @@ import 'package:dating_app/app/modules/dashbaord/dashboard_controller.dart';
 import 'package:dating_app/app/modules/edit_image/edit_image_view.dart';
 import 'package:dating_app/app/modules/home/home_view.dart';
 import 'package:dating_app/app/modules/profile/profile_view.dart';
+import 'package:dating_app/app/modules/reels/reels_view.dart';
 import 'package:dating_app/app/modules/show_post/show_post_view.dart';
 import 'package:dating_app/app/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -21,12 +22,13 @@ class DashboardView extends StatelessWidget {
       const HomeView(),
       const ShowPostView(),
       const ChatHomeView(),
-      const EditImageView(),
+      const ReelsView(),
       const ProfileView()
     ];
 
 
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Obx(() => pages[dashboardController.selectedIndex.value]),
       bottomNavigationBar: Obx(
         () => NavigationBar(
