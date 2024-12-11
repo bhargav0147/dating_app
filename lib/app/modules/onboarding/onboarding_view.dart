@@ -118,9 +118,9 @@ class OnboardingView extends StatelessWidget {
                   style: AppFonts.extraSmall,
                   color: AppColors.black,
                 ),
-                InkWell(
+                GestureDetector(
                   onTap: () {
-                    NavigationUtils.navigateTo(AppRoutes.login);
+                    NavigationUtils.offAllTo(AppRoutes.login);
                   },
                   child: const CustomText(
                     text: 'Sign In',

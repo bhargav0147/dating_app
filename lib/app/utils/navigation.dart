@@ -12,4 +12,8 @@ class NavigationUtils {
   static void replaceWith(String route, {dynamic arguments}) {
     Get.offNamed(route, arguments: arguments);
   }
+
+  static void offAllTo(String route, {dynamic arguments}) {
+    Get.offAllNamed(route, arguments: arguments);
+  }
 }

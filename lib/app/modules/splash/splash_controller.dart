@@ -15,7 +15,7 @@ class SplashController extends GetxController
 
   void navigateToLogin() {
     Timer(const Duration(seconds: 2), () {
-      NavigationUtils.replaceWith(AppRoutes.onboarding); 
+      NavigationUtils.offAllTo(AppRoutes.onboarding);
     });
   }
 }

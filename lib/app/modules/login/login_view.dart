@@ -1,5 +1,7 @@
+import 'dart:math';
+
 import 'package:dating_app/app/config/app_variables.dart';
-import 'package:dating_app/app/routes/app_routes.dart';
+import 'package:dating_app/app/modules/login/login_controller.dart';
 import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/theme/fonts.dart';
 import 'package:dating_app/app/widgets/back_button.dart';
@@ -7,8 +9,7 @@ import 'package:dating_app/app/widgets/custom_button.dart';
 import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:dating_app/app/widgets/custom_textfiled.dart';
 import 'package:flutter/material.dart';
-
-import '../../utils/navigation.dart';
+import 'package:get/get.dart';
 import '../../utils/sized_box_helper.dart';
 import '../../validator/textfild_validator.dart';
 
@@ -17,6 +18,9 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final LoginController loginController = Get.put(LoginController());
+    TextEditingController txtEmail = TextEditingController();
+    TextEditingController txtPassword = TextEditingController();
     final formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -50,6 +54,7 @@ class LoginView extends StatelessWidget {
                 SizedBoxHelper.h30,
                 CustomTextField(
                   hintText: 'Email',
+                  controller: txtEmail,
                   onChange: (value) {},
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
@@ -59,6 +64,7 @@ class LoginView extends StatelessWidget {
                 SizedBoxHelper.h15,
                 CustomTextField(
                   hintText: 'Password',
+                  controller: txtPassword,
                   keyboardType: TextInputType.text,
                   onChange: (value) {},
                   validator: (value) {
@@ -74,16 +80,18 @@ class LoginView extends StatelessWidget {
                       style: AppFonts.medium,
                     )),
                 SizedBoxHelper.h15,
-                CustomButton(
-                  label: 'Sign In',
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      NavigationUtils.replaceWith(AppRoutes.dashbaord);
-                    }
-                  },
-                  backgroundColor: AppColors.primary,
-                  textColor: AppColors.white,
-                  isLoading: false,
+                Obx(
+                  () =>  CustomButton(
+                    label: 'Sign In',
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        loginController.login(email: txtEmail.text, password: txtPassword.text,context: context);
+                      }
+                    },
+                    backgroundColor: AppColors.primary,
+                    textColor: AppColors.white,
+                    isLoading: loginController.isLoading.value,
+                  ),
                 )
               ],
             ),

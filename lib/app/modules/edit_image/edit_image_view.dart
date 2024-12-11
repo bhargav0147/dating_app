@@ -10,7 +10,7 @@ class EditImageView extends StatelessWidget {
     return Scaffold(
       body: ProImageEditor.network(
           'https://ideipodarkov.net/blog/wp-content/uploads/2016/03/10.jpg',
-          callbacks: ProImageEditorCallbacks()),
+          callbacks: const ProImageEditorCallbacks()),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:dating_app/app/modules/chat_home/chat_home_view.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_controller.dart';
-import 'package:dating_app/app/modules/edit_image/edit_image_view.dart';
 import 'package:dating_app/app/modules/home/home_view.dart';
 import 'package:dating_app/app/modules/profile/profile_view.dart';
 import 'package:dating_app/app/modules/reels/reels_view.dart';

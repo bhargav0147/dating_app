@@ -43,6 +43,7 @@ class _ReelsPageState extends State<ReelsPage> {
   void initState() {
     super.initState();
     initializePlayer();
+    print('========');
     // if (!UrlChecker.isImageUrl(widget.item.url) &&
     //     UrlChecker.isValid(widget.item.url)) {
     //

@@ -1,5 +1,7 @@
 import 'package:dating_app/app/modules/home/card_swiper_widget.dart';
 import 'package:dating_app/app/modules/home/home_controller.dart';
+import 'package:dating_app/app/routes/app_routes.dart';
+import 'package:dating_app/app/utils/navigation.dart';
 import 'package:dating_app/app/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
@@ -7,9 +9,7 @@ import 'package:get/get.dart';
 
 import '../../config/app_variables.dart';
 import '../../theme/colors.dart';
-import '../../theme/fonts.dart';
 import '../../utils/snackbars.dart';
-import '../../widgets/custom_text.dart';
 import '../../widgets/iconButtonWithBackground.dart';
 
 class HomeView extends StatelessWidget {
@@ -32,7 +32,6 @@ class HomeView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-
               SizedBoxHelper.h10,
               Flexible(
                 child: Obx(() => CardSwiper(
@@ -44,23 +43,31 @@ class HomeView extends StatelessWidget {
                       padding: const EdgeInsets.all(0),
                       onSwipe: (previousIndex, currentIndex, direction) {
                         if (direction == CardSwiperDirection.top) {
-                          SnackbarUtils.showSuccess(context,'Friend Request Send');
+                          SnackbarUtils.showSuccess(
+                              context, 'Friend Request Send');
                           return true;
                         } else {
-                          SnackbarUtils.showError(context,'Blocked');
+                          SnackbarUtils.showError(context, 'Blocked');
                           return true;
                         }
                       },
                       cardBuilder: (context, index, horizontalOffsetPercentage,
                           verticalOffsetPercentage) {
-                        return CardSwiperCard(
-                            imageUrl:
-                                controller.cards[index]['image'].toString(),
-                            name: controller.cards[index]['name'].toString(),
-                            age: int.parse('${controller.cards[index]['age']}'),
-                            city: '${controller.cards[index]['city']}',
-                            km: double.parse(
-                                "${controller.cards[index]['km']}"));
+                        return GestureDetector(
+                          onTap: () => NavigationUtils.navigateTo(
+                              AppRoutes.friendProfile,
+                              arguments:
+                                  controller.cards[index]['image'].toString()),
+                          child: CardSwiperCard(
+                              imageUrl:
+                                  controller.cards[index]['image'].toString(),
+                              name: controller.cards[index]['name'].toString(),
+                              age: int.parse(
+                                  '${controller.cards[index]['age']}'),
+                              city: '${controller.cards[index]['city']}',
+                              km: double.parse(
+                                  "${controller.cards[index]['km']}")),
+                        );
                       },
                     )),
               ),
@@ -81,7 +88,8 @@ class HomeView extends StatelessWidget {
                           iconColor: AppColors.yellow,
                           iconSize: 30,
                           onClick: () {
-                            SnackbarUtils.showSuccess(context,'You Press Close Button');
+                            SnackbarUtils.showSuccess(
+                                context, 'You Press Close Button');
                           },
                         ),
                         IconButtonWithBackground(
@@ -92,7 +100,8 @@ class HomeView extends StatelessWidget {
                           iconColor: AppColors.primary,
                           iconSize: 40,
                           onClick: () {
-                            SnackbarUtils.showSuccess(context,'You Press Like Button');
+                            SnackbarUtils.showSuccess(
+                                context, 'You Press Like Button');
                           },
                         ),
                         IconButtonWithBackground(
@@ -103,7 +112,8 @@ class HomeView extends StatelessWidget {
                           iconColor: AppColors.purple,
                           iconSize: 30,
                           onClick: () {
-                            SnackbarUtils.showSuccess(context,'You Press Star Button');
+                            SnackbarUtils.showSuccess(
+                                context, 'You Press Star Button');
                           },
                         ),
                       ],

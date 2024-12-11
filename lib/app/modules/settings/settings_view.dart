@@ -1,3 +1,5 @@
+import 'package:dating_app/app/routes/app_routes.dart';
+import 'package:dating_app/app/utils/navigation.dart';
 import 'package:dating_app/app/utils/sized_box_helper.dart';
 import 'package:dating_app/app/widgets/back_button.dart';
 import 'package:dating_app/app/widgets/custom_button.dart';
@@ -28,8 +30,7 @@ class SettingsView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Align(
-                  alignment: Alignment.centerLeft,
-                  child: CustomBackButton()),
+                  alignment: Alignment.centerLeft, child: CustomBackButton()),
               SizedBoxHelper.h10,
               const Align(
                 alignment: Alignment.centerLeft,
@@ -87,8 +88,51 @@ class SettingsView extends StatelessWidget {
               SizedBoxHelper.h25,
               CustomButton(
                 label: 'Logout',
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context, // Pass the BuildContext here
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+
+                        backgroundColor: AppColors.white,
+                        title: const CustomText(
+                          text: 'Log Out?',
+                          style: AppFonts.mediumBold,
+                          color: AppColors.black,
+                        ),
+                        content: const CustomText(
+                          text: 'Are you sure want to log out?',
+                          style: AppFonts.mediumBold,
+                          color: AppColors.black,
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              NavigationUtils.navigateBack();
+                            }, // Dismiss dialog
+                            child: const CustomText(
+                              text:'Cancel',
+                              style: AppFonts.mediumBold,
+                              color: AppColors.black,
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              NavigationUtils.offAllTo(AppRoutes.login);
+                            },
+                            child: const CustomText(
+                              text:'Logout',
+                                style: AppFonts.mediumBold,
+                                color: AppColors.red,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
               )
+
             ],
           ),
         ),

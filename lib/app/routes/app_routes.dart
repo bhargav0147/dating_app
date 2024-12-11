@@ -7,6 +7,8 @@ import 'package:dating_app/app/modules/dashbaord/dashboard_binding.dart';
 import 'package:dating_app/app/modules/dashbaord/dashboard_view.dart';
 import 'package:dating_app/app/modules/editProfile/editProfile_binding.dart';
 import 'package:dating_app/app/modules/editProfile/editProfile_view.dart';
+import 'package:dating_app/app/modules/friend_profile/friend_profile_binding.dart';
+import 'package:dating_app/app/modules/friend_profile/friend_profile_view.dart';
 import 'package:dating_app/app/modules/gender/gender_binding.dart';
 import 'package:dating_app/app/modules/gender/gender_view.dart';
 import 'package:dating_app/app/modules/settings/settings_binding.dart';
@@ -45,6 +47,7 @@ class AppRoutes {
   static const String settings = '/settings';
   static const String chat = '/chat';
   static const String chatMainView = '/chatMainView';
+  static const String friendProfile = '/friendProfile';
 
   static final routes = [
     GetPage(
@@ -100,6 +103,10 @@ class AppRoutes {
         name: chat,
         page: () => const ChatHomeView(),
         binding: ChatHomeBinding()),
+    GetPage(
+        name: friendProfile,
+        page: () => const FriendProfileView(),
+        binding: FriendProfileBinding()),
     // GetPage(
     //     name: chatMainView,
     //     page: () => const ChatMainView(),

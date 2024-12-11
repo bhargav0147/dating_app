@@ -125,7 +125,7 @@ class ScreenOptions extends StatelessWidget {
                   Text(NumbersToShort.convertNumToShort(item.commentList?.length??0), style: const TextStyle(color: Colors.white)),
                   const SizedBox(height: 20),
                   if (onShare != null)
-                    InkWell(
+                    GestureDetector(
                       onTap: () => onShare!(item.url),
                       child: Transform(
                         transform: Matrix4.rotationZ(5.8),

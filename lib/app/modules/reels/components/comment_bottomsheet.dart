@@ -62,7 +62,7 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                 contentPadding: const EdgeInsets.all(10),
                 border: const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.white)),
-                suffixIcon: InkWell(onTap: () {
+                suffixIcon: GestureDetector(onTap: () {
                   if(widget.onComment!=null){
                     String comment = commentController.text;
                     widget.onComment!(comment);
