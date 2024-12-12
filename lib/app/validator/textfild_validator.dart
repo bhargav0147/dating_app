@@ -59,4 +59,17 @@ class Validators {
     }
     return null;
   }
+  static String? confirmPasswordValidator(
+      String newPassword,
+      String? confirmPassword,
+      ) {
+    if (confirmPassword == null || confirmPassword.isEmpty) {
+      return 'Confirmed password cannot be empty';
+    }
+    if (newPassword != confirmPassword) {
+      return 'Confirmed password does not match the new password';
+    }
+    return null;
+  }
+
 }

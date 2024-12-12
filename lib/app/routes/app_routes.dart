@@ -1,4 +1,5 @@
-
+import 'package:dating_app/app/modules/change_password/change_password_binding.dart';
+import 'package:dating_app/app/modules/change_password/change_password_view.dart';
 import 'package:dating_app/app/modules/chat_home/chat_home_binding.dart';
 import 'package:dating_app/app/modules/chat_home/chat_home_view.dart';
 import 'package:dating_app/app/modules/contacts/contact_view.dart';
@@ -48,6 +49,7 @@ class AppRoutes {
   static const String chat = '/chat';
   static const String chatMainView = '/chatMainView';
   static const String friendProfile = '/friendProfile';
+  static const String changePassword = '/changePassword';
 
   static final routes = [
     GetPage(
@@ -107,6 +109,10 @@ class AppRoutes {
         name: friendProfile,
         page: () => const FriendProfileView(),
         binding: FriendProfileBinding()),
+    GetPage(
+        name: changePassword,
+        page: () => const ChangePasswordView(),
+        binding: ChangePasswordBinding()),
     // GetPage(
     //     name: chatMainView,
     //     page: () => const ChatMainView(),

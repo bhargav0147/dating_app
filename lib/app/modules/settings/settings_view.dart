@@ -40,7 +40,7 @@ class SettingsView extends StatelessWidget {
                   color: AppColors.black,
                 ),
               ),
-              SizedBoxHelper.h25,
+              SizedBoxHelper.h30,
               const SettingsMenuCard(
                 icon: Icons.person,
                 text: 'Personal Details',
@@ -48,8 +48,22 @@ class SettingsView extends StatelessWidget {
               Divider(
                 color: AppColors.grey.shade200,
                 thickness: 0.5,
+                height: 30,
               ),
-              SizedBoxHelper.h15,
+
+              GestureDetector(
+                onTap: () => NavigationUtils.navigateTo(AppRoutes.changePassword),
+                child: const SettingsMenuCard(
+                  icon: Icons.lock,
+                  text: 'Change Password',
+                ),
+              ),
+              Divider(
+                color: AppColors.grey.shade200,
+                thickness: 0.5,
+                height: 30,
+              ),
+
               const SettingsMenuCard(
                 icon: Icons.settings,
                 text: 'Settings',
@@ -57,8 +71,9 @@ class SettingsView extends StatelessWidget {
               Divider(
                 color: AppColors.grey.shade200,
                 thickness: 0.5,
+                height: 30,
               ),
-              SizedBoxHelper.h15,
+
               const SettingsMenuCard(
                 icon: Icons.language,
                 text: 'Tearms & Conditions',
@@ -66,8 +81,9 @@ class SettingsView extends StatelessWidget {
               Divider(
                 color: AppColors.grey.shade200,
                 thickness: 0.5,
+                height: 30,
               ),
-              SizedBoxHelper.h15,
+
               const SettingsMenuCard(
                 icon: Icons.notifications,
                 text: 'Privacy Policy',
@@ -75,15 +91,12 @@ class SettingsView extends StatelessWidget {
               Divider(
                 color: AppColors.grey.shade200,
                 thickness: 0.5,
+                height: 30,
               ),
-              SizedBoxHelper.h15,
+
               const SettingsMenuCard(
                 icon: Icons.visibility,
                 text: 'About Us',
-              ),
-              Divider(
-                color: AppColors.grey.shade200,
-                thickness: 0.5,
               ),
               SizedBoxHelper.h25,
               CustomButton(

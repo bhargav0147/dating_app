@@ -27,14 +27,11 @@ class FriendProfileView extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.5,
               child: Stack(
                 children: [
-                  Hero(
-                    tag: 'friendProfileImage',
-                    child: CustomCachedNetworkImage(
-                        height: double.maxFinite,
-                        width: double.maxFinite,
-                        imageUrl: imageUrl,
-                        borderRadius: 0),
-                  ),
+                  CustomCachedNetworkImage(
+                      height: double.maxFinite,
+                      width: double.maxFinite,
+                      imageUrl: imageUrl,
+                      borderRadius: 0),
                   const Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: 20, vertical: AppVariables.APPTOPSPACING),

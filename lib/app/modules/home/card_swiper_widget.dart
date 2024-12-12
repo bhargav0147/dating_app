@@ -24,14 +24,11 @@ class CardSwiperCard extends StatelessWidget {
     return Stack(
       children: [
         Center(
-          child: Hero(
-            tag: 'friendProfileImage',
-            child: CustomCachedNetworkImage(
-                height: double.maxFinite,
-                width: double.maxFinite,
-                imageUrl: imageUrl,
-                borderRadius: 50),
-          ),
+          child: CustomCachedNetworkImage(
+              height: double.maxFinite,
+              width: double.maxFinite,
+              imageUrl: imageUrl,
+              borderRadius: 50),
         ),
         // Gradient and text overlay
         Align(
