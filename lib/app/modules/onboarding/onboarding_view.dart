@@ -120,7 +120,7 @@ class OnboardingView extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    NavigationUtils.offAllTo(AppRoutes.login);
+                    NavigationUtils.navigateTo(AppRoutes.login);
                   },
                   child: const CustomText(
                     text: 'Sign In',

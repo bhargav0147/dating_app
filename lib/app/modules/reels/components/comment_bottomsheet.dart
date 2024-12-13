@@ -22,7 +22,7 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),
         ),
-        color: Colors.transparent,
+        color: Colors.white,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

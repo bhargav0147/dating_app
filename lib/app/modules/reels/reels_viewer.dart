@@ -3,6 +3,8 @@ import 'package:dating_app/app/modules/reels/models/reel_model.dart';
 import 'package:dating_app/app/modules/reels/reels_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../theme/colors.dart';
+
 class ReelsViewer extends StatefulWidget {
   /// use reel model and provide list of reels, list contains reels object, object contains url and other parameters
   final List<ReelModel> reelsList;
@@ -73,55 +75,53 @@ class _ReelsViewerState extends State<ReelsViewer> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black26,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            //We need swiper for every content
-            Swiper(
-              itemBuilder: (BuildContext context, int index) {
+      body: Stack(
+        children: [
+          //We need swiper for every content
+          Swiper(
+            itemBuilder: (BuildContext context, int index) {
 
-                return ReelsPage(
-                  key: UniqueKey(),
-                  item: widget.reelsList[index],
-                  onClickMoreBtn: widget.onClickMoreBtn,
-                  onComment: widget.onComment,
-                  onFollow: widget.onFollow,
-                  onLike: widget.onLike,
-                  onShare: widget.onShare,
-                  showVerifiedTick: widget.showVerifiedTick,
-                  swiperController: controller,
-                  showProgressIndicator: widget.showProgressIndicator,
-                );
-              },
-              controller: controller,
-              itemCount: widget.reelsList.length,
-              scrollDirection: Axis.vertical,
-              onIndexChanged: widget.onIndexChanged,
-            ),
-            if (widget.showAppbar)
-              Container(
-                color: Colors.black26,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                        onPressed: widget.onClickBackArrow ??
-                            () => Navigator.pop(context),
-                        icon: const Icon(Icons.arrow_back,color: Colors.white,)),
-                    Text(
-                      widget.appbarTitle ?? 'Reels View',
-                      style: const TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white
-                      ),
+              return ReelsPage(
+                key: UniqueKey(),
+                item: widget.reelsList[index],
+                onClickMoreBtn: widget.onClickMoreBtn,
+                onComment: widget.onComment,
+                onFollow: widget.onFollow,
+                onLike: widget.onLike,
+                onShare: widget.onShare,
+                showVerifiedTick: widget.showVerifiedTick,
+                swiperController: controller,
+                showProgressIndicator: widget.showProgressIndicator,
+              );
+            },
+            controller: controller,
+            itemCount: widget.reelsList.length,
+            scrollDirection: Axis.vertical,
+            onIndexChanged: widget.onIndexChanged,
+          ),
+          if (widget.showAppbar)
+            Container(
+              color: Colors.black26,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                      onPressed: widget.onClickBackArrow ??
+                          () => Navigator.pop(context),
+                      icon: const Icon(Icons.arrow_back,color: Colors.white,)),
+                  Text(
+                    widget.appbarTitle ?? 'Reels View',
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white
                     ),
-                    const SizedBox(),
-                  ],
-                ),
+                  ),
+                  const SizedBox(),
+                ],
               ),
-          ],
-        ),
+            ),
+        ],
       ),
     );
   }

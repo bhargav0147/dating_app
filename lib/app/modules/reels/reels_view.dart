@@ -17,6 +17,21 @@ class ReelsView extends StatelessWidget {
       showAppbar: false,
         showProgressIndicator: true,
         showVerifiedTick: true,
+        onComment: (p0) {
+
+        },
+        onLike: (p0) {
+
+        },
+        onClickMoreBtn: () {
+
+        },
+        onFollow: () {
+
+        },
+        onShare: (p0) {
+
+        },
       ),
     );
   }

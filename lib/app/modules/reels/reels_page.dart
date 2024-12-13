@@ -2,7 +2,9 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:chewie/chewie.dart';
 import 'package:dating_app/app/modules/reels/models/reel_model.dart';
 import 'package:dating_app/app/modules/reels/utils/url_checker.dart';
+import 'package:dating_app/app/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:video_player/video_player.dart';
 import 'components/like_icon.dart';
 import 'components/screen_options.dart';
@@ -55,11 +57,15 @@ class _ReelsPageState extends State<ReelsPage> {
     try {
       _videoPlayerController = VideoPlayerController.network(widget.item.url);
       await _videoPlayerController!.initialize();
+      final aspectRatio = MediaQuery.of(context).size.width /
+          MediaQuery.of(context).size.height;
+
       _chewieController = ChewieController(
         videoPlayerController: _videoPlayerController!,
         autoPlay: true,
         showControls: false,
         looping: false,
+        aspectRatio: aspectRatio,
       );
       setState(() {});
       _videoPlayerController!.addListener(() {
@@ -95,35 +101,41 @@ class _ReelsPageState extends State<ReelsPage> {
       fit: StackFit.expand,
       children: [
         _chewieController != null &&
-            _videoPlayerController != null &&
-            _videoPlayerController!.value.isInitialized
+                _videoPlayerController != null &&
+                _videoPlayerController!.value.isInitialized
             ? FittedBox(
-          fit: BoxFit.cover,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: GestureDetector(
-              onDoubleTap: () {
-                if (!widget.item.isLiked) {
-                  _liked = true;
-                  widget.onLike?.call(widget.item.url);
-                  setState(() {});
-                }
-              },
-              child: Chewie(
-                controller: _chewieController!,
+                fit: BoxFit.fill,
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  child: GestureDetector(
+                    onDoubleTap: () {
+                      if (!widget.item.isLiked) {
+                        _liked = true;
+                        widget.onLike?.call(widget.item.url);
+                        setState(() {});
+                      }
+                    },
+                    child: Chewie(
+                      controller: _chewieController!,
+                    ),
+                  ),
+                ),
+              )
+            : Skeletonizer(
+                enabled:
+                    true, // Enable skeleton effect based on the loading state
+                effect: PulseEffect(
+                    from: AppColors.black.withOpacity(0.5),
+                    to: AppColors.black.withOpacity(
+                        0.40)), // The animation effect for the skeleton // Placeholder container color
+                child: Container(
+                  height:
+                      MediaQuery.of(context).size.height * 1, // Example child
+                  width: MediaQuery.of(context).size.width * 1,
+                  color: Colors.white, // Background of the actual content
+                ),
               ),
-            ),
-          ),
-        )
-            : Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            CircularProgressIndicator(),
-            SizedBox(height: 10),
-            Text('Loading...')
-          ],
-        ),
         if (_liked)
           const Center(
             child: LikeIcon(),
@@ -137,10 +149,10 @@ class _ReelsPageState extends State<ReelsPage> {
             child: VideoProgressIndicator(
               _videoPlayerController!,
               allowScrubbing: false,
-              colors: const VideoProgressColors(
-                backgroundColor: Colors.blueGrey,
-                bufferedColor: Colors.blueGrey,
-                playedColor: Colors.blueAccent,
+              colors: VideoProgressColors(
+                backgroundColor: AppColors.white,
+                bufferedColor: AppColors.white,
+                playedColor: AppColors.primary,
               ),
             ),
           ),
@@ -157,4 +169,3 @@ class _ReelsPageState extends State<ReelsPage> {
     );
   }
 }
-

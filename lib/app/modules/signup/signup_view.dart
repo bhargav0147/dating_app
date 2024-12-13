@@ -1,15 +1,18 @@
 import 'package:dating_app/app/config/app_variables.dart';
+import 'package:dating_app/app/modules/signup/signup_controller.dart';
 import 'package:dating_app/app/routes/app_routes.dart';
 import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/theme/fonts.dart';
 import 'package:dating_app/app/utils/navigation.dart';
 import 'package:dating_app/app/utils/sized_box_helper.dart';
+import 'package:dating_app/app/utils/snackbars.dart';
 import 'package:dating_app/app/validator/textfild_validator.dart';
 import 'package:dating_app/app/widgets/back_button.dart';
 import 'package:dating_app/app/widgets/custom_button.dart';
 import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:dating_app/app/widgets/custom_textfiled.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({super.key});
@@ -17,6 +20,13 @@ class SignupView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
+    final SignupController signupController = Get.put(SignupController());
+    TextEditingController txtEmail =
+        TextEditingController(text: 'bhargavpatel6832@gmail.com');
+    TextEditingController txtPhoneNumber =
+        TextEditingController(text: '9898637200');
+    TextEditingController txtPassword = TextEditingController(text: '123456');
+    TextEditingController txtUserName = TextEditingController(text: 'Hello1');
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Form(
@@ -48,6 +58,7 @@ class SignupView extends StatelessWidget {
               SizedBoxHelper.h35,
               CustomTextField(
                 hintText: 'Email',
+                controller: txtEmail,
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) {
                   return Validators.emailValidator(value);
@@ -55,28 +66,48 @@ class SignupView extends StatelessWidget {
               ),
               SizedBoxHelper.h10,
               CustomTextField(
-                hintText: 'Password',
-                keyboardType: TextInputType.text,
+                hintText: 'Phone Number',
+                controller: txtPhoneNumber,
+                keyboardType: TextInputType.number,
                 validator: (value) {
-                  return Validators.passwordValidator(value);
+                  return Validators.phoneValidator(value);
                 },
               ),
               SizedBoxHelper.h10,
               CustomTextField(
+                hintText: 'Password',
+                controller: txtPassword,
+                keyboardType: TextInputType.text,
+                validator: (value) {
+                  return Validators.passwordValidator(value);
+                },
+                obscureText: true,
+              ),
+              SizedBoxHelper.h10,
+              CustomTextField(
                 hintText: 'User Name',
+                controller: txtUserName,
                 keyboardType: TextInputType.text,
                 validator: (value) {
                   return Validators.userNameValidator(value);
                 },
               ),
               SizedBoxHelper.h35,
-              CustomButton(
-                label: 'Continue',
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    NavigationUtils.navigateTo(AppRoutes.otp);
-                  }
-                },
+              Obx(
+                () => CustomButton(
+                  label: 'Continue',
+                  isLoading: signupController.isButtonLoading.value,
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      signupController.signUp(
+                          email: txtEmail.text,
+                          password: txtPassword.text,
+                          userName: txtUserName.text,
+                          phoneNumber: txtPhoneNumber.text,
+                          context: context);
+                    }
+                  },
+                ),
               )
             ],
           )),
