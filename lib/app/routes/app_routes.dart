@@ -12,6 +12,8 @@ import 'package:dating_app/app/modules/friend_profile/friend_profile_binding.dar
 import 'package:dating_app/app/modules/friend_profile/friend_profile_view.dart';
 import 'package:dating_app/app/modules/gender/gender_binding.dart';
 import 'package:dating_app/app/modules/gender/gender_view.dart';
+import 'package:dating_app/app/modules/multiple_Images/multiple_Images_binding.dart';
+import 'package:dating_app/app/modules/multiple_Images/multiple_images_view.dart';
 import 'package:dating_app/app/modules/settings/settings_binding.dart';
 import 'package:dating_app/app/modules/settings/settings_view.dart';
 import 'package:dating_app/app/modules/signup/signup_binding.dart';
@@ -50,6 +52,7 @@ class AppRoutes {
   static const String chatMainView = '/chatMainView';
   static const String friendProfile = '/friendProfile';
   static const String changePassword = '/changePassword';
+  static const String multipleImages = '/multipleImages';
 
   static final routes = [
     GetPage(
@@ -113,6 +116,10 @@ class AppRoutes {
         name: changePassword,
         page: () => const ChangePasswordView(),
         binding: ChangePasswordBinding()),
+    GetPage(
+        name: multipleImages,
+        page: () => const MultipleImagesView(),
+        binding: MultipleImagesBinding()),
     // GetPage(
     //     name: chatMainView,
     //     page: () => const ChatMainView(),

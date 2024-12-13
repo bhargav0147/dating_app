@@ -188,7 +188,7 @@ class EditprofileView extends StatelessWidget {
                     return;
                   }
                   if (formKey.currentState!.validate()) {
-                    NavigationUtils.navigateTo(AppRoutes.gender);
+                    NavigationUtils.navigateTo(AppRoutes.multipleImages);
                   }
                 },
               )
