@@ -13,6 +13,9 @@ import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:dating_app/app/widgets/custom_textfiled.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl_phone_field/phone_number.dart';
+
+import '../../widgets/custom_phone_textfiled.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({super.key});
@@ -27,6 +30,7 @@ class SignupView extends StatelessWidget {
         TextEditingController(text: '9898637200');
     TextEditingController txtPassword = TextEditingController(text: '123456');
     TextEditingController txtUserName = TextEditingController(text: 'Hello1');
+
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Form(
@@ -65,13 +69,9 @@ class SignupView extends StatelessWidget {
                 },
               ),
               SizedBoxHelper.h10,
-              CustomTextField(
+              CustomPhoneTextField(
                 hintText: 'Phone Number',
                 controller: txtPhoneNumber,
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  return Validators.phoneValidator(value);
-                },
               ),
               SizedBoxHelper.h10,
               CustomTextField(
@@ -98,14 +98,15 @@ class SignupView extends StatelessWidget {
                   label: 'Continue',
                   isLoading: signupController.isButtonLoading.value,
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      signupController.signUp(
-                          email: txtEmail.text,
-                          password: txtPassword.text,
-                          userName: txtUserName.text,
-                          phoneNumber: txtPhoneNumber.text,
-                          context: context);
-                    }
+                    print(txtPhoneNumber.text);
+                    // if (formKey.currentState!.validate()) {
+                    //   signupController.signUp(
+                    //       email: txtEmail.text,
+                    //       password: txtPassword.text,
+                    //       userName: txtUserName.text,
+                    //       phoneNumber: txtPhoneNumber.text,
+                    //       context: context);
+                    // }
                   },
                 ),
               )
