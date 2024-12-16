@@ -101,7 +101,9 @@ class WelcomeView extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: welcomeController.signInWithGoogle,
+                      onTap: () {
+                        welcomeController.signInWithGoogle(context);
+                      },
                       child: Container(
                         height: 64,
                         width: 64,
