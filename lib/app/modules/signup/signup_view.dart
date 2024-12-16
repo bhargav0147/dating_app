@@ -72,6 +72,13 @@ class SignupView extends StatelessWidget {
               CustomPhoneTextField(
                 hintText: 'Phone Number',
                 controller: txtPhoneNumber,
+                onChanged: (value) {
+                  signupController.mobileNumber.value = value.number;
+                  signupController.countryCode.value = value.countryCode;
+                },
+                onCountryChanged: (value) {
+                  signupController.countryCode.value = value.regionCode;
+                },
               ),
               SizedBoxHelper.h10,
               CustomTextField(
@@ -98,15 +105,18 @@ class SignupView extends StatelessWidget {
                   label: 'Continue',
                   isLoading: signupController.isButtonLoading.value,
                   onPressed: () {
-                    print(txtPhoneNumber.text);
-                    // if (formKey.currentState!.validate()) {
-                    //   signupController.signUp(
-                    //       email: txtEmail.text,
-                    //       password: txtPassword.text,
-                    //       userName: txtUserName.text,
-                    //       phoneNumber: txtPhoneNumber.text,
-                    //       context: context);
-                    // }
+                    if (formKey.currentState!.validate()) {
+                     if(signupController.mobileNumber.value.isNotEmpty && signupController.countryCode.value.isNotEmpty)
+                       {
+                         signupController.sendOtp(
+                             email: txtEmail.text,
+                             userName: txtUserName.text,
+                             password: txtPassword.text,
+                             context: context);
+                       }else{
+                       SnackbarUtils.showInfo(context, 'Please Enter Mobile Number');
+                     }
+                    }
                   },
                 ),
               )

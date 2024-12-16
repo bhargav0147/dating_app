@@ -1,6 +1,9 @@
+import 'package:dating_app/app/modules/otp/otp_controller.dart';
+import 'package:dating_app/app/modules/signup/signup_Model.dart';
 import 'package:dating_app/app/theme/fonts.dart';
 import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../config/app_variables.dart';
@@ -16,6 +19,9 @@ class OtpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SignUpFormModel signUpFormModel = Get.arguments as SignUpFormModel;
+    final TextEditingController txtOtp = TextEditingController();
+    final OtpController otpController = Get.put(OtpController());
     final formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -47,6 +53,7 @@ class OtpView extends StatelessWidget {
               SizedBoxHelper.h35,
               Pinput(
                 keyboardType: TextInputType.number,
+                controller: txtOtp,
                 validator: (value) {
                   if (value!.length != 4) {
                     return "Enter Otp";
@@ -54,6 +61,7 @@ class OtpView extends StatelessWidget {
                   return null;
                 },
                 length: 4,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 defaultPinTheme: PinTheme(
                     height: 70,
                     width: 70,
@@ -86,13 +94,17 @@ class OtpView extends StatelessWidget {
                         border: Border.all(color: AppColors.red))),
               ),
               SizedBoxHelper.h35,
-              CustomButton(
-                label: 'Continue',
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    NavigationUtils.navigateTo(AppRoutes.editProfile);
-                  }
-                },
+              Obx(
+                () =>  CustomButton(
+                  label: 'Continue',
+                  isLoading: otpController.isButtonLoading.value,
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      signUpFormModel.otp = txtOtp.text;
+                      otpController.userRegister(body: signUpFormModel.toJson(), context: context);
+                    }
+                  },
+                ),
               )
             ],
           )),

@@ -33,4 +33,5 @@ class AppVariables {
     final token = await getUserToken();
     return token != null && token.isNotEmpty;
   }
+
 }

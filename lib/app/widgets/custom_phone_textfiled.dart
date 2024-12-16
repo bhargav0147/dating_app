@@ -1,6 +1,7 @@
-import 'package:dating_app/app/modules/home/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:intl_phone_field/phone_number.dart';
 import '../theme/colors.dart';
 import '../theme/fonts.dart'; // Make sure AppColors is imported correctly.
 
@@ -15,7 +16,8 @@ class CustomPhoneTextField extends StatelessWidget {
   final Color leadingIconColor;
   final TextEditingController? controller;
   final TextStyle? textStyle;
-  final String? Function(String?)? validator;
+  final void Function(PhoneNumber)? onChanged;
+  final void Function(Country)? onCountryChanged;
 
   const CustomPhoneTextField({
     super.key,
@@ -29,7 +31,8 @@ class CustomPhoneTextField extends StatelessWidget {
     this.controller,
     this.textStyle,
     this.useHintText = false,
-    this.validator,
+    this.onChanged,
+    this.onCountryChanged,
   });
 
   @override
@@ -37,6 +40,8 @@ class CustomPhoneTextField extends StatelessWidget {
     return IntlPhoneField(
       controller: controller,
       showDropdownIcon: false,
+      onChanged: onChanged,
+      onCountryChanged: onCountryChanged,
       flagsButtonPadding: const EdgeInsets.symmetric(horizontal: 10),
       cursorColor: cursorColor,
       keyboardType: TextInputType.number,

@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:dating_app/app/modules/signup/signup_Model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,29 +12,39 @@ import '../../utils/snackbars.dart';
 
 class SignupController extends GetxController {
   RxBool isButtonLoading = false.obs;
+  RxString mobileNumber = ''.obs;
+  RxString countryCode = ''.obs;
   var data = {}.obs;
 
-  Future<void> signUp(
+  Future<void> sendOtp(
       {required String email,
-      required String password,
       required String userName,
-      required String phoneNumber,
+        required String password,
       required BuildContext context}) async {
+
     isButtonLoading.value = true;
     Map<String, dynamic> body = {
       'email': email,
-      'password': password,
-      'phoneNumber': phoneNumber,
+      'mobile': mobileNumber.value,
+      'countryCode': countryCode.value,
+      'isForgot':false.toString(),
       'username': userName,
     };
+    print(body);
     final response =
-        await ApiService().postWithoutToken(ApiConstants.signUp, body);
-    if (response['statusCode'] == 201) {
+        await ApiService().postWithoutToken(ApiConstants.sendOtp, body);
+    if (response['statusCode'] == 200) {
       data.value = response['data'];
-      NavigationUtils.navigateTo(AppRoutes.otp);
+      final SignUpFormModel signUpFormModel = SignUpFormModel(
+        email: email,
+        mobile: mobileNumber.value,
+        countryCode: countryCode.value,
+        username: userName,
+        password: password,
+      );
+      NavigationUtils.navigateTo(AppRoutes.otp,arguments: signUpFormModel);
       SnackbarUtils.showSuccess(context, '${response['data']['message']}');
     } else {
-      NavigationUtils.navigateTo(AppRoutes.otp);
       SnackbarUtils.showError(context, '${response['data']['message']}');
     }
     isButtonLoading.value = false;

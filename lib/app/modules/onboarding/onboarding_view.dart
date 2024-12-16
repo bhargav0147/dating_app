@@ -7,6 +7,7 @@ import 'package:dating_app/app/utils/sized_box_helper.dart';
 import 'package:dating_app/app/widgets/custom_button.dart';
 import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'onboarding_controller.dart';
@@ -33,7 +34,7 @@ class OnboardingView extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(15),
-                      child: Image.network(
+                      child: SvgPicture.asset(
                         detail['image']!,
                         height: screenHeight * 0.45,
                         width: double.infinity,
@@ -48,7 +49,7 @@ class OnboardingView extends StatelessWidget {
                     ),
                     SizedBoxHelper.h10,
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: CustomText(
                         text: detail['description'].toString(),
                         color: AppColors.black,
@@ -61,9 +62,9 @@ class OnboardingView extends StatelessWidget {
                 );
               }).toList(),
               options: CarouselOptions(
-                height: screenHeight * 0.7,
+                height: screenHeight * 0.75,
                 aspectRatio: 16 / 9,
-                viewportFraction: 0.8,
+                viewportFraction: 1,
                 initialPage: 0,
                 enableInfiniteScroll: true,
                 reverse: false,

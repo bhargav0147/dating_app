@@ -1,3 +1,4 @@
+import 'package:dating_app/app/assets/image_config.dart';
 import 'package:get/get.dart';
 
 class OnboardingController extends GetxController {
@@ -5,22 +6,21 @@ class OnboardingController extends GetxController {
 
   final onboardingDetails = [
     {
-      'image':
-          'https://images.pexels.com/photos/1391498/pexels-photo-1391498.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'image':AppImages.onboardingOne,
       'description':
           'Users going through a vetting process to ensure you never match with bots.',
       'title': 'Algorithm'
     },
     {
       'image':
-          'https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      AppImages.onboardingTwo,
       'description':
           'We match you with people that have alarge array of similar interests.',
       'title': 'Matches'
     },
     {
       'image':
-          'https://images.pexels.com/photos/921646/pexels-photo-921646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      AppImages.onboardingThree,
       'description':
           'Sign up today and enjoy the first month of premium benefits on us.',
       'title': 'Premium '
