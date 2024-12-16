@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../config/app_variables.dart';
 import '../../routes/app_routes.dart';
 import '../../service/api/api_calling.dart';
 import '../../service/api/api_constants.dart';
@@ -17,10 +18,9 @@ class OtpController extends GetxController {
     isButtonLoading.value = true;
     final response =
     await ApiService().postWithoutToken(ApiConstants.register, body);
-    print(response);
+
     if (response['statusCode'] == 201) {
-
-
+      await AppVariables.saveUserToken(response['data']['user']['token']);
       // NavigationUtils.navigateTo(AppRoutes.dashbaord);
       SnackbarUtils.showSuccess(context, '${response['data']['message']}');
     } else {

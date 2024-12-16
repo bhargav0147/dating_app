@@ -19,8 +19,8 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final LoginController loginController = Get.put(LoginController());
-    TextEditingController txtEmail = TextEditingController(text: 'knikniknikni506@gmail.com');
-    TextEditingController txtPassword = TextEditingController(text: 'password');
+    TextEditingController txtEmail = TextEditingController();
+    TextEditingController txtPassword = TextEditingController();
     final formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: AppColors.white,

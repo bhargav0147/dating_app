@@ -110,50 +110,51 @@ class ApiService {
 //     }
 //   }
 //
+
 //   // POST Method With MultiPart
-//
-//   Future<dynamic> postMultiPartWithToken(
-//       String endpoint,
-//       Map<String, dynamic> data,
-//       List<http.MultipartFile> imageList,
-//       String token) async {
-//     final uri = Uri.parse(baseUrl + endpoint);
-//
-//     var request = http.MultipartRequest('POST', uri);
-//     request.headers['Content-Type'] = 'multipart/form-data';
-//     request.headers['Authorization'] = 'Bearer $token';
-//
-//     data.forEach((key, value) {
-//       if (value is String) {
-//         request.fields[key] = value;
-//       } else if (value is double || value is int) {
-//         request.fields[key] = value.toString();
-//       } else if (value is bool) {
-//         request.fields[key] = value ? 'true' : 'false';
-//       } else if (value is List || value is Map) {
-//         request.fields[key] = jsonEncode(value);
-//       } else {
-//         request.fields[key] = value.toString();
-//       }
-//     });
-//
-//     request.files.addAll(imageList);
-//
-//     try {
-//       final response = await request.send();
-//
-//       if (response.statusCode == 200 || response.statusCode == 201) {
-//         final responseBody = await response.stream.bytesToString();
-//         return jsonDecode(responseBody);
-//       } else {
-//         final errorBody = await response.stream.bytesToString();
-//
-//         throw Exception('Failed to upload images: $errorBody');
-//       }
-//     } catch (e) {
-//       throw Exception('Failed to upload images: $e');
-//     }
-//   }
+
+  Future<dynamic> postMultiPartWithToken(
+      String endpoint,
+      Map<String, dynamic> data,
+      List<http.MultipartFile> imageList,
+      String token) async {
+    final uri = Uri.parse(baseUrl + endpoint);
+
+    var request = http.MultipartRequest('POST', uri);
+    request.headers['Content-Type'] = 'multipart/form-data';
+    request.headers['Authorization'] = 'Bearer $token';
+
+    data.forEach((key, value) {
+      if (value is String) {
+        request.fields[key] = value;
+      } else if (value is double || value is int) {
+        request.fields[key] = value.toString();
+      } else if (value is bool) {
+        request.fields[key] = value ? 'true' : 'false';
+      } else if (value is List || value is Map) {
+        request.fields[key] = jsonEncode(value);
+      } else {
+        request.fields[key] = value.toString();
+      }
+    });
+
+    request.files.addAll(imageList);
+
+    try {
+      final response = await request.send();
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final responseBody = await response.stream.bytesToString();
+        return jsonDecode(responseBody);
+      } else {
+        final errorBody = await response.stream.bytesToString();
+
+        throw Exception('Failed to upload images: $errorBody');
+      }
+    } catch (e) {
+      throw Exception('Failed to upload images: $e');
+    }
+  }
 //
 //   // DELETE API With Token Provide
 //

@@ -21,11 +21,11 @@ class ChangePasswordView extends StatelessWidget {
         Get.put(ChangePasswordController());
     final formKey = GlobalKey<FormState>();
     TextEditingController txtOldPassword =
-        TextEditingController(text: 'password');
+        TextEditingController();
     TextEditingController txtNewPassword =
-        TextEditingController(text: 'password');
+        TextEditingController();
     TextEditingController txtConfirmNewPassword =
-        TextEditingController(text: 'password');
+        TextEditingController();
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Form(
@@ -55,6 +55,7 @@ class ChangePasswordView extends StatelessWidget {
                 SizedBoxHelper.h30,
                 CustomTextField(
                   hintText: 'Old Password',
+                  obscureText: true,
                   controller: txtOldPassword,
                   onChange: (value) {},
                   keyboardType: TextInputType.text,
@@ -65,6 +66,7 @@ class ChangePasswordView extends StatelessWidget {
                 SizedBoxHelper.h15,
                 CustomTextField(
                   hintText: 'New Password',
+                  obscureText: true,
                   controller: txtNewPassword,
                   keyboardType: TextInputType.text,
                   onChange: (value) {},
@@ -75,6 +77,7 @@ class ChangePasswordView extends StatelessWidget {
                 SizedBoxHelper.h15,
                 CustomTextField(
                   hintText: 'Confirmed New Password',
+                  obscureText: true,
                   controller: txtConfirmNewPassword,
                   keyboardType: TextInputType.text,
                   onChange: (value) {},

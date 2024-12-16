@@ -1,5 +1,7 @@
 import 'package:dating_app/app/assets/image_config.dart';
+import 'package:dating_app/app/modules/welcome/welcome_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../config/app_variables.dart';
 import '../../routes/app_routes.dart';
@@ -18,7 +20,7 @@ class WelcomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
     double screenWidth = MediaQuery.of(context).size.width;
-
+    final WelcomeController  welcomeController = Get.put(WelcomeController());
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Padding(
@@ -98,16 +100,19 @@ class WelcomeView extends StatelessWidget {
                             height: 24, width: 24),
                       ),
                     ),
-                    Container(
-                      height: 64,
-                      width: 64,
-                      decoration: BoxDecoration(
-                          color: AppColors.white,
-                          border: Border.all(color: AppColors.grey.shade200),
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Center(
-                        child: Image.asset(AppImages.google,
-                            height: 24, width: 24),
+                    GestureDetector(
+                      onTap: welcomeController.signInWithGoogle,
+                      child: Container(
+                        height: 64,
+                        width: 64,
+                        decoration: BoxDecoration(
+                            color: AppColors.white,
+                            border: Border.all(color: AppColors.grey.shade200),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Center(
+                          child: Image.asset(AppImages.google,
+                              height: 24, width: 24),
+                        ),
                       ),
                     )
                   ],

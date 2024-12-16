@@ -130,8 +130,9 @@ class SettingsView extends StatelessWidget {
                             ),
                           ),
                           TextButton(
-                            onPressed: () {
-                              NavigationUtils.offAllTo(AppRoutes.login);
+                            onPressed: () async {
+                              await AppVariables.clearUserToken();
+                              NavigationUtils.offAllTo(AppRoutes.onboarding);
                             },
                             child: const CustomText(
                               text:'Logout',

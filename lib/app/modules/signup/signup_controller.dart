@@ -30,7 +30,7 @@ class SignupController extends GetxController {
       'isForgot':false.toString(),
       'username': userName,
     };
-    print(body);
+
     final response =
         await ApiService().postWithoutToken(ApiConstants.sendOtp, body);
     if (response['statusCode'] == 200) {
