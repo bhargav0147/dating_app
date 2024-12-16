@@ -1,25 +1,11 @@
-import 'dart:convert' as convert;
+
 import 'dart:convert';
 import 'package:dating_app/app/config/app_variables.dart';
-import 'package:path/path.dart' as path;
 import 'package:http/http.dart' as http;
-import 'api_constants.dart';
-import 'dart:io';
 
 class ApiService {
   final String baseUrl = AppVariables.APIBASEURL;
 
-  // Get API Without Token Provide
-
-  // Future<dynamic> getWithoutToken(String endpoint) async {
-  //   final response = await http.get(Uri.parse(baseUrl + endpoint));
-  //
-  //   if (response.statusCode == 200 || response.statusCode == 201) {
-  //     return jsonDecode(response.body);
-  //   } else {
-  //     throw Exception('Failed to load data');
-  //   }
-  // }
 
   // POST API Without Token Provide
 
@@ -27,10 +13,36 @@ class ApiService {
       String endpoint, Map<String, dynamic> body) async {
     final uri = Uri.parse(baseUrl + endpoint);
     try {
-
       final response = await http.post(uri,
           headers: {"Content-Type": "application/x-www-form-urlencoded"},
           body: body);
+      return {
+        'statusCode': response.statusCode,
+        'data': json.decode(response.body),
+      };
+    } catch (e) {
+      return {
+        'statusCode': 500,
+        'data': {'error': 'An error occurred: $e'},
+      };
+    }
+  }
+
+  // POST API With Token Provide
+
+  Future<dynamic> postWithToken(
+      String endpoint, Map<String, dynamic> body, String token) async {
+    final uri = Uri.parse(baseUrl + endpoint);
+    try {
+      final response = await http.post(
+        uri,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Authorization": "Bearer $token",
+        },
+        body: body,
+      );
+
       return {
         'statusCode': response.statusCode,
         'data': json.decode(response.body),

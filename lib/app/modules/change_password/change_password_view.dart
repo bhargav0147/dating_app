@@ -20,9 +20,12 @@ class ChangePasswordView extends StatelessWidget {
     final ChangePasswordController changePasswordController =
         Get.put(ChangePasswordController());
     final formKey = GlobalKey<FormState>();
-    TextEditingController txtOldPassword = TextEditingController();
-    TextEditingController txtNewPassword = TextEditingController();
-    TextEditingController txtConfirmNewPassword = TextEditingController();
+    TextEditingController txtOldPassword =
+        TextEditingController(text: 'password');
+    TextEditingController txtNewPassword =
+        TextEditingController(text: 'password');
+    TextEditingController txtConfirmNewPassword =
+        TextEditingController(text: 'password');
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Form(
@@ -83,14 +86,19 @@ class ChangePasswordView extends StatelessWidget {
                   },
                 ),
                 SizedBoxHelper.h30,
-                CustomButton(
-                  label: 'Submit',
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-
-                    }
-                  },
-                  isLoading: changePasswordController.isButtonLoading.value,
+                Obx(
+                  () => CustomButton(
+                    label: 'Submit',
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        changePasswordController.changePassword(
+                            oldPassword: txtOldPassword.text,
+                            newPassword: txtConfirmNewPassword.text,
+                            context: context);
+                      }
+                    },
+                    isLoading: changePasswordController.isButtonLoading.value,
+                  ),
                 )
               ],
             ),
