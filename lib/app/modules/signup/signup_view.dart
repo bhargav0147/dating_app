@@ -1,9 +1,7 @@
 import 'package:dating_app/app/config/app_variables.dart';
 import 'package:dating_app/app/modules/signup/signup_controller.dart';
-import 'package:dating_app/app/routes/app_routes.dart';
 import 'package:dating_app/app/theme/colors.dart';
 import 'package:dating_app/app/theme/fonts.dart';
-import 'package:dating_app/app/utils/navigation.dart';
 import 'package:dating_app/app/utils/sized_box_helper.dart';
 import 'package:dating_app/app/utils/snackbars.dart';
 import 'package:dating_app/app/validator/textfild_validator.dart';
@@ -13,7 +11,6 @@ import 'package:dating_app/app/widgets/custom_text.dart';
 import 'package:dating_app/app/widgets/custom_textfiled.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl_phone_field/phone_number.dart';
 
 import '../../widgets/custom_phone_textfiled.dart';
 

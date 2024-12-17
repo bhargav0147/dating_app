@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dating_app/app/config/app_variables.dart';
 import 'package:dating_app/app/modules/login/login_controller.dart';
 import 'package:dating_app/app/theme/colors.dart';

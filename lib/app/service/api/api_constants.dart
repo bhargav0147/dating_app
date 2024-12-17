@@ -6,4 +6,5 @@ class ApiConstants {
   static const String register = 'api/user/auth/register';
   static const String changePassword = 'api/user/auth/reset';
   static const String getUserProfile = 'api/user/profile';
+  static const String addPref = 'api/user/prefrence';
 }

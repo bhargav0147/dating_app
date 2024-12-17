@@ -123,8 +123,9 @@ class YourpreferenceView extends StatelessWidget {
                     visible: controller.selectedIndices.length >= 5,
                     child: CustomButton(
                       label: 'Submit',
+                      isLoading: controller.isButtonLoading.value,
                       onPressed: () {
-                        NavigationUtils.navigateTo(AppRoutes.yourPreference);
+                        controller.addPref(context);
                       },
                     ),
                   ),

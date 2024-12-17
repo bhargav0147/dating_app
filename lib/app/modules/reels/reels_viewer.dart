@@ -3,7 +3,6 @@ import 'package:dating_app/app/modules/reels/models/reel_model.dart';
 import 'package:dating_app/app/modules/reels/reels_page.dart';
 import 'package:flutter/material.dart';
 
-import '../../theme/colors.dart';
 
 class ReelsViewer extends StatefulWidget {
   /// use reel model and provide list of reels, list contains reels object, object contains url and other parameters

@@ -1,7 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:chewie/chewie.dart';
 import 'package:dating_app/app/modules/reels/models/reel_model.dart';
-import 'package:dating_app/app/modules/reels/utils/url_checker.dart';
 import 'package:dating_app/app/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';

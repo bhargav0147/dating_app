@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../config/app_variables.dart';
-import '../../routes/app_routes.dart';
 import '../../service/api/api_calling.dart';
 import '../../service/api/api_constants.dart';
-import '../../utils/navigation.dart';
 import '../../utils/snackbars.dart';
 
 class OtpController extends GetxController {

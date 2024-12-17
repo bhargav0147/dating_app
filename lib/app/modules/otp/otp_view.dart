@@ -7,9 +7,7 @@ import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../config/app_variables.dart';
-import '../../routes/app_routes.dart';
 import '../../theme/colors.dart';
-import '../../utils/navigation.dart';
 import '../../utils/sized_box_helper.dart';
 import '../../widgets/back_button.dart';
 import '../../widgets/custom_button.dart';

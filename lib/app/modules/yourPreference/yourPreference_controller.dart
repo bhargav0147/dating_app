@@ -3,8 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../config/app_variables.dart';
+import '../../routes/app_routes.dart';
+import '../../service/api/api_calling.dart';
+import '../../service/api/api_constants.dart';
+import '../../utils/navigation.dart';
+import '../../utils/snackbars.dart';
+
 class YourpreferenceController extends GetxController {
-  RxList<String> genderList = ['Man', 'Woman', 'Transgender', 'Bisexual'].obs;
+  RxBool isButtonLoading = false.obs;
+  RxList<String> genderList = ['Male', 'Female', 'Transgender', 'Bisexual'].obs;
   RxInt selectedIndex = 0.obs;
   Rx<RangeValues> ageRangeValue = const RangeValues(18, 60).obs;
   RxDouble minAge = 10.0.obs;
@@ -37,11 +45,49 @@ class YourpreferenceController extends GetxController {
     }
   }
 
+  String getSelectedInterests(List<int> selectedIndices) {
+
+    final selectedInterests = selectedIndices
+        .map((index) => interests[index]['text'] as String)
+        .toList();
+
+
+    return selectedInterests.join(', ');
+  }
+
   void selectOption(int index) {
     selectedIndex.value = index;
   }
 
   void changeAgeValue (RangeValues value){
     ageRangeValue.value = value;
+  }
+
+  Future<void> addPref(BuildContext context) async {
+    isButtonLoading.value = true;
+    String? token = await AppVariables.getUserToken();
+
+    if (token == null) {
+      NavigationUtils.offAllTo(AppRoutes.onboarding);
+      SnackbarUtils.showError(context, 'Session expired. Please log in again.');
+      isButtonLoading.value = false;
+      return;
+    }
+
+    Map<String,dynamic> body = {
+      'genderPrefrences': genderList[selectedIndex.value],
+      'minAge': ageRangeValue.value.start.toString(),
+      'maxAge': ageRangeValue.value.end.toString(),
+      'interests': getSelectedInterests(selectedIndices)
+    };
+    print(body);
+    final response = await ApiService().postWithToken(ApiConstants.addPref, body,token);
+    print(response);
+    if (response['statusCode'] == 200) {
+      SnackbarUtils.showSuccess(context,'${response['data']['message']}');
+    } else {
+      SnackbarUtils.showError(context,'${response['data']['message']}');
+    }
+    isButtonLoading.value = false;
   }
 }
