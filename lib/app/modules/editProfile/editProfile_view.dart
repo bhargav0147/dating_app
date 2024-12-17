@@ -13,6 +13,7 @@ import '../../routes/app_routes.dart';
 import '../../theme/colors.dart';
 import '../../theme/fonts.dart';
 
+import '../../utils/getLocationDetails.dart';
 import '../../utils/navigation.dart';
 import '../../utils/sized_box_helper.dart';
 import '../../utils/snackbars.dart';
@@ -130,6 +131,16 @@ class EditprofileView extends StatelessWidget {
                 },
               ),
               SizedBoxHelper.h15,
+              CustomTextField(
+                hintText: 'Bio',
+                maxLine: 3,
+                keyboardType: TextInputType.text,
+                validator: (value) {
+                  return Validators.bioValidator(value);
+                },
+              ),
+
+              SizedBoxHelper.h15,
               GestureDetector(
                 onTap: () async {
                   DateTime? selectedDate = await DatePickerHelper.pickDate(
@@ -166,6 +177,49 @@ class EditprofileView extends StatelessWidget {
                                 ? 'Choose birthday date'
                                 : controller.selectedBirthDate.value
                                     .split(' ')[0],
+                            style: AppFonts.medium
+                                .copyWith(color: AppColors.primary),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBoxHelper.h15,
+              GestureDetector(
+                onTap: () async {
+                  Map<String, String> locationDetails =
+                  await getLocationDetails();
+
+                  controller.city.value = locationDetails['city'].toString();
+                  controller.state.value =
+                      locationDetails['state'].toString();
+                  controller.country.value =
+                      locationDetails['country'].toString();
+                },
+                child: Container(
+                  height: 58,
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.location_on_rounded,
+                          size: 20,
+                          color: AppColors.primary,
+                        ),
+                        SizedBoxHelper.w10,
+                        Obx(
+                              () => Text(
+                            controller.state.value.isEmpty
+                                ? 'Choose Your Location'
+                                : '${controller.city.value} ${controller.state.value} ${controller.country.value}',
                             style: AppFonts.medium
                                 .copyWith(color: AppColors.primary),
                           ),

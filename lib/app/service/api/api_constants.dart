@@ -5,4 +5,5 @@ class ApiConstants {
   static const String sendOtp = 'api/user/auth/sendOtp';
   static const String register = 'api/user/auth/register';
   static const String changePassword = 'api/user/auth/reset';
+  static const String getUserProfile = 'api/user/profile';
 }

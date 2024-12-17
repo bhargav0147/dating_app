@@ -55,6 +55,32 @@ class ApiService {
     }
   }
 
+  // POST API With Token Provide
+
+  Future<dynamic> getWithToken(
+      String endpoint,String token) async {
+    final uri = Uri.parse(baseUrl + endpoint);
+    try {
+      final response = await http.get(
+        uri,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Authorization": "Bearer $token",
+        },
+      );
+
+      return {
+        'statusCode': response.statusCode,
+        'data': json.decode(response.body),
+      };
+    } catch (e) {
+      return {
+        'statusCode': 500,
+        'data': {'error': 'An error occurred: $e'},
+      };
+    }
+  }
+
 //   Future<dynamic> postWithoutTokenStatus(
 //       String endpoint, Map<String, dynamic> body) async {
 //     final uri = Uri.parse(baseUrl + endpoint);

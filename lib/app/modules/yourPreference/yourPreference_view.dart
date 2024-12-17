@@ -1,10 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:dating_app/app/modules/yourPreference/yourPreference_controller.dart';
-import 'package:dating_app/app/validator/textfild_validator.dart';
 import 'package:dating_app/app/widgets/customRangeSlider.dart';
 import 'package:dating_app/app/widgets/custom_button.dart';
-import 'package:dating_app/app/widgets/custom_textfiled.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,12 +10,12 @@ import '../../config/app_variables.dart';
 import '../../routes/app_routes.dart';
 import '../../theme/colors.dart';
 import '../../theme/fonts.dart';
-import '../../utils/getLocationDetails.dart';
 import '../../utils/navigation.dart';
 import '../../utils/sized_box_helper.dart';
 import '../../widgets/back_button.dart';
 import '../../widgets/customToggleButton.dart';
 import '../../widgets/custom_text.dart';
+import 'interest_card.dart';
 
 class YourpreferenceView extends StatelessWidget {
   const YourpreferenceView({super.key});
@@ -66,10 +64,23 @@ class YourpreferenceView extends StatelessWidget {
                   ),
                 ),
                 SizedBoxHelper.h10,
-                CustomText(
-                  text: 'Age',
-                  style: AppFonts.mediumBold,
-                  color: AppColors.grey.shade900,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomText(
+                      text: 'Age',
+                      style: AppFonts.mediumBold,
+                      color: AppColors.grey.shade900,
+                    ),
+                    Obx(
+                      () => CustomText(
+                        text:
+                            '${controller.ageRangeValue.value.start.toInt()} - ${controller.ageRangeValue.value.end.toInt()}',
+                        style: AppFonts.mediumBold,
+                        color: AppColors.grey.shade900,
+                      ),
+                    ),
+                  ],
                 ),
                 Obx(() => CustomRangeSlider(
                     min: controller.minAge.value,
@@ -78,64 +89,46 @@ class YourpreferenceView extends StatelessWidget {
                     values: controller.ageRangeValue.value,
                     onChanged: controller.changeAgeValue)),
                 SizedBoxHelper.h10,
-                GestureDetector(
-                  onTap: () async {
-                    Map<String, String> locationDetails =
-                        await getLocationDetails();
-
-                    controller.city.value = locationDetails['city'].toString();
-                    controller.state.value =
-                        locationDetails['state'].toString();
-                    controller.country.value =
-                        locationDetails['country'].toString();
-                  },
-                  child: Container(
-                    height: 58,
-                    width: double.maxFinite,
-                    decoration: BoxDecoration(
-                      color: AppColors.primary.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.location_on_rounded,
-                            size: 20,
-                            color: AppColors.primary,
-                          ),
-                          SizedBoxHelper.w10,
-                          Obx(
-                            () => Text(
-                              controller.state.value.isEmpty
-                                  ? 'Choose Your Location'
-                                  : '${controller.city.value} ${controller.state.value} ${controller.country.value}',
-                              style: AppFonts.medium
-                                  .copyWith(color: AppColors.primary),
-                            ),
-                          ),
-                        ],
+                CustomText(
+                  text:
+                  'Select a minimum 5 interests and let everyone know what you’re passionate about.',
+                  style: AppFonts.extraSmall,
+                  color: AppColors.grey.shade900,
+                ),
+                SizedBoxHelper.h10,
+                GridView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 3.5),
+                  itemCount: controller.interests.length,
+                  itemBuilder: (context, index) {
+                    final interest = controller.interests[index];
+                    return Obx(
+                          () => InterestCard(
+                        icon: interest['icon'],
+                        text: interest['text'],
+                        isSelected: controller.selectedIndices.contains(index),
+                        onTap: () => controller.toggleInterest(index),
                       ),
+                    );
+                  },
+                ),
+                SizedBoxHelper.h10,
+                Obx(
+                      () => Visibility(
+                    visible: controller.selectedIndices.length >= 5,
+                    child: CustomButton(
+                      label: 'Submit',
+                      onPressed: () {
+                        NavigationUtils.navigateTo(AppRoutes.yourPreference);
+                      },
                     ),
                   ),
                 ),
-                SizedBoxHelper.h10,
-                CustomTextField(
-                  hintText: 'Bio',
-                  maxLine: 5,
-                  keyboardType: TextInputType.text,
-                  validator: (value) {
-                    return Validators.bioValidator(value);
-                  },
-                ),
-                SizedBoxHelper.h10,
-                CustomButton(
-                    label: 'Sumbit',
-                    onPressed: () async {
-                      if (formKey.currentState!.validate()) {
-                        NavigationUtils.navigateTo(AppRoutes.contacts);
-                      }
-                    })
               ],
             ),
           ),

@@ -8,6 +8,10 @@ import 'package:image_picker/image_picker.dart';
 class EditprofileController extends GetxController {
   RxString selectedBirthDate = ''.obs;
 
+  RxString city = ''.obs;
+  RxString state = ''.obs;
+  RxString country = ''.obs;
+
   // Use dynamic to handle both File and Uint8List
   Rx<dynamic> selectedImage = Rx<dynamic>(null);
 

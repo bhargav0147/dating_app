@@ -24,8 +24,6 @@ import 'package:dating_app/app/modules/otp/otp_binding.dart';
 import 'package:dating_app/app/modules/otp/otp_view.dart';
 import 'package:dating_app/app/modules/welcome/welcome_binding.dart';
 import 'package:dating_app/app/modules/welcome/welcome_view.dart';
-import 'package:dating_app/app/modules/yourInterests/your_interests_binding.dart';
-import 'package:dating_app/app/modules/yourInterests/your_interests_view.dart';
 import 'package:dating_app/app/modules/yourPreference/yourPreference_binding.dart';
 import 'package:dating_app/app/modules/yourPreference/yourPreference_view.dart';
 import 'package:get/get.dart';
@@ -44,7 +42,6 @@ class AppRoutes {
   static const String otp = '/otp';
   static const String editProfile = '/editProfile';
   static const String gender = '/gender';
-  static const String yourInterests = '/yourInterests';
   static const String contacts = '/contacts';
   static const String yourPreference = '/yourPreference';
   static const String settings = '/settings';
@@ -88,10 +85,6 @@ class AppRoutes {
         binding: EditprofileBinding()),
     GetPage(
         name: gender, page: () => const GenderView(), binding: GenderBinding()),
-    GetPage(
-        name: yourInterests,
-        page: () => const YourInterestsView(),
-        binding: YourInterestsBinding()),
     GetPage(
         name: contacts,
         page: () => const ContactView(),

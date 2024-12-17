@@ -16,8 +16,8 @@ class ChangePasswordController extends GetxController{
     String? token = await AppVariables.getUserToken();
 
     if (token == null) {
-      SnackbarUtils.showError(context, 'Session expired. Please log in again.');
       NavigationUtils.offAllTo(AppRoutes.onboarding);
+      SnackbarUtils.showError(context, 'Session expired. Please log in again.');
       isButtonLoading.value = false;
       return;
     }

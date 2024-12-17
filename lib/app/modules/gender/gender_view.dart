@@ -64,7 +64,7 @@ class GenderView extends StatelessWidget {
                 child: CustomButton(
                   label: 'Continue',
                   onPressed: () {
-                    NavigationUtils.replaceWith(AppRoutes.yourInterests);
+                    NavigationUtils.replaceWith(AppRoutes.yourPreference);
                   },
                 ),
               ),

@@ -32,7 +32,7 @@ class CustomToggleButtons extends StatelessWidget {
           minHeight: 50, minWidth: 87, maxHeight: 55, maxWidth: 130),
       children: items
           .map((item) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 2),
                 child: CustomText(
                   text: item,
                   style: AppFonts.extraSmall,
