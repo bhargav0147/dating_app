@@ -47,9 +47,9 @@ class SplashController extends GetxController {
 
   void decideNavigation() {
     if (userProfile.userData?.isProfileCompleted == false) {
-      NavigationUtils.offAllTo(AppRoutes.yourPreference);
-    } else if (userProfile.userData?.isPrefrencesCompleted == false) {
       NavigationUtils.offAllTo(AppRoutes.editProfile);
+    } else if (userProfile.userData?.isPrefrencesCompleted == false) {
+      NavigationUtils.offAllTo(AppRoutes.yourPreference);
     } else {
       NavigationUtils.offAllTo(AppRoutes.dashbaord);
     }

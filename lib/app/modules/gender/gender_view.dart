@@ -19,6 +19,7 @@ class GenderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GenderController controller = Get.put(GenderController());
+    Map<String , String> profileData = Get.arguments;
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Padding(
@@ -42,29 +43,31 @@ class GenderView extends StatelessWidget {
             SizedBoxHelper.h35,
             GenderOption(
               gender: 'Woman',
-              selectedGender: controller.selectedGemder,
+              selectedGender: controller.selectedGender,
               controller: controller,
             ),
             SizedBoxHelper.h15,
             GenderOption(
               gender: 'Man',
-              selectedGender: controller.selectedGemder,
+              selectedGender: controller.selectedGender,
               controller: controller,
             ),
             SizedBoxHelper.h15,
             GenderOption(
               gender: 'Other',
-              selectedGender: controller.selectedGemder,
+              selectedGender: controller.selectedGender,
               controller: controller,
             ),
             SizedBoxHelper.h15,
             Obx(
               () => Visibility(
-                visible: controller.selectedGemder.value.isEmpty ? false : true,
+                visible: controller.selectedGender.value.isEmpty ? false : true,
                 child: CustomButton(
                   label: 'Continue',
                   onPressed: () {
-                    NavigationUtils.replaceWith(AppRoutes.yourPreference);
+                    profileData['gender'] = controller.selectedGender.value;
+                    print(profileData);
+                    NavigationUtils.replaceWith(AppRoutes.multipleImages);
                   },
                 ),
               ),

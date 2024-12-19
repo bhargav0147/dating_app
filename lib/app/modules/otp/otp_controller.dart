@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../config/app_variables.dart';
+import '../../routes/app_routes.dart';
 import '../../service/api/api_calling.dart';
 import '../../service/api/api_constants.dart';
+import '../../utils/navigation.dart';
 import '../../utils/snackbars.dart';
 
 class OtpController extends GetxController {
@@ -19,7 +21,7 @@ class OtpController extends GetxController {
 
     if (response['statusCode'] == 201) {
       await AppVariables.saveUserToken(response['data']['user']['token']);
-      // NavigationUtils.navigateTo(AppRoutes.dashbaord);
+      NavigationUtils.offAllTo(AppRoutes.yourPreference);
       SnackbarUtils.showSuccess(context, '${response['data']['message']}');
     } else {
       SnackbarUtils.showError(context, '${response['data']['message']}');

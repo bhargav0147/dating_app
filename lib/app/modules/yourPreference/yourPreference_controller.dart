@@ -80,10 +80,10 @@ class YourpreferenceController extends GetxController {
       'maxAge': ageRangeValue.value.end.toString(),
       'interests': getSelectedInterests(selectedIndices)
     };
-    print(body);
     final response = await ApiService().postWithToken(ApiConstants.addPref, body,token);
     print(response);
-    if (response['statusCode'] == 200) {
+    if (response['statusCode'] == 201) {
+      NavigationUtils.offAllTo(AppRoutes.editProfile);
       SnackbarUtils.showSuccess(context,'${response['data']['message']}');
     } else {
       SnackbarUtils.showError(context,'${response['data']['message']}');

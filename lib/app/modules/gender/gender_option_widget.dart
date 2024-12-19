@@ -21,7 +21,7 @@ class GenderOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        controller.selectedGemder.value = gender;
+        controller.selectedGender.value = gender;
       },
       child: Obx(
         () => Container(
