@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 
-
 import 'package:dating_app/app/modules/editProfile/editProfile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -82,7 +81,6 @@ class EditprofileView extends StatelessWidget {
                   return Validators.bioValidator(value);
                 },
               ),
-
               SizedBoxHelper.h15,
               GestureDetector(
                 onTap: () async {
@@ -109,7 +107,8 @@ class EditprofileView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
                       children: [
-                        const Icon(Icons.calendar_today_outlined,
+                        const Icon(
+                          Icons.calendar_today_outlined,
                           size: 20,
                           color: AppColors.primary,
                         ),
@@ -133,11 +132,10 @@ class EditprofileView extends StatelessWidget {
               GestureDetector(
                 onTap: () async {
                   Map<String, String> locationDetails =
-                  await getLocationDetails();
+                      await getLocationDetails();
 
                   controller.city.value = locationDetails['city'].toString();
-                  controller.state.value =
-                      locationDetails['state'].toString();
+                  controller.state.value = locationDetails['state'].toString();
                   controller.country.value =
                       locationDetails['country'].toString();
                 },
@@ -159,12 +157,14 @@ class EditprofileView extends StatelessWidget {
                         ),
                         SizedBoxHelper.w10,
                         Obx(
-                              () => Text(
-                            controller.state.value.isEmpty
-                                ? 'Choose Your Location'
-                                : '${controller.city.value} ${controller.state.value} ${controller.country.value}',
-                            style: AppFonts.medium
-                                .copyWith(color: AppColors.primary),
+                          () => Flexible(
+                            child: Text(
+                              controller.state.value.isEmpty
+                                  ? 'Choose Your Location'
+                                  : '${controller.city.value} ${controller.state.value} ${controller.country.value}',
+                              style: AppFonts.medium
+                                  .copyWith(color: AppColors.primary),
+                            ),
                           ),
                         ),
                       ],
@@ -178,17 +178,19 @@ class EditprofileView extends StatelessWidget {
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     if (controller.selectedBirthDate.value.isEmpty) {
-                      SnackbarUtils.showInfo(context,'Select Your Birth Date');
+                      SnackbarUtils.showInfo(context, 'Select Your Birth Date');
                       return;
                     }
                     Map<String, String> profileData = {
-                      'name':'${txtFirstName.text} ${txtLastName.text}',
-                      'city':controller.city.value,
-                      'country':controller.country.value,
-                      'bio':txtBio.text,
-                      'dateOfBirth':controller.selectedBirthDate.value.split(' ')[0]
+                      'name': '${txtFirstName.text} ${txtLastName.text}',
+                      'city': controller.city.value,
+                      'country': controller.country.value,
+                      'bio': txtBio.text,
+                      'dateOfBirth':
+                          controller.selectedBirthDate.value.split(' ')[0]
                     };
-                    NavigationUtils.navigateTo(AppRoutes.gender,arguments: profileData);
+                    NavigationUtils.navigateTo(AppRoutes.gender,
+                        arguments: profileData);
                   }
                 },
               )

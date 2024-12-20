@@ -21,7 +21,7 @@ class OtpController extends GetxController {
 
     if (response['statusCode'] == 201) {
       await AppVariables.saveUserToken(response['data']['user']['token']);
-      NavigationUtils.offAllTo(AppRoutes.yourPreference);
+      NavigationUtils.offAllTo(AppRoutes.editProfile);
       SnackbarUtils.showSuccess(context, '${response['data']['message']}');
     } else {
       SnackbarUtils.showError(context, '${response['data']['message']}');

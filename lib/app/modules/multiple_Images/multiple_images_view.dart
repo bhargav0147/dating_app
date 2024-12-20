@@ -39,155 +39,356 @@ class MultipleImagesView extends StatelessWidget {
               const CustomBackButton(),
               SizedBoxHelper.h35,
               const CustomText(
-                text: 'Add Profile',
+                text: 'Upload Your Photos',
                 style: AppFonts.veryExtraLarge,
                 color: AppColors.black,
               ),
-              SizedBoxHelper.h15,
-              Align(
-                alignment: Alignment.center,
-                child: Obx(() {
-                  final image =
-                      multipleImagesController.selectedProfileImage.value;
-                  return GestureDetector(
-                    onTap: () async {
-                      await multipleImagesController.pickImage(
-                          multipleImagesController.selectedProfileImage);
-                    },
-                    child: Container(
-                      height: 130,
-                      width: 130,
-                      decoration: BoxDecoration(
-                        color: AppColors.white,
-                        border: Border.all(color: AppColors.grey.shade300),
-                        borderRadius: BorderRadius.circular(25),
-                        image: image != null
-                            ? DecorationImage(
-                                image: kIsWeb
-                                    ? MemoryImage(image)
-                                    : FileImage(image as File) as ImageProvider,
-                                fit: BoxFit.cover,
-                              )
-                            : null,
-                      ),
-                      child: image == null
-                          ? const Icon(
-                              Icons.person,
-                              color: AppColors.primary,
-                              size: 80,
-                            )
-                          : null,
-                    ),
-                  );
-                }),
-              ),
-              SizedBoxHelper.h15,
-              const CustomText(
-                text: 'Add photos',
-                style: AppFonts.veryExtraLarge,
-                color: AppColors.black,
-              ),
-              SizedBoxHelper.h15,
+              SizedBoxHelper.h35,
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Obx(() {
-                    final image = multipleImagesController.firstImage.value;
-                    return GestureDetector(
-                      onTap: () async {
-                        await multipleImagesController.pickImage(multipleImagesController.firstImage);
-                      },
-                      child: DottedBorder(
-                        color: AppColors.primary.shade300,
-                        borderType: BorderType.RRect,
-                        radius: const Radius.circular(15),
-                        dashPattern: const [6, 3], // Optional: Customize the dotted border
-                        child: Container(
-                          height: 150,
-                          width: 150,
-                          decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(15),
-                            image: image != null
-                                ? DecorationImage(
-                              image: kIsWeb
-                                  ? MemoryImage(image)
-                                  : FileImage(image as File) as ImageProvider,
-                              fit: BoxFit.cover,
-                            )
-                                : null,
-                          ),
-                          child: image == null
-                              ? Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.add_circle, color: AppColors.primary, size: 40),
-                              const SizedBox(height: 10),
-                              CustomText(
-                                text:'Add Image',
-                                style: AppFonts.mediumBold,
-                                color: AppColors.grey.shade500,
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      children: [
+                        Obx(() {
+                          final image =
+                              multipleImagesController.selectedProfileImage.value;
+                          return GestureDetector(
+                            onTap: () async {
+                              await multipleImagesController.pickImage(
+                                  multipleImagesController.selectedProfileImage);
+                            },
+                            child: DottedBorder(
+                              color: AppColors.primary.shade300,
+                              borderType: BorderType.RRect,
+                              radius: const Radius.circular(15),
+                              dashPattern: const [
+                                6,
+                                3
+                              ],
+                              child: Container(
+                                height: 255,
+                                width: double.maxFinite,
+                                decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius: BorderRadius.circular(25),
+                                  image: image != null
+                                      ? DecorationImage(
+                                    image: kIsWeb
+                                        ? MemoryImage(image)
+                                        : FileImage(image as File)
+                                    as ImageProvider,
+                                    fit: BoxFit.cover,
+                                  )
+                                      : null,
+                                ),
+                                child: image == null
+                                    ? const Icon(
+                                  Icons.person,
+                                  color: AppColors.primary,
+                                  size: 80,
+                                )
+                                    : null,
                               ),
-                            ],
-                          )
-                              : null,
-                        ),
-                      ),
-                    );
-                  }),
+                            ),
+                          );
+                        }),
+                        SizedBoxHelper.h10,
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Obx(() {
+                                final image =
+                                    multipleImagesController.firstImage.value;
+                                return GestureDetector(
+                                  onTap: () async {
+                                    await multipleImagesController.pickImage(
+                                        multipleImagesController.firstImage);
+                                  },
+                                  child: DottedBorder(
+                                    color: AppColors.primary.shade300,
+                                    borderType: BorderType.RRect,
+                                    radius: const Radius.circular(15),
+                                    dashPattern: const [
+                                      6,
+                                      3
+                                    ], // Optional: Customize the dotted border
+                                    child: Container(
+                                      height: 120,
 
-                  Obx(() {
-                    final image = multipleImagesController.secondImage.value;
-                    return GestureDetector(
-                      onTap: () async {
-                        await multipleImagesController.pickImage(multipleImagesController.secondImage);
-                      },
-                      child: DottedBorder(
-                        color: AppColors.primary.shade300,
-                        borderType: BorderType.RRect,
-                        radius: const Radius.circular(15),
-                        dashPattern: const [6, 3], // Optional: Customize the dotted border
-                        child: Container(
-                          height: 150,
-                          width: 150,
-                          decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(15),
-                            image: image != null
-                                ? DecorationImage(
-                              image: kIsWeb
-                                  ? MemoryImage(image)
-                                  : FileImage(image as File) as ImageProvider,
-                              fit: BoxFit.cover,
-                            )
-                                : null,
-                          ),
-                          child: image == null
-                              ? Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.add_circle, color: AppColors.primary, size: 40),
-                              const SizedBox(height: 10),
-                              CustomText(
-                                text:'Add Image',
-                                style: AppFonts.mediumBold,
-                                color: AppColors.grey.shade500,
+                                      width: double.maxFinite,
+                                      decoration: BoxDecoration(
+                                        color: AppColors.white,
+                                        borderRadius: BorderRadius.circular(15),
+                                        image: image != null
+                                            ? DecorationImage(
+                                          image: kIsWeb
+                                              ? MemoryImage(image)
+                                              : FileImage(image as File)
+                                          as ImageProvider,
+                                          fit: BoxFit.cover,
+                                        )
+                                            : null,
+                                      ),
+                                      child: image == null
+                                          ? Column(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                        children: [
+                                          const Icon(Icons.add_circle,
+                                              color: AppColors.primary,
+                                              size: 40),
+                                          const SizedBox(height: 10),
+                                          CustomText(
+                                            text: 'Add Image',
+                                            style: AppFonts.mediumBold,
+
+                                            textAlign: TextAlign.center,
+                                            color: AppColors.grey.shade500,
+                                          ),
+                                        ],
+                                      )
+                                          : null,
+                                    ),
+                                  ),
+                                );
+                              }),
+                            ),
+                            SizedBoxHelper.w10,
+                            Expanded(
+                              child: Obx(() {
+                                final image =
+                                    multipleImagesController.secondImage.value;
+                                return GestureDetector(
+                                  onTap: () async {
+                                    await multipleImagesController.pickImage(
+                                        multipleImagesController.secondImage);
+                                  },
+                                  child: DottedBorder(
+                                    color: AppColors.primary.shade300,
+                                    borderType: BorderType.RRect,
+                                    radius: const Radius.circular(15),
+                                    dashPattern: const [
+                                      6,
+                                      3
+                                    ], // Optional: Customize the dotted border
+                                    child: Container(
+                                      height: 120,
+                                      width: double.maxFinite,
+                                      decoration: BoxDecoration(
+                                        color: AppColors.white,
+                                        borderRadius: BorderRadius.circular(15),
+                                        image: image != null
+                                            ? DecorationImage(
+                                          image: kIsWeb
+                                              ? MemoryImage(image)
+                                              : FileImage(image as File)
+                                          as ImageProvider,
+                                          fit: BoxFit.cover,
+                                        )
+                                            : null,
+                                      ),
+                                      child: image == null
+                                          ? Column(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                        children: [
+                                          const Icon(Icons.add_circle,
+                                              color: AppColors.primary,
+                                              size: 40),
+                                          const SizedBox(height: 10),
+                                          CustomText(
+                                            text: 'Add Image',
+                                            style: AppFonts.mediumBold,
+                                            textAlign: TextAlign.center,
+                                            color: AppColors.grey.shade500,
+                                          ),
+                                        ],
+                                      )
+                                          : null,
+                                    ),
+                                  ),
+                                );
+                              }),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBoxHelper.w10,
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Obx(() {
+                          final image = multipleImagesController.firstImage.value;
+                          return GestureDetector(
+                            onTap: () async {
+                              await multipleImagesController
+                                  .pickImage(multipleImagesController.firstImage);
+                            },
+                            child: DottedBorder(
+                              color: AppColors.primary.shade300,
+                              borderType: BorderType.RRect,
+                              radius: const Radius.circular(15),
+                              dashPattern: const [
+                                6,
+                                3
+                              ], // Optional: Customize the dotted border
+                              child: Container(
+                                height: 120,
+                                width: MediaQuery.of(context).size.width * 0.29,
+                                decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: image != null
+                                      ? DecorationImage(
+                                    image: kIsWeb
+                                        ? MemoryImage(image)
+                                        : FileImage(image as File)
+                                    as ImageProvider,
+                                    fit: BoxFit.cover,
+                                  )
+                                      : null,
+                                ),
+                                child: image == null
+                                    ? Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(Icons.add_circle,
+                                        color: AppColors.primary, size: 40),
+                                    const SizedBox(height: 10),
+                                    CustomText(
+                                      text: 'Add Image',
+                                      style: AppFonts.mediumBold,
+
+                                      textAlign: TextAlign.center,
+                                      color: AppColors.grey.shade500,
+                                    ),
+                                  ],
+                                )
+                                    : null,
                               ),
-                            ],
-                          )
-                              : null,
-                        ),
-                      ),
-                    );
-                  }),
-
+                            ),
+                          );
+                        }),
+                        SizedBoxHelper.h10,
+                        Obx(() {
+                          final image = multipleImagesController.firstImage.value;
+                          return GestureDetector(
+                            onTap: () async {
+                              await multipleImagesController
+                                  .pickImage(multipleImagesController.firstImage);
+                            },
+                            child: DottedBorder(
+                              color: AppColors.primary.shade300,
+                              borderType: BorderType.RRect,
+                              radius: const Radius.circular(15),
+                              dashPattern: const [
+                                6,
+                                3
+                              ], // Optional: Customize the dotted border
+                              child: Container(
+                                height: 120,
+                                width: MediaQuery.of(context).size.width * 0.29,
+                                decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: image != null
+                                      ? DecorationImage(
+                                    image: kIsWeb
+                                        ? MemoryImage(image)
+                                        : FileImage(image as File)
+                                    as ImageProvider,
+                                    fit: BoxFit.cover,
+                                  )
+                                      : null,
+                                ),
+                                child: image == null
+                                    ? Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(Icons.add_circle,
+                                        color: AppColors.primary, size: 40),
+                                    const SizedBox(height: 10),
+                                    CustomText(
+                                      text: 'Add Image',
+                                      style: AppFonts.mediumBold,
+                                      textAlign: TextAlign.center,
+                                      color: AppColors.grey.shade500,
+                                    ),
+                                  ],
+                                )
+                                    : null,
+                              ),
+                            ),
+                          );
+                        }),
+                        SizedBoxHelper.h10,
+                        Obx(() {
+                          final image = multipleImagesController.firstImage.value;
+                          return GestureDetector(
+                            onTap: () async {
+                              await multipleImagesController
+                                  .pickImage(multipleImagesController.firstImage);
+                            },
+                            child: DottedBorder(
+                              color: AppColors.primary.shade300,
+                              borderType: BorderType.RRect,
+                              radius: const Radius.circular(15),
+                              dashPattern: const [
+                                6,
+                                3
+                              ], // Optional: Customize the dotted border
+                              child: Container(
+                                height: 120,
+                                width: MediaQuery.of(context).size.width * 0.29,
+                                decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: image != null
+                                      ? DecorationImage(
+                                    image: kIsWeb
+                                        ? MemoryImage(image)
+                                        : FileImage(image as File)
+                                    as ImageProvider,
+                                    fit: BoxFit.cover,
+                                  )
+                                      : null,
+                                ),
+                                child: image == null
+                                    ? Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(Icons.add_circle,
+                                        color: AppColors.primary, size: 40),
+                                    const SizedBox(height: 10),
+                                    CustomText(
+                                      text: 'Add Image',
+                                      style: AppFonts.mediumBold,
+                                      textAlign: TextAlign.center,
+                                      color: AppColors.grey.shade500,
+                                    ),
+                                  ],
+                                )
+                                    : null,
+                              ),
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-              SizedBoxHelper.h15,
+              SizedBoxHelper.h35,
               Obx(() {
-                final allImagesPicked = multipleImagesController.selectedProfileImage.value != null &&
-                    multipleImagesController.firstImage.value != null &&
-                    multipleImagesController.secondImage.value != null;
+                final allImagesPicked =
+                    multipleImagesController.selectedProfileImage.value !=
+                            null &&
+                        multipleImagesController.firstImage.value != null &&
+                        multipleImagesController.secondImage.value != null;
 
                 return Visibility(
                   visible: allImagesPicked,
@@ -199,7 +400,6 @@ class MultipleImagesView extends StatelessWidget {
                   ),
                 );
               }),
-
             ],
           ),
         ),
