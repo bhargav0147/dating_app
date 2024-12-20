@@ -25,14 +25,14 @@ class SplashController extends GetxController {
         NavigationUtils.offAllTo(AppRoutes.onboarding);
         return;
       } else {
-        await fetchUserProfile(token);
+        await fetchUserProfile(token: token);
       }
     } else {
       NavigationUtils.offAllTo(AppRoutes.onboarding);
     }
   }
 
-  Future<void> fetchUserProfile(String token) async {
+  Future<void> fetchUserProfile({required String token}) async {
 
     final response =
         await apiService.getWithToken(ApiConstants.getUserProfile, token);

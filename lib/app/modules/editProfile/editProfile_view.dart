@@ -26,7 +26,7 @@ class EditprofileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final EditprofileController controller = Get.put(EditprofileController());
+    final EditProfileController controller = Get.put(EditProfileController());
     final formKey = GlobalKey<FormState>();
     final TextEditingController txtFirstName = TextEditingController();
     final TextEditingController txtLastName = TextEditingController();

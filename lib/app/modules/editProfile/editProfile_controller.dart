@@ -2,13 +2,11 @@
 
 import 'package:get/get.dart';
 
-class EditprofileController extends GetxController {
+class EditProfileController extends GetxController {
   RxString selectedBirthDate = ''.obs;
 
   RxString city = ''.obs;
   RxString state = ''.obs;
   RxString country = ''.obs;
-
-
 
 }
