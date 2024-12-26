@@ -144,30 +144,32 @@ class ApiService {
   Future<dynamic> postMultiPartWithToken({
     required String endpoint,
     required Map<String, dynamic> data,
-    required List<http.MultipartFile> imageList,
+    required dynamic mainImage,
+    required List<dynamic> profilePictures,
     required String token,
   }) async {
-    final uri = Uri.parse(baseUrl + endpoint);
-
+    final uri = Uri.parse('$baseUrl/upload-profile');
     var request = http.MultipartRequest('POST', uri);
+
     request.headers['Content-Type'] = 'multipart/form-data';
     request.headers['Authorization'] = 'Bearer $token';
 
+    // Add form data
     data.forEach((key, value) {
-      if (value is String) {
-        request.fields[key] = value;
-      } else if (value is double || value is int) {
-        request.fields[key] = value.toString();
-      } else if (value is bool) {
-        request.fields[key] = value ? 'true' : 'false';
-      } else if (value is List || value is Map) {
-        request.fields[key] = jsonEncode(value);
-      } else {
-        request.fields[key] = value.toString();
-      }
+      request.fields[key] = value.toString();
     });
 
-    request.files.addAll(imageList);
+    // Add main image
+    if (mainImage != null) {
+      request.files.add(await fileToMultipartFile(mainImage, 'mainImage'));
+    }
+
+    // Add profile pictures
+    for (var i = 0; i < profilePictures.length; i++) {
+      request.files.add(
+        await fileToMultipartFile(profilePictures[i], 'profilePictures[$i]'),
+      );
+    }
 
     try {
       final response = await request.send();

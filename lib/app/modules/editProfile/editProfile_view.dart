@@ -138,6 +138,8 @@ class EditprofileView extends StatelessWidget {
                   controller.state.value = locationDetails['state'].toString();
                   controller.country.value =
                       locationDetails['country'].toString();
+                  controller.latitude.value = double.parse(locationDetails['latitude'].toString());
+                  controller.longitude.value = double.parse(locationDetails['longitude'].toString());
                 },
                 child: Container(
                   height: 58,
@@ -181,13 +183,15 @@ class EditprofileView extends StatelessWidget {
                       SnackbarUtils.showInfo(context, 'Select Your Birth Date');
                       return;
                     }
-                    Map<String, String> profileData = {
+                    Map<String, dynamic> profileData = {
                       'name': '${txtFirstName.text} ${txtLastName.text}',
                       'city': controller.city.value,
                       'country': controller.country.value,
                       'bio': txtBio.text,
                       'dateOfBirth':
-                          controller.selectedBirthDate.value.split(' ')[0]
+                          controller.selectedBirthDate.value.split(' ')[0],
+                      'latitude':controller.latitude,
+                      'longitude':controller.longitude,
                     };
                     NavigationUtils.navigateTo(AppRoutes.gender,
                         arguments: profileData);

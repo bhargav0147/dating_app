@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dating_app/app/modules/multiple_Images/multiple_images_controller.dart';
+import 'package:dating_app/app/utils/snackbars.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class MultipleImagesView extends StatelessWidget {
   Widget build(BuildContext context) {
     final MultipleImagesController multipleImagesController =
         Get.put(MultipleImagesController());
+    Map<String, dynamic> profileData = Get.arguments;
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Padding(
@@ -52,8 +54,7 @@ class MultipleImagesView extends StatelessWidget {
                     child: Column(
                       children: [
                         ImagePickerTile(
-                          image:
-                              multipleImagesController.selectedProfileImage,
+                          image: multipleImagesController.selectedProfileImage,
                           onPickImage: (image) =>
                               multipleImagesController.pickImage(image),
                           height: 255,
@@ -114,16 +115,20 @@ class MultipleImagesView extends StatelessWidget {
                 ],
               ),
               SizedBoxHelper.h35,
-              CustomButton(
-                label: 'Continue',
-                onPressed: () async {
-                  List<dynamic>? selectedImages =
-                      await multipleImagesController.handleImageSelection(context);
-
-                  if (selectedImages != null) {
-                    print("Selected Images: $selectedImages");
-                  }
-                },
+              Obx(
+                () => CustomButton(
+                  label: 'Continue',
+                  isLoading: multipleImagesController.isButtonLoading.value,
+                  onPressed: () async {
+                    if (!multipleImagesController.validateImages()) {
+                      SnackbarUtils.showInfo(
+                          context, 'Please select minimum 3 images');
+                      return;
+                    }
+                    multipleImagesController.createUserProfile(
+                        context: context, data: profileData);
+                  },
+                ),
               ),
             ],
           ),

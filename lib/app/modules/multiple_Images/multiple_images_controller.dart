@@ -1,14 +1,19 @@
 import 'dart:io';
-
+import 'dart:typed_data';
+import 'package:dating_app/app/service/api/api_calling.dart';
+import 'package:dating_app/app/service/api/api_constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../config/app_variables.dart';
+import '../../routes/app_routes.dart';
+import '../../utils/navigation.dart';
 import '../../utils/snackbars.dart';
 
 class MultipleImagesController extends GetxController {
-  // Define variables for three images
+  RxBool isButtonLoading = false.obs;
   Rx<dynamic> selectedProfileImage = Rx<dynamic>(null);
   Rx<dynamic> imageOne = Rx<dynamic>(null);
   Rx<dynamic> imageTwo = Rx<dynamic>(null);
@@ -18,57 +23,41 @@ class MultipleImagesController extends GetxController {
 
   final ImagePicker picker = ImagePicker();
 
-
   Future<void> pickImage(Rx<dynamic> imageVariable) async {
-    if (kIsWeb) {
-      final XFile? image = await picker.pickImage(
-        source: ImageSource.gallery,
-        imageQuality: 80,
-      );
+    final XFile? image = await picker.pickImage(
+      source: ImageSource.gallery,
+      imageQuality: 80,
+    );
 
-      if (image != null) {
+    if (image != null) {
+      if (kIsWeb) {
         final Uint8List bytes = await image.readAsBytes();
         imageVariable.value = bytes;
-      }
-    } else {
-      final XFile? image = await picker.pickImage(
-        source: ImageSource.gallery,
-        imageQuality: 80,
-      );
-
-      if (image != null) {
+      } else {
         final File file = File(image.path);
         imageVariable.value = file;
       }
     }
   }
 
-  bool validateImages(BuildContext context) {
+  bool validateImages() {
     if (selectedProfileImage.value == null) {
-      SnackbarUtils.showError(context, 'Profile image is required');
       return false;
     }
-
 
     List<Rx<dynamic>> otherImages = [
       imageOne,
       imageTwo,
       imageThree,
       imageFour,
-      imageFive
+      imageFive,
     ];
 
     int filledImagesCount =
         otherImages.where((image) => image.value != null).length;
 
-    if (filledImagesCount < 3) {
-      SnackbarUtils.showError(context, 'At least three additional images are required');
-      return false;
-    }
-
-    return true;
+    return filledImagesCount >= 3;
   }
-
 
   List<dynamic> getSelectedImages() {
     List<Rx<dynamic>> otherImages = [
@@ -76,9 +65,8 @@ class MultipleImagesController extends GetxController {
       imageTwo,
       imageThree,
       imageFour,
-      imageFive
+      imageFive,
     ];
-
 
     return otherImages
         .where((image) => image.value != null)
@@ -86,11 +74,31 @@ class MultipleImagesController extends GetxController {
         .toList();
   }
 
+  Future<void> createUserProfile(
+      {required BuildContext context,
+      required Map<String, dynamic> data}) async {
+    isButtonLoading.value = true;
+    String? token = await AppVariables.getUserToken();
 
-  Future<List<dynamic>?> handleImageSelection(BuildContext context) async {
-    if (validateImages(context)) {
-      return getSelectedImages();
+    if (token == null) {
+      NavigationUtils.offAllTo(AppRoutes.onboarding);
+      SnackbarUtils.showError(context, 'Session expired. Please log in again.');
+      isButtonLoading.value = false;
+      return;
     }
-    return null;
+
+    final response = await ApiService().postMultiPartWithToken(
+        endpoint: ApiConstants.getUserProfile,
+        data: data,
+        mainImage: selectedProfileImage,
+        profilePictures: getSelectedImages(),
+        token: token);
+
+    if (response['statusCode'] == 201) {
+      SnackbarUtils.showSuccess(context,'${response['data']['message']}');
+    } else {
+      SnackbarUtils.showError(context,'${response['data']['message']}');
+    }
+    isButtonLoading.value = false;
   }
 }

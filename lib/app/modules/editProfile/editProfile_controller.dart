@@ -8,5 +8,7 @@ class EditProfileController extends GetxController {
   RxString city = ''.obs;
   RxString state = ''.obs;
   RxString country = ''.obs;
+  RxDouble latitude = 0.0.obs;
+  RxDouble longitude = 0.0.obs;
 
 }

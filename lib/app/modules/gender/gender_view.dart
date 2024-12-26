@@ -19,7 +19,7 @@ class GenderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GenderController controller = Get.put(GenderController());
-    Map<String , String> profileData = Get.arguments;
+    Map<String , dynamic> profileData = Get.arguments;
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Padding(
@@ -66,8 +66,7 @@ class GenderView extends StatelessWidget {
                   label: 'Continue',
                   onPressed: () {
                     profileData['gender'] = controller.selectedGender.value;
-                    print(profileData);
-                    NavigationUtils.replaceWith(AppRoutes.multipleImages);
+                    NavigationUtils.navigateTo(AppRoutes.multipleImages,arguments: profileData);
                   },
                 ),
               ),
